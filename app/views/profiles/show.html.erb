@@ -7,5 +7,5 @@
 <li>calories: <%= recipe.calories %></li>
 <li>serves: <%= recipe.serves %></li>
 <li>difficulty: <%= recipe.difficulty %></li>
-<%= link_to "Cook now" %>
+<%= link_to "Cook now", cooking_session_path(recipe) %>
 <% end %>
