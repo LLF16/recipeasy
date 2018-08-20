@@ -1,0 +1,32 @@
+<div class="container">
+
+  <% @ingredients.each do |ingredient| %>
+
+  <p><%= ingredient.name %> </p>
+
+  <% end %>
+
+    <%= form_tag recipes_path, method: :get do %>
+      <%= text_field_tag :ingredient_1,
+        params[:ingredient_1],
+        class: "form-control",
+        placeholder: "Enter an ingredient"
+      %>
+      <%= text_field_tag :ingredient_2,
+        params[:ingredient_2],
+        class: "form-control",
+        placeholder: "Enter an ingredient"
+      %>
+      <%= text_field_tag :ingredient_3,
+        params[:ingredient_3],
+        class: "form-control",
+        placeholder: "Enter an ingredient"
+      %>
+      <%= text_field_tag :ingredient_4,
+        params[:ingredient_4],
+        class: "form-control",
+        placeholder: "Enter an ingredient"
+      %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>
