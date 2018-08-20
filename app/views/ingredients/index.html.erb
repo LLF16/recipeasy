@@ -1,32 +1,40 @@
 <div class="container">
 
-  <% @ingredients.each do |ingredient| %>
-
-  <p><%= ingredient.name %> </p>
-
-  <% end %>
-
-    <%= form_tag recipes_path, method: :get do %>
-      <%= text_field_tag :ingredient_1,
-        params[:ingredient_1],
-        class: "form-control",
-        placeholder: "Enter an ingredient"
+  <%= form_tag recipes_path, method: :get do %>
+    <%= text_field_tag :ingredient_1,
+      params[:ingredient_1],
+      class: "form-control",
+      id: "ingredients-search-1",
+      placeholder: "Enter an ingredient"
       %>
+      <div class="ingredients-results-1"></div>
       <%= text_field_tag :ingredient_2,
         params[:ingredient_2],
         class: "form-control",
+        id: "ingredients-search-2",
         placeholder: "Enter an ingredient"
       %>
+      <div class="ingredients-results-2"></div>
       <%= text_field_tag :ingredient_3,
         params[:ingredient_3],
         class: "form-control",
+        id: "ingredients-search-3",
         placeholder: "Enter an ingredient"
       %>
+      <div class="ingredients-results-3"></div>
       <%= text_field_tag :ingredient_4,
         params[:ingredient_4],
         class: "form-control",
+        id: "ingredients-search-4",
         placeholder: "Enter an ingredient"
       %>
+      <div class="ingredients-results-4"></div>
     <%= submit_tag("Search") %>
   <% end %>
 </div>
+
+<script>
+  $(function() {
+  new app.Books;
+  });
+</script>
