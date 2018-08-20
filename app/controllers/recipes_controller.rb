@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
       @recipes = Recipe.joins(:ingredients).where(sql_query, query1: params["ingredient_1"], query2: params["ingredient_2"],query3: params["ingredient_3"],query4: params["ingredient_4"])
       @selected_recipes = @recipes.take(3)
     else
-      raise
       @recipes = Recipe.all
     end
   end
