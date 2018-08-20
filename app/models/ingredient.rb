@@ -6,7 +6,7 @@ class Ingredient < ApplicationRecord
 
   enum category: [:base, :topping, :side]
 
-  def.self.search(term)
+  def self.search(term)
     Ingredient.where('name ILIKE ?',"%#{term.downcase}%")
   end
 

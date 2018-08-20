@@ -1,44 +1,21 @@
 <h1>Recipes#index</h1>
 <p>Find me in app/views/recipes/index.html.erb</p>
 
-<ul>
+<div class="row">
   <% @selected_recipes.each do |recipe| %>
-    <li>
-      <%= recipe.name %>
-      <%= recipe.ingredients %>
-    </li>
+  <div class="col-xs-12 col-md-3">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+      <h2 class="card-recipe-name">
+        <%= recipe.name %>
+      </h2>
+      <p class="card-recipe-ingredients">
+        <ul>
+          <% recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+          <% end %>
+        </ul>
+      </p>
+    </div>
+  </div>
   <% end %>
-</ul>
-
-
-
-
- <div class="row">
-          <% @selected_recipes.each do |recipe| %>
-          <div class="col-xs-12 col-md-3">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-              <h2 class="card-dragon-name">
-                <%= booking.dragon.name %>
-              </h2>
-              <ul class="card-dragon-attributes">
-                <li>
-                  <%= booking.total_duration %> days
-                </li>
-                <li>
-                  in <%= booking.dragon.address %>
-                </li>
-              </ul>
-              <div class="booking-delete">
-                <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?"} do %>
-                <i class="fa fa-trash destroy_dose"></i>
-                <% end %>
-              </div>
-              <h4 class="card-dragon-price-profile">
-                <%= booking.total_price%>€/DAY
-              </h4>
-              <div class="card-booking-status">
-              <i class="fas fa-circle" style="color: <%= booking.status_color %>;"> </i>
-              </div>
-                <%= link_to "", dragon_booking_path(booking.dragon, booking), class: "card-dragon-link" %>
-            </div>
-          </div>
+</div>
