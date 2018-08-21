@@ -4,10 +4,9 @@
     <p>Steps: </p>
     <ul >
       <!-- Jay: Steps need to probably be iterated over -->
-      <li> <%= @recipe.steps[:"1"] %></li>
-      <li> <%= @recipe.steps[:"2"] %></li>
-      <li> <%= @recipe.steps[:"3"] %></li>
-      <li> <%= @recipe.steps[:"4"] %></li>
+      <% @recipe.steps.each do |step, description| %>
+      <li> Step: <%= step %> - <%= description %></li>
+      <% end %>
     </ul>
     <%= link_to "", profiles_show_path(current_user), class: "fas fa-backward" %>
   </div>
