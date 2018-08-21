@@ -5,10 +5,10 @@
         <h2> Your shopping list </h2>
         <ul>
           <% @shopping_list.total_quantities(@ingredients).each do |hash|%>
-            <% hash.each do |k, v| %>
+            <% hash.each do |name, quantity| %>
               <li>
-                <%= k %>
-                <%= v %>
+                <%= name %>
+                <%= quantity %>
               </li>
 
             <% end %>
@@ -22,37 +22,28 @@
     <div class="col-xs-12 col-md-6">
       <h2> The recipes </h2>
       <ul>
-      <% @shopping_list.recipes.each do |recipe| %>
-      <li>
-        <%= recipe.name %>
-        <%= link_to "remove all", "" %>
-        <ul>
-        <% recipe.measurements.each do |measurement| %>
+        <% @shopping_list.recipes.each do |recipe| %>
+          <li>
+            <%= recipe.name %>
+            <%= link_to "remove all", "" %>
+            <ul>
+              <% recipe.measurements.each do |measurement| %>
 
-          <% if @shopping_list.measurements.include?(measurement) %>
+                <% if @shopping_list.measurements.include?(measurement) %>
 
-            <li>
-              <%= MeasurementShoppingList.all %>
-              <%= measurement.id %>
-              <%= measurement.ingredient.name %>
-              <%= measurement.value %>
-              <%= measurement.unit %>
-              <%= "price" %>
-              <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
-            </li>
-          <% end %>
+                  <li>
+                    <%= measurement.ingredient.name %>
+                    <%= measurement.value %>
+                    <%= measurement.unit %>
+                    <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
+                  </li>
+
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
         <% end %>
-        </ul>
-      </li>
-      <% end %>
       </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-
-
     </div>
   </div>
 
