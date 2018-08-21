@@ -1,3 +1,7 @@
+require "open-uri"
+require "nokogiri"
+
+# DELETING EXISTING DATA FROM THE CURRENT DATABASE
 puts "Destroy recipe_users"
 RecipeUser.destroy_all if Rails.env.development?
 
@@ -39,13 +43,15 @@ ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-
-# puts “Resetting IDs”
+# RESETTING EVERY ID TO 0
+# puts “Resetting ids”
 # ActiveRecord::Base.connection.tables.each do |t|
 #  ActiveRecord::Base.connection.reset_pk_sequence!(t)
 # end
 
 
+
+# CREATING NEW DATA
 puts "Creating users..."
 User.create!([
   {
@@ -72,49 +78,6 @@ User.create!([
 ]);
 puts "Created #{User.all.length} users"
 
-
-puts "Creating recipes..."
-Recipe.create!([
-  {
-    name: "Pasta all'amatriciana",
-    calories: 100,
-    difficulty: "hard",
-    serves: 2,
-    time: 30,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet ea nemo velit, maxime repellendus provident repudiandae magnam sequi dolor quaerat fuga, corporis magni quo quia beatae natus nulla non quas?",
-    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
-  },
-  {
-    name: "Spaghetti al pomodoro",
-    calories: 70,
-    difficulty: "easy",
-    serves: 2,
-    time: 50,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et ducimus, quod quia illo praesentium non fugiat. Illum quod pariatur expedita optio minus provident tempore accusantium, recusandae maiores ea, ullam dicta.",
-    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
-  },
-  {
-    name: "Pasta with vegetables",
-    calories: 50,
-    difficulty: "easy",
-    serves: 2,
-    time: 10,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt doloremque quia ipsam, pariatur eveniet ex dicta laudantium nihil possimus, dolorem, reiciendis minus minima quod. Consectetur praesentium ea ipsa at vitae?",
-    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
-  },
-  {
-    name: "Pasta alla norma",
-    calories: 120,
-    difficulty: "easy",
-    serves: 2,
-    time: 20,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eaque, possimus maxime consequuntur hic inventore cum, reiciendis blanditiis dignissimos iusto accusamus voluptatibus quidem maiores fugiat sint nisi quos quia unde.",
-    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
-  }
-]);
-puts "Created #{Recipe.all.length} recipes"
-
-
 puts "Creating ingredient families..."
 IngredientFamily.create!([
   {
@@ -135,141 +98,165 @@ IngredientFamily.create!([
 ]);
 puts "Created #{IngredientFamily.all.length} recipes"
 
+# SETTING UP SCRAPER URL
+urls =[
+  'https://www.hellofresh.com/recipes/chorizo-burgers-5b63796530006c374433cce2?locale=en-US',
+  'https://www.hellofresh.com/recipes/quick-beef-ragu-spaghetti-5abd4797ae08b549e56a1502?locale=en-US',
+  'https://www.hellofresh.com/recipes/tuscan-sausage-and-pepper-spaghetti-5ab3b0d130006c3665546132?locale=en-US',
+  'https://www.hellofresh.com/recipes/quick-sausage-bolognese-59837f08a2882a4e0168d443?locale=en-US',
+  'https://www.hellofresh.com/recipes/one-pan-chicken-alfredo-59033052c6243b049f065022?locale=en-US',
+  'https://www.hellofresh.com/recipes/tomato-garlic-ragu-wildfire-w40-57d06d3fd804b57d468b4568?locale=en-US',
+  'https://www.hellofresh.com/recipes/uk-shrimp-and-chorizo-pasta-581213efa7c72a6c4c5e4322?locale=en-US',
+  'https://www.hellofresh.com/recipes/uk-melt-in-the-middle-meatballs-57558e5b4dab7189498b4567?locale=en-US',
+  'https://www.hellofresh.com/recipes/spaghetti-squash-saute-5566233e4dab716f7d8b456d?locale=en-US',
+  'https://www.hellofresh.com/recipes/crushed-beets-whole-wheat-spaghetti-5566221afd2cb9046d8b456b?locale=en-US',
+  'https://www.hellofresh.com/recipes/roasted-butternut-squash-leek-hash-5509802a6ced6e33698b4573?locale=en-US',
+  'https://www.hellofresh.com/recipes/sausage-pizzas-for-dinner-5b5b497c30006c3d48524f72?locale=en-US',
+  'https://www.hellofresh.com/recipes/pulled-pork-mac-n-cheese-5b0334d330006c15c4372b62?locale=en-US',
+  'https://www.hellofresh.com/recipes/parmesan-crusted-chicken-5afb44b8ae08b553bb3364e2?locale=en-US',
+  'https://www.hellofresh.com/recipes/w31-r8-5b16fa99ae08b55d5e3718c2?locale=en-US',
+  'https://www.hellofresh.com/recipes/sausage-pizzas-for-dinner-5b5b497c30006c3d48524f72?locale=en-US',
+  'https://www.hellofresh.com/recipes/creamy-shrimp-tagliatelle-5a8f0fcbae08b52f161b5832?locale=en-US',
+  'https://www.hellofresh.com/recipes/penne-primavera-5a8360ffae08b51fba45e622?locale=en-US',
+  'https://www.hellofresh.com/recipes/tomato-y-tortelloni-soup-5a7a2eadae08b52d2b47e082?locale=en-US',
+  'https://www.hellofresh.com/recipes/butternut-squash-agnolotti-5a7a30b330006c46d9573642?locale=en-US'
+]
 
-puts "Creating ingredients..."
-Ingredient.create!([
-  {
-    name: "Basil",
-    photo: "",
-    vegan: true,
-    vegetarian: true,
-    ingredient_family_id: 2,
-    base: false,
-    topping: false,
-    seasoning: true
-  },
-  {
-    name: "Minced Meat",
-    photo: "",
-    vegan: false,
-    vegetarian: false,
-    ingredient_family_id: 3,
-    base: false,
-    topping: true,
-    seasoning: false
-  },
-  {
-    name: "Tomato",
-    photo: "",
-    vegan: true,
-    vegetarian: true,
-    ingredient_family_id: 4,
-    base: false,
-    topping: true,
-    seasoning: false
-  },
-  {
-    name: "Pecorino",
-    photo: "",
-    vegan: false,
-    vegetarian: true,
-    ingredient_family_id: 1,
-    base: false,
-    topping: true,
-    seasoning: false
-  }
-]);
-puts "Created #{Ingredient.all.length} measurements"
+urls.each do |url|
+  html_file = open(url).read
+  doc = Nokogiri::HTML(html_file)
 
+  puts "Fetching url # #{urls.index(url)}........."
 
+  puts "Creating recipes..."
+  @recipe = Recipe.new({
+    name: doc.search('.fela-y6xryt')[0].text.strip,
+    calories: doc.search('.fela-107ja4p')[5].text.strip,
+    difficulty: "default",
+    # difficulty: doc.search('.fela-107ja4p')[3].text.strip,
+    serves: 2,
+    # serves: doc.search('.fela-1cznd19')[0].text.strip,
+    time: doc.search('.fela-107ja4p')[2].text.strip,
+    description: doc.search('.fela-16ygip7 p')[0].text.strip,
+    steps: {},
+    photo: doc.search('.fela-1b1idjb').attr('src')
+  },
+  );
 
-puts "Creating measurements..."
-Measurement.create!([{
-    ingredient_id: 1,
-    recipe_id: 1,
-    unit: "kg",
-    value: 1.0
-  },
-  {
-    ingredient_id: 2,
-    recipe_id: 2,
-    unit: "liter",
-    value: 2.5
-  },
-  {
-    ingredient_id: 3,
-    recipe_id: 1,
-    unit: "grams",
-    value: 100.0
-  },
-  {
-    ingredient_id: 4,
-    recipe_id: 4,
-    unit: "milligrams",
-    value: 1500.0
-  }
-]);
-puts "Created #{Measurement.all.length} measurements"
+  i = 1
+  doc.search('.fela-1qsq4x8').each do |step|
+    @recipe.steps[i] = step.text.strip
+    i += 1
+  end
+
+  @recipe.save!
+
+  puts "Created #{Recipe.all.length} recipes"
 
 
-puts "Creating shopping lists..."
-ShoppingList.create!([
-  {
-    user_id: 1,
-    total_price: 100
-  },
-  {
-    user_id: 2,
-    total_price: 400
-  },
-  {
-    user_id: 3,
-    total_price: 150
-  }
-]);
-puts "Created #{ShoppingList.all.length} shopping lists"
+  puts "Creating ingredient families..."
+  IngredientFamily.create!([
+    {
+      name: "cheese",
+    },
+    {
+      name: "herbs",
+    },
+    {
+      name: "meat",
+    },
+    {
+      name: "vegetables",
+    },
+    {
+      name: "pasta",
+    }
+  ]);
+  puts "Created #{IngredientFamily.all.length} recipes"
 
 
-puts "Creating measurment shopping lists..."
-MeasurementShoppingList.create!([
-  {
-    shopping_list_id: 1,
-    measurement_id: 1
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 3
-  },
-  {
-    shopping_list_id: 2,
-    measurement_id: 2
-  },
-  {
-    shopping_list_id: 3,
-    measurement_id: 2
-  }
-]);
-puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+  puts "Creating ingredients and measurements..."
+  counter = 0
+  while counter < doc.search('.fela-bj2f19').length
+    @ingredient = Ingredient.new(
+    {
+      name: doc.search('.fela-c30jy9')[counter].text.strip,
+      photo: "",
+      vegan: true,
+      vegetarian: true,
+      ingredient_family_id: 2,
+      base: false,
+      topping: false,
+      seasoning: true
+    },
+    );
+    @ingredient.save!
+    measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+    Measurement.create!([
+      {
+        ingredient_id: @ingredient.id,
+        recipe_id: @recipe.id,
+        unit: measurements[1],
+        value: measurements[0]
+      },
+    ]);
+    counter += 1
+  end
+  puts "Created #{Ingredient.all.length} ingredients"
+  puts "Created #{Measurement.all.length} measurements"
+  sleep(1)
+end
+
+# puts "Creating shopping lists..."
+# ShoppingList.create!([
+#   {
+#     user_id: 1,
+#     total_price: 100
+#   },
+#   {
+#     user_id: 2,
+#     total_price: 400
+#   },
+#   {
+#     user_id: 3,
+#     total_price: 150
+#   }
+# ]);
+# puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-puts "Creating recipeuser...."
-RecipeUser.create!([
-  {
-    recipe_id: 1,
-    user_id: 2,
-  },
-  {
-    recipe_id: 2,
-    user_id: 1,
-  },
-  {
-    recipe_id: 1,
-    user_id: 1,
-  },
-  {
-    recipe_id: 3,
-    user_id: 1,
-  }
-]);
+# puts "Creating measurement shopping lists..."
+# MeasurementShoppingList.create!([
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 1
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 3
+#   },
+#   {
+#     shopping_list_id: 2,
+#     measurement_id: 2
+#   },
+#   {
+#     shopping_list_id: 3,
+#     measurement_id: 2
+#   }
+# ]);
+# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
 
-puts "Created #{RecipeUser.all.length} Recipe Users"
+
+# puts "Creating recipeuser...."
+# RecipeUser.create!([
+#   {
+#     recipe_id: 1,
+#     user_id: 2,
+#   },
+#   {
+#     recipe_id: 2,
+#     user_id: 1,
+#   }
+# ]);
+
+# puts "Created #{RecipeUser.all.length} Recipe Users"
