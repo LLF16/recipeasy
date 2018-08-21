@@ -10,7 +10,7 @@ app.Ingredients.prototype = {
 };
 
 
-_initAutocomplete: function() {
+_initAutocomplete = function() {
   this._input
     .autocomplete({
       source: '/ingredients',
@@ -20,12 +20,12 @@ _initAutocomplete: function() {
     .autocomplete('instance')._renderItem = $.proxy(this._render, this);
 }
 
-_select: function(e, ui) {
+_select = function(e, ui) {
   this._input.val(ui.item.name);
   return false;
 }
 
-_render: function(ul, item) {
+_render = function(ul, item) {
   var markup = [
     '<span class="name">' + item.name + '</span>',
   ];

@@ -7,5 +7,4 @@ class IngredientsController < ApplicationController
       format.json { @ingredients = Ingredient.search(params[:term]) }
     end
   end
-
 end
