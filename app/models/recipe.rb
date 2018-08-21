@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  serialize :steps, Hash
+
   has_many :measurements
   has_many :ingredients, through: :measurements
   has_many :recipe_beverages

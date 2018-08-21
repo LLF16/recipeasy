@@ -1,2 +1,13 @@
-<h1><%= @recipe.name %></h1>
-<p>Steps: <%= @recipe.steps %></p>
+<div class="container">
+  <div class="row">
+    <h1><%= @recipe.name %></h1>
+    <p>Steps: </p>
+    <ul >
+      <li> <%= @recipe.steps[:"1"] %></li>
+      <li> <%= @recipe.steps[:"2"] %></li>
+      <li> <%= @recipe.steps[:"3"] %></li>
+      <li> <%= @recipe.steps[:"4"] %></li>
+    </ul>
+    <%= link_to "", profiles_show_path(current_user), class: "fas fa-backward" %>
+  </div>
+</div>
