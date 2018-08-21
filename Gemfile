@@ -29,3 +29,9 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+# Added gems
+gem 'jquery-ui-rails'
+
+
+

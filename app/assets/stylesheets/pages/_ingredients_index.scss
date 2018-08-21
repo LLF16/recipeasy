@@ -1,0 +1,43 @@
+.ingredients-index-container {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.ingredients-index-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  background-color: #00304C;
+  border: 1px solid white;
+
+  &:hover #ingredients-index-lock-1,
+  &:hover #ingredients-index-lock-2,
+  &:hover #ingredients-index-lock-3,
+  &:hover #ingredients-index-lock-4,
+   {
+    opacity: 1;
+  }
+}
+
+.ingredients-index-bar-container {
+  width: 80%;
+  height: 20%;
+}
+
+// .ingredients-index-lock {
+//   font-size: 30px;
+//   opacity: 0;
+// }
+
+#ingredients-index-lock-1,
+#ingredients-index-lock-2,
+#ingredients-index-lock-3,
+#ingredients-index-lock-4 {
+  font-size: 30px;
+  opacity: 0;
+}

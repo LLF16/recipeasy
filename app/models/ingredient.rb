@@ -5,4 +5,7 @@ class Ingredient < ApplicationRecord
   has_many :recipes, through: :measurements
 
   enum category: [:base, :topping, :side]
+
+
 end
+

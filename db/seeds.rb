@@ -78,7 +78,25 @@ User.create!([
 ]);
 puts "Created #{User.all.length} users"
 
-
+puts "Creating ingredient families..."
+IngredientFamily.create!([
+  {
+    name: "cheese",
+  },
+  {
+    name: "herbs",
+  },
+  {
+    name: "meat",
+  },
+  {
+    name: "vegetables",
+  },
+  {
+    name: "pasta",
+  }
+]);
+puts "Created #{IngredientFamily.all.length} recipes"
 
 # SETTING UP SCRAPER URL
 urls =[
@@ -188,8 +206,6 @@ urls.each do |url|
   puts "Created #{Measurement.all.length} measurements"
   sleep(1)
 end
-
-
 
 # puts "Creating shopping lists..."
 # ShoppingList.create!([

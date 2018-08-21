@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <h1><%= @recipe.name %></h1>
+    <p>Steps: </p>
+    <ul >
+      <!-- Jay: Steps need to probably be iterated over -->
+      <% @recipe.steps.each do |step, description| %>
+      <li> Step: <%= step %> - <%= description %></li>
+      <% end %>
+    </ul>
+    <%= link_to "", profiles_show_path(current_user), class: "fas fa-backward" %>
+  </div>
+</div>
