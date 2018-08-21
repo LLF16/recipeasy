@@ -26,16 +26,8 @@ class ShoppingList < ApplicationRecord
     totals_with_names
   end
 
-  # def sql_total_quantities
-  #   m = Ingredient.joins(:measurements).where('ingredient_id = 1')
-  # end
-
   def recipes
-    recipes_array = []
-    self.measurements.each do |measurement|
-      recipes_array << measurement.recipe.name
-    end
-    recipes_array.uniq
+    Recipe.joins(measurements: :measurement_shopping_lists).distinct.where("measurement_shopping_lists.shopping_list_id = ?", id)
   end
 
 end

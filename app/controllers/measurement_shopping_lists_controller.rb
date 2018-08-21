@@ -1,10 +1,12 @@
 class MeasurementShoppingListsController < ApplicationController
-before_action :set_user, :set_shopping_list, :set_sl_measurement
+before_action :set_sl_measurement
 
   def destroy
     if @sl_measurement.destroy
-      redirect_to
-
+      # redirect_to user_shopping_list_path(@user, @shopping_list)
+    else
+      render :new
+    end
   end
 
   private
@@ -14,11 +16,11 @@ before_action :set_user, :set_shopping_list, :set_sl_measurement
   end
 
   def set_shopping_list
-    @shipping_list = ShoppingList.find(params[:shopping_list_id])
+    @shopping_list = ShoppingList.find(params[:shopping_list_id])
   end
 
   def set_sl_measurement
-    @sl_measurement = ShoppingListMeasurement.find(params[:id])
+    @sl_measurement = MeasurementShoppingList.find(params[:id])
   end
 
 end
