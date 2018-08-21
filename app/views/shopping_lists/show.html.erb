@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="sl-ingredients-list">
+        <h2> Your shopping list </h2>
+        <ul>
+          <% @shopping_list.total_quantities(@ingredients).each do |hash|%>
+            <% hash.each do |k, v| %>
+              <li>
+                <%= k %>
+                <%= v %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <%= @shopping_list.full_price %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <h2> The recipes </h2>
+      <ul>
+      <% @shopping_list.recipes.each do |recipe| %>
+      <li>
+        <%= recipe %>
+        <%= link_to "remove", "" %>
+      </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

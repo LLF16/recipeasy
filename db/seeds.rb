@@ -197,6 +197,12 @@ Measurement.create!([{
     value: 2.5
   },
   {
+    ingredient_id: 2,
+    recipe_id: 1,
+    unit: "liter",
+    value: 2.5
+  },
+  {
     ingredient_id: 3,
     recipe_id: 1,
     unit: "grams",
@@ -230,23 +236,32 @@ ShoppingList.create!([
 puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-puts "Creating measurment shopping lists..."
+puts "Creating measurement shopping lists..."
 MeasurementShoppingList.create!([
   {
     shopping_list_id: 1,
-    measurement_id: 1
+    measurement_id: 2,
+    price: 10
   },
   {
     shopping_list_id: 1,
-    measurement_id: 3
+    measurement_id: 1,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3,
+    price: 20
   },
   {
     shopping_list_id: 2,
-    measurement_id: 2
+    measurement_id: 2,
+    price: 35
   },
   {
     shopping_list_id: 3,
-    measurement_id: 2
+    measurement_id: 2,
+    price: 12
   }
 ]);
 puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
