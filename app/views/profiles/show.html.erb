@@ -1,0 +1,11 @@
+<h1><%= current_user.last_name %></h1>
+<p>My favourite recipes</p>
+
+<% current_user.recipes.each do |recipe| %>
+<ul><%= recipe.name %></ul>
+<li>time: <%= recipe.time %></li>
+<li>calories: <%= recipe.calories %></li>
+<li>serves: <%= recipe.serves %></li>
+<li>difficulty: <%= recipe.difficulty %></li>
+<%= link_to "Cook now", cooking_session_path(recipe) %>
+<% end %>
