@@ -14,10 +14,30 @@
   width: 25%;
   background-color: #00304C;
   border: 1px solid white;
+
+  &:hover #ingredients-index-lock-1,
+  &:hover #ingredients-index-lock-2,
+  &:hover #ingredients-index-lock-3,
+  &:hover #ingredients-index-lock-4,
+   {
+    opacity: 1;
+  }
 }
 
-.ingredients-form-input {
+.ingredients-index-bar-container {
   width: 80%;
+  height: 20%;
 }
 
+// .ingredients-index-lock {
+//   font-size: 30px;
+//   opacity: 0;
+// }
 
+#ingredients-index-lock-1,
+#ingredients-index-lock-2,
+#ingredients-index-lock-3,
+#ingredients-index-lock-4 {
+  font-size: 30px;
+  opacity: 0;
+}
