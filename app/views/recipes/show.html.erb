@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h1><%= @recipe.name %></h1>
+      <h4>Time: <%= @recipe.time %> min| Calories: <%= @recipe.calories %> kcal</h4>
+      <p>Description: <%= @recipe.description %></p>
+      <%= link_to "Add to shopping-list", recipe_path(@recipe), class: "btn btn-info" %>
+      <h4>Ingredients</h4>
+      <ul>
+        <% @recipe.measurements.each do |measurement| %>
+          <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.unit %></li>
+        <% end %>
+      </ul>
+      <%= link_to "Cook now", cooking_session_path(@recipe), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
