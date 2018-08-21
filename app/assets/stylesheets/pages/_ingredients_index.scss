@@ -1,0 +1,23 @@
+.ingredients-index-container {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.ingredients-index-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  background-color: #00304C;
+  border: 1px solid white;
+}
+
+.ingredients-form-input {
+  width: 80%;
+}
+
+
