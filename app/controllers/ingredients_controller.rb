@@ -6,5 +6,6 @@ class IngredientsController < ApplicationController
       format.html
       format.json { @ingredients = Ingredient.search(params[:term]) }
     end
+    @random_ingredients = Ingredient.all.sample(4)
   end
 end
