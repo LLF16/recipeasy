@@ -1,39 +1,59 @@
 <%= form_tag recipes_path, method: :get do %>
  <div class="ingredients-index-container">
     <div class="ingredients-index-bars">
-      <div class="ingredients-form-input">
-        <%= text_field_tag :ingredient_1,
-          params[:ingredient_1],
-          class: "form-control",
-          placeholder: "Enter an ingredient"
-        %>
+      <div class="ingredients-index-bar-container">
+        <div class="ingredients-form-input">
+          <%= text_field_tag :ingredient_1,
+            params[:ingredient_1],
+            class: "form-control",
+            placeholder: "Enter an ingredient"
+          %>
+        </div>
+      </div>
+      <div id="ingredients-index-lock-1">
+        <p id="ingredients-index-unlocked-lock-1">🔓</p>
       </div>
     </div>
     <div class="ingredients-index-bars">
-      <div class="ingredients-form-input">
-        <%= text_field_tag :ingredient_2,
-          params[:ingredient_2],
-          class: "form-control",
-          placeholder: "Enter an ingredient"
-        %>
+      <div class="ingredients-index-bar-container">
+        <div class="ingredients-form-input">
+          <%= text_field_tag :ingredient_2,
+            params[:ingredient_2],
+            class: "form-control",
+            placeholder: "Enter an ingredient"
+          %>
+        </div>
+      </div>
+      <div id="ingredients-index-lock-2">
+        <p id="ingredients-index-unlocked-lock-2">🔓</p>
       </div>
     </div>
     <div class="ingredients-index-bars">
-      <div class="ingredients-form-input">
-        <%= text_field_tag :ingredient_3,
-          params[:ingredient_3],
-          class: "form-control",
-          placeholder: "Enter an ingredient"
-        %>
+      <div class="ingredients-index-bar-container">
+        <div class="ingredients-form-input">
+          <%= text_field_tag :ingredient_3,
+            params[:ingredient_3],
+            class: "form-control",
+            placeholder: "Enter an ingredient"
+          %>
+        </div>
+      </div>
+      <div id="ingredients-index-lock-3">
+        <p id="ingredients-index-unlocked-lock-3">🔓</p>
       </div>
     </div>
     <div class="ingredients-index-bars">
-      <div class="ingredients-form-input">
-        <%= text_field_tag :ingredient_4,
-          params[:ingredient_4],
-          class: "form-control",
-          placeholder: "Enter an ingredient"
-        %>
+      <div class="ingredients-index-bar-container">
+        <div class="ingredients-form-input">
+          <%= text_field_tag :ingredient_4,
+            params[:ingredient_4],
+            class: "form-control",
+            placeholder: "Enter an ingredient"
+          %>
+        </div>
+      </div>
+      <div id="ingredients-index-lock-4">
+        <p id="ingredients-index-unlocked-lock-4">🔓</p>
       </div>
     </div>
   </div>
