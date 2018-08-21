@@ -82,7 +82,7 @@ Recipe.create!([
     serves: 2,
     time: 30,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet ea nemo velit, maxime repellendus provident repudiandae magnam sequi dolor quaerat fuga, corporis magni quo quia beatae natus nulla non quas?",
-    steps: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatibus voluptatem quaerat corrupti repellendus, non explicabo suscipit maxime deserunt, illo omnis et perspiciatis quibusdam facere consectetur adipisci id doloribus tempore."
+    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
   },
   {
     name: "Spaghetti al pomodoro",
@@ -91,7 +91,7 @@ Recipe.create!([
     serves: 2,
     time: 50,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et ducimus, quod quia illo praesentium non fugiat. Illum quod pariatur expedita optio minus provident tempore accusantium, recusandae maiores ea, ullam dicta.",
-    steps: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error harum sunt dolores itaque dolor perferendis suscipit blanditiis earum corrupti quibusdam iste officiis doloremque eligendi fugiat, sint ipsam eaque. Velit, reprehenderit."
+    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
   },
   {
     name: "Pasta with vegetables",
@@ -100,7 +100,7 @@ Recipe.create!([
     serves: 2,
     time: 10,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt doloremque quia ipsam, pariatur eveniet ex dicta laudantium nihil possimus, dolorem, reiciendis minus minima quod. Consectetur praesentium ea ipsa at vitae?",
-    steps: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur nostrum, aspernatur, reprehenderit sequi neque illum. Hic consectetur totam veniam ut, sapiente. In error doloribus eaque qui aliquam consequuntur magni excepturi."
+    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
   },
   {
     name: "Pasta alla norma",
@@ -109,7 +109,7 @@ Recipe.create!([
     serves: 2,
     time: 20,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eaque, possimus maxime consequuntur hic inventore cum, reiciendis blanditiis dignissimos iusto accusamus voluptatibus quidem maiores fugiat sint nisi quos quia unde.",
-    steps: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam doloribus inventore nostrum eius mollitia, corrupti a beatae voluptates aperiam aliquam veritatis provident, eum eos veniam ipsum repudiandae. Ut molestias, autem."
+    steps: {"1": "Cut", "2": "Boil", "3": "Eat", "4": "Repeat"}
   }
 ]);
 puts "Created #{Recipe.all.length} recipes"

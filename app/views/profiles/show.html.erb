@@ -1,11 +1,21 @@
-<h1><%= current_user.last_name %></h1>
-<p>My favourite recipes</p>
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h1>Hi <%= current_user.last_name %>! Let's cook some fancy stuff!</h1>
+      <p>My favourite recipes <%= link_to "", recipes_path, class: "fas fa-backward" %></p>
 
-<% current_user.recipes.each do |recipe| %>
-<ul><%= recipe.name %></ul>
-<li>time: <%= recipe.time %></li>
-<li>calories: <%= recipe.calories %></li>
-<li>serves: <%= recipe.serves %></li>
-<li>difficulty: <%= recipe.difficulty %></li>
-<%= link_to "Cook now", cooking_session_path(recipe) %>
-<% end %>
+      <% current_user.recipes.each do |recipe| %>
+        <h4> <%= recipe.name %> <%= link_to "Details", recipe_path(recipe), class: "btn btn-primary btn-xs" %></h4>
+        <ul class="list-inline">
+          <li>time: <%= recipe.time %></li>
+          <li>calories: <%= recipe.calories %></li>
+          <li>serves: <%= recipe.serves %></li>
+          <li>difficulty: <%= recipe.difficulty %></li>
+        </ul>
+        <%= link_to "Cook now", cooking_session_path(recipe) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
