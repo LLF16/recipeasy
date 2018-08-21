@@ -8,4 +8,8 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def self.search(term)
+    Ingredient.where('name ILIKE ?',"%#{params[:ingredient_1]}%")
+  end
+
 end
