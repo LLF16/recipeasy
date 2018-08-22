@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
   devise_for :users
   root to: 'ingredients#index'
   resources :recipes, only: [:index, :show ]
-  resources :profiles, only: [:show]
   resources :cooking_sessions, only: :show
+  resources :profiles, only: [:show]
+  resources :shopping_lists, only: [:show]
+  resources :measurement_shopping_lists, only: [:destroy]
 end

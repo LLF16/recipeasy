@@ -98,6 +98,70 @@ IngredientFamily.create!([
 ]);
 puts "Created #{IngredientFamily.all.length} recipes"
 
+
+puts "Creating shopping lists..."
+ShoppingList.create!([
+  {
+    user_id: 1,
+    total_price: 100
+  },
+  {
+    user_id: 2,
+    total_price: 400
+  },
+  {
+    user_id: 3,
+    total_price: 150
+  }
+]);
+puts "Created #{ShoppingList.all.length} shopping lists"
+
+
+puts "Creating measurement shopping lists..."
+MeasurementShoppingList.create!([
+  {
+    shopping_list_id: 1,
+    measurement_id: 2,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 1,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3,
+    price: 20
+  },
+  {
+    shopping_list_id: 2,
+    measurement_id: 2,
+    price: 35
+  },
+  {
+    shopping_list_id: 3,
+    measurement_id: 2,
+    price: 12
+  }
+]);
+puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+
+
+puts "Creating recipeuser...."
+RecipeUser.create!([
+  {
+    recipe_id: 1,
+    user_id: 2,
+  },
+  {
+    recipe_id: 2,
+    user_id: 1,
+  },
+  {
+    recipe_id: 1,
+    user_id: 1,
+
 # SETTING UP SCRAPER URL
 urls =[
   'https://www.hellofresh.com/recipes/chorizo-burgers-5b63796530006c374433cce2?locale=en-US',
@@ -140,6 +204,7 @@ urls.each do |url|
     description: doc.search('.fela-16ygip7 p')[0].text.strip,
     steps: {},
     photo: doc.search('.fela-1b1idjb').attr('src')
+
   },
   );
 
