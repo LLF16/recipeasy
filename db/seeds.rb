@@ -98,72 +98,6 @@ IngredientFamily.create!([
 ]);
 puts "Created #{IngredientFamily.all.length} recipes"
 
-
-# puts "Creating shopping lists..."
-# ShoppingList.create!([
-#   {
-#     user_id: 1,
-#     total_price: 100
-#   },
-#   {
-#     user_id: 2,
-#     total_price: 400
-#   },
-#   {
-#     user_id: 3,
-#     total_price: 150
-#   }
-# ]);
-# puts "Created #{ShoppingList.all.length} shopping lists"
-
-
-# puts "Creating measurement shopping lists..."
-# MeasurementShoppingList.create!([
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 2,
-#     price: 10
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 1,
-#     price: 10
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 3,
-#     price: 20
-#   },
-#   {
-#     shopping_list_id: 2,
-#     measurement_id: 2,
-#     price: 35
-#   },
-#   {
-#     shopping_list_id: 3,
-#     measurement_id: 2,
-#     price: 12
-#   }
-# ]);
-# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
-
-
-# puts "Creating recipeuser...."
-# RecipeUser.create!([
-#   {
-#     recipe_id: 1,
-#     user_id: 2,
-#   },
-#   {
-#     recipe_id: 2,
-#     user_id: 1,
-#   },
-#   {
-#     recipe_id: 1,
-#     user_id: 1,
-#   }
-# ]);
-
 # SETTING UP SCRAPER URL
 urls =[
   'https://www.hellofresh.com/recipes/chorizo-burgers-5b63796530006c374433cce2?locale=en-US',
@@ -245,7 +179,10 @@ urls.each do |url|
   puts "Creating ingredients and measurements..."
   counter = 0
   while counter < doc.search('.fela-bj2f19').length
-    @ingredient = Ingredient.new(
+    @ingredient = Ingredient.find_by(name: doc.search('.fela-c30jy9')[counter].text.strip)
+    measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+    given_price = [10, 25, 3, 18].sample
+    @ingredient ||= Ingredient.new(
     {
       name: doc.search('.fela-c30jy9')[counter].text.strip,
       photo: "",
@@ -254,7 +191,9 @@ urls.each do |url|
       ingredient_family_id: 2,
       base: false,
       topping: false,
-      seasoning: true
+      seasoning: true,
+      unit: measurements[1],
+      price: given_price
     },
     );
     @ingredient.save!
@@ -263,7 +202,6 @@ urls.each do |url|
       {
         ingredient_id: @ingredient.id,
         recipe_id: @recipe.id,
-        unit: measurements[1],
         value: measurements[0]
       },
     ]);
@@ -274,44 +212,82 @@ urls.each do |url|
   sleep(1)
 end
 
-# puts "Creating shopping lists..."
-# ShoppingList.create!([
-#   {
-#     user_id: 1,
-#     total_price: 100
-#   },
-#   {
-#     user_id: 2,
-#     total_price: 400
-#   },
-#   {
-#     user_id: 3,
-#     total_price: 150
-#   }
-# ]);
-# puts "Created #{ShoppingList.all.length} shopping lists"
+puts "Creating shopping lists..."
+ShoppingList.create!([
+  {
+    user_id: 1,
+    total_price: 100
+  },
+  {
+    user_id: 2,
+    total_price: 400
+  },
+  {
+    user_id: 3,
+    total_price: 150
+  }
+]);
+puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-# puts "Creating measurement shopping lists..."
-# MeasurementShoppingList.create!([
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 1
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 3
-#   },
-#   {
-#     shopping_list_id: 2,
-#     measurement_id: 2
-#   },
-#   {
-#     shopping_list_id: 3,
-#     measurement_id: 2
-#   }
-# ]);
-# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+puts "Creating measurement shopping lists..."
+MeasurementShoppingList.create!([
+  {
+    shopping_list_id: 1,
+    measurement_id: 1
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 4
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 5
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 86
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 80
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 81
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 84
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 33
+  },
+  # this one has nil value
+  # {
+  #   shopping_list_id: 1,
+  #   measurement_id: 54,
+  #   price: 20
+  # },
+  {
+    shopping_list_id: 2,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 3,
+    measurement_id: 2
+  }
+]);
+puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
 
 
 # puts "Creating recipeuser...."

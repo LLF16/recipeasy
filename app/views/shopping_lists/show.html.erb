@@ -4,14 +4,10 @@
       <div class="sl-ingredients-list">
         <h2> Your shopping list </h2>
         <ul>
-          <% @shopping_list.total_quantities(@ingredients).each do |hash|%>
-            <% hash.each do |name, quantity| %>
-              <li>
-                <%= name %>
-                <%= quantity %>
-              </li>
-
-            <% end %>
+          <% @shopping_list.ingredients.each do |ingredient| %>
+            <%= ingredient.name %>
+            <%= ingredient.measurements_for_shopping_list(@shopping_list).sum(:value) %>
+            <%= ingredient.measurements_for_shopping_list(@shopping_list).first.unit %>
           <% end %>
         </ul>
 
