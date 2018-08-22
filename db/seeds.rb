@@ -181,6 +181,8 @@ urls.each do |url|
   counter = 0
   while counter < doc.search('.fela-bj2f19').length
     @ingredient = Ingredient.find_by(name: doc.search('.fela-c30jy9')[counter].text.strip)
+    measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+    given_price = [10, 25, 3, 18].sample
     @ingredient ||= Ingredient.new(
     {
       name: doc.search('.fela-c30jy9')[counter].text.strip,
@@ -190,7 +192,9 @@ urls.each do |url|
       ingredient_family_id: 2,
       base: false,
       topping: false,
-      seasoning: true
+      seasoning: true,
+      unit: measurements[1],
+      price: given_price
     },
     );
     @ingredient.save!
@@ -199,7 +203,6 @@ urls.each do |url|
       {
         ingredient_id: @ingredient.id,
         recipe_id: @recipe.id,
-        unit: measurements[1],
         value: measurements[0]
       },
     ]);
@@ -232,53 +235,43 @@ puts "Creating measurement shopping lists..."
 MeasurementShoppingList.create!([
   {
     shopping_list_id: 1,
-    measurement_id: 1,
-    price: 10
+    measurement_id: 1
   },
   {
     shopping_list_id: 1,
-    measurement_id: 2,
-    price: 10
+    measurement_id: 2
   },
   {
     shopping_list_id: 1,
-    measurement_id: 3,
-    price: 10
+    measurement_id: 3
   },
   {
     shopping_list_id: 1,
-    measurement_id: 4,
-    price: 10
+    measurement_id: 4
   },
   {
     shopping_list_id: 1,
-    measurement_id: 5,
-    price: 10
+    measurement_id: 5
   },
   {
     shopping_list_id: 1,
-    measurement_id: 86,
-    price: 20
+    measurement_id: 86
   },
   {
     shopping_list_id: 1,
-    measurement_id: 80,
-    price: 20
+    measurement_id: 80
   },
   {
     shopping_list_id: 1,
-    measurement_id: 81,
-    price: 20
+    measurement_id: 81
   },
   {
     shopping_list_id: 1,
-    measurement_id: 84,
-    price: 20
+    measurement_id: 84
   },
   {
     shopping_list_id: 1,
-    measurement_id: 33,
-    price: 20
+    measurement_id: 33
   },
   # this one has nil value
   # {
@@ -288,13 +281,11 @@ MeasurementShoppingList.create!([
   # },
   {
     shopping_list_id: 2,
-    measurement_id: 2,
-    price: 3
+    measurement_id: 2
   },
   {
     shopping_list_id: 3,
-    measurement_id: 2,
-    price: 5
+    measurement_id: 2
   }
 ]);
 puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
