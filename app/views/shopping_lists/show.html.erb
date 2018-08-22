@@ -24,24 +24,28 @@
       <ul>
         <% @shopping_list.recipes.each do |recipe| %>
           <li>
-            <%= recipe.name %>
-            <%= link_to "remove all", "" %>
-            <ul>
-              <% recipe.measurements.each do |measurement| %>
+            <div class="shopping-list-recipe-card">
+              <%= image_tag recipe.photo %>
+              <%= recipe.name %>
+              <%= link_to "remove all", shopping_list_recipe_path(@shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"} %>
+              <ul>
+                <% recipe.measurements.each do |measurement| %>
 
-                <% if @shopping_list.measurements.include?(measurement) %>
+                  <% if @shopping_list.measurements.include?(measurement) %>
 
-                  <li>
-                    <%= measurement.ingredient.name %>
-                    <%= measurement.value %>
-                    <%= measurement.ingredient.price %>
+                    <li>
+                      <%= measurement.ingredient.name %> |
+                      <%= measurement.value %>
+                      <%= measurement.ingredient.unit %> |
+                      <%= measurement.ingredient.price %> €
 
-                    <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
-                  </li>
+                      <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
+                    </li>
 
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
+              </ul>
+            </div>
           </li>
         <% end %>
       </ul>

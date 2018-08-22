@@ -12,27 +12,12 @@ class ShoppingList < ApplicationRecord
     sum
   end
 
-# D: Summing the quantity of one ingredient across recipe
-#    Assuming the unit of measure is normalized in the db
-#    -> one ingredient has always the same unit of measure
-#    across recipes.
-  # def total_quantities(ingredients)
-  #   totals = Hash.new(0)
-  #   self.measurements.each do |measurement|
-  #     if measurement.value
-  #       totals[measurement.ingredient_id] += measurement.value
-  #     else
-  #       totals = ""
-  #     end
-  #   end
-  #   totals_with_names = totals.map do |k, v|
-  #     {ingredients.find(k).name => v}
-  #   end
-  #   totals_with_names
-  # end
-
   def recipes
     Recipe.joins(measurements: :measurement_shopping_lists).distinct.where("measurement_shopping_lists.shopping_list_id = ?", id)
+  end
+
+  def measurements_for_recipe(a_recipe)
+    MeasurementShoppingList.joins(:measurement).where("measurements.recipe_id = ?", a_recipe.id)
   end
 
 end
