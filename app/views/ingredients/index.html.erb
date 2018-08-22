@@ -55,7 +55,7 @@
       </div>
       <div id="ingredients-index-lock-3">
         <p id="ingredients-index-3">
-          <i class="fas fa-lock-open data-locked='false'"></i>
+          <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
       </div>
       <!--       M: inserted bad html style here -->
@@ -75,7 +75,7 @@
      </div>
      <div id="ingredients-index-lock-4">
         <p id="ingredients-index-4">
-          <i class="fas fa-lock-open data-locked='false'"></i>
+          <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
      </div>
  <!--       M: inserted bad html style here -->
@@ -92,8 +92,9 @@
 </div>
 
 <!-- M: Loads Javascript that is only relevant for this page. Potential problem, if there is more html code after rendering this page in application.html.erb, it will not be rendered. -->
-<%= javascript_pack_tag 'selected_pages' %>
-
+<% content_for :after_js do %>
+  <%= javascript_pack_tag 'selected_pages' %>
+<% end %>
 <!-- M: This code is for jQuery autcomplete -->
 <!-- <script>
   (function() {
