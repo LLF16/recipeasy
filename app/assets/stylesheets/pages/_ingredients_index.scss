@@ -15,12 +15,11 @@
   background-color: #00304C;
   border: 1px solid white;
 
-  &:hover #ingredients-index-lock-1,
-  &:hover #ingredients-index-lock-2,
-  &:hover #ingredients-index-lock-3,
-  &:hover #ingredients-index-lock-4,
-   {
-    opacity: 1;
+  &:hover #ingredients-index-1,
+  &:hover #ingredients-index-2,
+  &:hover #ingredients-index-3,
+  &:hover #ingredients-index-4, {
+    visibility: visible;
   }
 }
 
@@ -29,15 +28,31 @@
   height: 20%;
 }
 
-// .ingredients-index-lock {
-//   font-size: 30px;
-//   opacity: 0;
-// }
-
-#ingredients-index-lock-1,
-#ingredients-index-lock-2,
-#ingredients-index-lock-3,
-#ingredients-index-lock-4 {
+#ingredients-index-1,
+#ingredients-index-2,
+#ingredients-index-3,
+#ingredients-index-4 {
   font-size: 30px;
-  opacity: 0;
+  visibility: hidden;
+}
+
+.fa-lock-open {
+  color: white;
+}
+.fa-lock {
+  visibility: visible;
+  color: white;
+}
+
+.ingredients-index-lock-submit {
+  background-color: transparent;
+  border: none;
+}
+
+.container-selected-recipes {
+  min-height: 80vh;
+}
+
+.container-ingredients {
+  height: calc(100vh - 70px);
 }

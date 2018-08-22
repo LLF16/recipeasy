@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   devise_for :users
   root to: 'ingredients#index'
   resources :recipes, only: [:index, :show ]
@@ -6,4 +7,5 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show]
   resources :shopping_lists, only: [:show]
   resources :measurement_shopping_lists, only: [:destroy]
+  resources :searches, only: :index
 end

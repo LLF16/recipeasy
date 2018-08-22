@@ -3,6 +3,7 @@ class IngredientsController < ApplicationController
 
   def index
 
+
     get_first_set_ingredients
     get_second_set_ingredients
     get_third_set_ingredients
@@ -16,7 +17,29 @@ class IngredientsController < ApplicationController
       format.html
       format.json { @ingredients = Ingredient.search(params[:term]) }
     end
+    
     @random_ingredients = Ingredient.all.sample(4)
+    @selected_recipes
+
+    if params.present?
+      sql_query = "\
+      ingredients.name ILIKE :query1 OR\
+      ingredients.name ILIKE :query2 OR\
+      ingredients.name ILIKE :query3 OR\
+      ingredients.name ILIKE :query4 \
+      "
+      @recipes = Recipe.joins(:ingredients).where(sql_query,
+        query1: params["ingredient_1"],
+        query2: params["ingredient_2"],
+        query3: params["ingredient_3"],
+        query4: params["ingredient_4"])
+      @selected_recipes = @recipes.take(3)
+    else
+      @recipes = Recipe.all
+    end
+
+
+
   end
 
   private

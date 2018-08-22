@@ -1,39 +1,63 @@
-const lockedLock1 = document.createElement("p");
-lockedLock1.textContent = "🔒";
-
-const unlockedLock1 = document.querySelector("#ingredients-index-unlocked-lock-1");
+const unlockedLock1 = document.querySelector("#ingredients-index-1 .fas");
 unlockedLock1.addEventListener("click", (event) => {
-  const lockField1 = document.querySelector("#ingredients-index-lock-1");
-  lockField1.replaceChild(lockedLock1, unlockedLock1);
-  lockField1.style.opacity = 1;
+  const text_field = document.querySelector("#ingredient_1");
+  if (unlockedLock1.dataset.locked === 'false') {
+    unlockedLock1.dataset.locked = 'true'
+    unlockedLock1.classList.add("fa-lock");
+    unlockedLock1.classList.remove("fa-lock-open");
+    text_field.setAttribute("disabled", "true");
+  } else {
+    unlockedLock1.dataset.locked = 'false'
+    unlockedLock1.classList.remove("fa-lock");
+    unlockedLock1.classList.add("fa-lock-open");
+    text_field.removeAttribute("disabled");
+  }
 });
 
-const lockedLock2 = document.createElement("p");
-lockedLock2.textContent = "🔒";
-
-const unlockedLock2 = document.querySelector("#ingredients-index-unlocked-lock-2");
+const unlockedLock2 = document.querySelector("#ingredients-index-2 .fas");
 unlockedLock2.addEventListener("click", (event) => {
-  const lockField2 = document.querySelector("#ingredients-index-lock-2");
-  lockField2.replaceChild(lockedLock2, unlockedLock2);
-  lockField2.style.opacity = 1;
+  const text_field = document.querySelector("#ingredient_2");
+  if (unlockedLock2.dataset.locked === 'false') {
+    unlockedLock2.dataset.locked = 'true'
+    unlockedLock2.classList.add("fa-lock");
+    unlockedLock2.classList.remove("fa-lock-open");
+    text_field.setAttribute("disabled", "true");
+  } else {
+    unlockedLock2.dataset.locked = 'false'
+    unlockedLock2.classList.remove("fa-lock");
+    unlockedLock2.classList.add("fa-lock-open");
+    text_field.removeAttribute("disabled");
+  }
 });
 
-const lockedLock3 = document.createElement("p");
-lockedLock3.textContent = "🔒";
-
-const unlockedLock3 = document.querySelector("#ingredients-index-unlocked-lock-3");
+const unlockedLock3 = document.querySelector("#ingredients-index-3 .fas");
 unlockedLock3.addEventListener("click", (event) => {
-  const lockField3 = document.querySelector("#ingredients-index-lock-3");
-  lockField3.replaceChild(lockedLock3, unlockedLock3);
-  lockField3.style.opacity = 1;
+  const text_field = document.querySelector("#ingredient_3");
+  if (unlockedLock3.dataset.locked === 'false') {
+    unlockedLock3.dataset.locked = 'true'
+    unlockedLock3.classList.add("fa-lock");
+    unlockedLock3.classList.remove("fa-lock-open");
+    text_field.setAttribute("disabled", "true");
+  } else {
+    unlockedLock3.dataset.locked = 'false'
+    unlockedLock3.classList.remove("fa-lock");
+    unlockedLock3.classList.add("fa-lock-open");
+    text_field.removeAttribute("disabled");
+  }
 });
 
-const lockedLock4 = document.createElement("p");
-lockedLock4.textContent = "🔒";
-
-const unlockedLock4 = document.querySelector("#ingredients-index-unlocked-lock-4");
+const unlockedLock4 = document.querySelector("#ingredients-index-4 .fas");
 unlockedLock4.addEventListener("click", (event) => {
-  const lockField4 = document.querySelector("#ingredients-index-lock-4");
-  lockField4.replaceChild(lockedLock4, unlockedLock4);
-  lockField4.style.opacity = 1;
+  const text_field = document.querySelector("#ingredient_4");
+  if (unlockedLock4.dataset.locked === 'false') {
+    unlockedLock4.dataset.locked = 'true'
+    unlockedLock4.classList.add("fa-lock");
+    unlockedLock4.classList.remove("fa-lock-open");
+    text_field.setAttribute("disabled", "true");
+  } else {
+    unlockedLock4.dataset.locked = 'false'
+    unlockedLock4.classList.remove("fa-lock");
+    unlockedLock4.classList.add("fa-lock-open");
+    text_field.removeAttribute("disabled");
+  }
 });
