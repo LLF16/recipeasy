@@ -48,3 +48,11 @@
   background-color: transparent;
   border: none;
 }
+
+.container-selected-recipes {
+  min-height: 80vh;
+}
+
+.container-ingredients {
+  height: calc(100vh - 70px);
+}

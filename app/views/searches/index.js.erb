@@ -1,0 +1,23 @@
+
+console.log("Hello, you look awesome!"); // be kind, always!
+console.log(window.scrollY) // to figure out how far we have to scroll
+
+
+// created a function that takes some HTML and insert it into a specific div(#id)
+// without reloading the page
+function refreshPage(innerHTML) {
+  const newRecipes = document.getElementById('selected-recipes');
+  newRecipes.innerHTML = innerHTML;
+// after adding some HTML we now want to be directly redirected to this specific part of the page
+  window.scrollTo({
+    top: 733,
+    behavior: "smooth"
+});
+
+}
+
+// As we want the ingredients controller to display our results dynamically, we need to render a partial in js
+refreshPage('<%= j render "searches/selected_recipes", selected_recipes: @selected_recipes %>');
+
+
+

@@ -1,14 +1,7 @@
-class IngredientsController < ApplicationController
+class SearchesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    # respond_to do |format|
-    #   format.html
-    #   format.json { @ingredients = Ingredient.search(params[:term]) }
-    # end
-    @random_ingredients = Ingredient.all.sample(4)
-    @selected_recipes
-
     if params.present?
       sql_query = "\
       ingredients.name ILIKE :query1 OR\
@@ -25,8 +18,6 @@ class IngredientsController < ApplicationController
     else
       @recipes = Recipe.all
     end
-
-
 
   end
 end
