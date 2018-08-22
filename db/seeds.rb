@@ -237,9 +237,55 @@ MeasurementShoppingList.create!([
   },
   {
     shopping_list_id: 1,
+    measurement_id: 2,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
     measurement_id: 3,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 4,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 5,
+    price: 10
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 86,
     price: 20
   },
+  {
+    shopping_list_id: 1,
+    measurement_id: 80,
+    price: 20
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 81,
+    price: 20
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 84,
+    price: 20
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 33,
+    price: 20
+  },
+  # this one has nil value
+  # {
+  #   shopping_list_id: 1,
+  #   measurement_id: 54,
+  #   price: 20
+  # },
   {
     shopping_list_id: 2,
     measurement_id: 2,
