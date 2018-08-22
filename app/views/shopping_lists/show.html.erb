@@ -5,13 +5,16 @@
         <h2> Your shopping list </h2>
         <ul>
           <% @shopping_list.ingredients.each do |ingredient| %>
-            <%= ingredient.name %>
-            <%= ingredient.measurements_for_shopping_list(@shopping_list).sum(:value) %>
-            <%= ingredient.measurements_for_shopping_list(@shopping_list).first.unit %>
+            <li>
+              <%= ingredient.name %>
+              <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
+              <%= ingredient.unit %>
+              <%= ingredient.total_price_in_shopping_list(@shopping_list) %> €
+            </li>
           <% end %>
         </ul>
 
-        <%= @shopping_list.full_price %> €
+
       </div>
     </div>
 
@@ -30,7 +33,7 @@
                   <li>
                     <%= measurement.ingredient.name %>
                     <%= measurement.value %>
-                    <%= measurement.unit %>
+
                     <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
                   </li>
 
