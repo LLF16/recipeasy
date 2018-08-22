@@ -72,6 +72,9 @@
   <%= submit_tag("Submit") %>
 <% end %>
 
+<!-- M: Loads Javascript that is only relevant for this page. Potential problem, if there is more html code after rendering this page in application.html.erb, it will not be rendered. -->
+<%= javascript_pack_tag 'selected_pages' %>
+
 <!-- M: This code is for jQuery autcomplete -->
 <!-- <script>
   (function() {
