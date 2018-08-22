@@ -6,16 +6,17 @@
         <ul>
           <% @shopping_list.ingredients.each do |ingredient| %>
             <li>
-              <%= ingredient.name %>
+              <%= ingredient.name %> |
               <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
-              <%= ingredient.unit %>
+              <%= ingredient.unit %> |
               <%= ingredient.total_price_in_shopping_list(@shopping_list) %> €
             </li>
           <% end %>
         </ul>
-
-
       </div>
+      <p>
+        Total = <%= @shopping_list.total_price %> €
+      </p>
     </div>
 
     <div class="col-xs-12 col-md-6">
@@ -33,6 +34,7 @@
                   <li>
                     <%= measurement.ingredient.name %>
                     <%= measurement.value %>
+                    <%= measurement.ingredient.price %>
 
                     <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
                   </li>

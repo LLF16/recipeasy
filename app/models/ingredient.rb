@@ -19,5 +19,9 @@ class Ingredient < ApplicationRecord
     self.price * self.total_amount_in_shopping_list(shopping_list)
   end
 
+  def total_price_for_measurement(measurement)
+  measurement.value
+  end
+
 end
 

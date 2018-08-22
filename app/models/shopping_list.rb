@@ -3,11 +3,13 @@ class ShoppingList < ApplicationRecord
   has_many :measurement_shopping_lists
   has_many :measurements, through: :measurement_shopping_lists
   has_many :ingredients, -> { distinct }, through: :measurements
-  def total_amount
-    price_sum = 0
-    self.ingredients.each do |ingredient|
-      ingredient.measurements_for_shopping_list(self).sum(value)
+
+  def total_price
+    sum = 0
+    ingredients.each do |ingredient|
+      sum += ingredient.total_price_in_shopping_list(self)
     end
+    sum
   end
 
 # D: Summing the quantity of one ingredient across recipe
