@@ -7,12 +7,17 @@
             params[:ingredient_1],
             class: "form-control",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[0].name
+            value: @random_ingredients[0].name,
+            disabled: true
           %>
         </div>
       </div>
       <div id="ingredients-index-lock-1">
-        <p id="ingredients-index-unlocked-lock-1">🔓</p>
+        <p id="ingredients-index-1">
+          <%= button_tag(type: "submit", class: "ingredients-index-lock-submit") do %>
+            <i class="fas fa-lock-open"></i>
+          <% end %>
+        </p>
       </div>
       <!--       M: inserted bad html style here -->
       <p style="color:white;"><%= @random_ingredients[0].name %></p>
@@ -29,7 +34,9 @@
         </div>
       </div>
       <div id="ingredients-index-lock-2">
-        <p id="ingredients-index-unlocked-lock-2">🔓</p>
+        <p id="ingredients-index-2">
+          <i class="fas fa-lock-open" data-locked='false'></i>
+        </p>
       </div>
       <!--       M: inserted bad html style here -->
       <p style="color:white;"><%= @random_ingredients[1].name %></p>
@@ -46,7 +53,9 @@
         </div>
       </div>
       <div id="ingredients-index-lock-3">
-        <p id="ingredients-index-unlocked-lock-3">🔓</p>
+        <p id="ingredients-index-3">
+          <i class="fas fa-lock-open"></i>
+        </p>
       </div>
       <!--       M: inserted bad html style here -->
       <p style="color:white;"><%= @random_ingredients[2].name %></p>
@@ -63,7 +72,9 @@
         </div>
       </div>
       <div id="ingredients-index-lock-4">
-        <p id="ingredients-index-unlocked-lock-4">🔓</p>
+        <p id="ingredients-index-4">
+          <i class="fas fa-lock-open"></i>
+        </p>
       </div>
       <!--       M: inserted bad html style here -->
       <p style="color:white;"><%= @random_ingredients[3].name %></p>
