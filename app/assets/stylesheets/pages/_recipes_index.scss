@@ -1,15 +1,31 @@
 .recipe-card-link-shopping-list {
   z-index: 2;
   position: absolute;
-  top: 35px;
-  right: 55px;
+  bottom: 2px;
+  left: 20px;
   z-index: 3;
 }
 
 .recipe-card-link-cooking-mode {
   z-index: 2;
   position: absolute;
-  top: 35px;
-  right: 25px;
+  bottom: 2px;
+  left: 50px;
   z-index: 3;
+}
+
+
+.recipe-card-link-cooking-mode:hover {
+  text-decoration: none;
+}
+
+.recipe-card-link-shopping-list:hover {
+  text-decoration: none;
+}
+
+.btn-popover {
+  position: absolute;
+  bottom: 4px;
+  left: 250px;
+  font-size: 12px;
 }

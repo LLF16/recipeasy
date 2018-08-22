@@ -98,7 +98,6 @@ IngredientFamily.create!([
 ]);
 puts "Created #{IngredientFamily.all.length} recipes"
 
-
 # SETTING UP SCRAPER URL
 urls =[
   'https://www.hellofresh.com/recipes/chorizo-burgers-5b63796530006c374433cce2?locale=en-US',

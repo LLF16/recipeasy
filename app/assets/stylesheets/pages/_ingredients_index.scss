@@ -41,3 +41,11 @@
   font-size: 30px;
   opacity: 0;
 }
+
+.container-selected-recipes {
+  min-height: 80vh;
+}
+
+.container-ingredients {
+  height: calc(100vh - 70px);
+}
