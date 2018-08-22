@@ -1,8 +1,6 @@
 <div class="container">
     <div class="">
       <h1>Hi <%= current_user.last_name %>! Let's cook some fancy stuff!</h1>
-      <!--       <p>My favourite recipes <%= link_to "", recipes_path, class: "fas fa-backward" %></p> -->
-
 <h3>Your favourite recipes</h3>
 <div class="row">
       <% current_user.recipes.each do |recipe| %>
@@ -25,5 +23,3 @@
   </div>
 </div>
 
-
-<%= raise %>
