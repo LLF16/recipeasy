@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_131319) do
+ActiveRecord::Schema.define(version: 2018_08_22_124939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_131319) do
     t.boolean "base"
     t.boolean "topping"
     t.boolean "seasoning"
+    t.float "price"
+    t.string "unit"
     t.index ["ingredient_family_id"], name: "index_ingredients_on_ingredient_family_id"
   end
 
@@ -57,7 +59,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_131319) do
     t.bigint "measurement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "price"
     t.index ["measurement_id"], name: "index_measurement_shopping_lists_on_measurement_id"
     t.index ["shopping_list_id"], name: "index_measurement_shopping_lists_on_shopping_list_id"
   end
@@ -65,7 +66,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_131319) do
   create_table "measurements", force: :cascade do |t|
     t.bigint "ingredient_id"
     t.bigint "recipe_id"
-    t.string "unit"
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
