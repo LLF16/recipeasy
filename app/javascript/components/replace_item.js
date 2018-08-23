@@ -61,3 +61,5 @@ unlockedLock4.addEventListener("click", (event) => {
     text_field.removeAttribute("disabled");
   }
 });
+
+

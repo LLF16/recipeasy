@@ -4,7 +4,7 @@
   <div class="row">
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
-      <div class="card-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/qoFQxxuk3QY/1600x900');">
+      <div class="card-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <%= image_tag('food.jpg') %> >
         <h2 class="card-recipe-name">
           <%= recipe.name %>
         </h2>

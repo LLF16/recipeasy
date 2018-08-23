@@ -1,29 +1,30 @@
-<div class="container">
-  <h1>Search#index</h1>
-  <p>Find me in app/views/search/index.html.erb</p>
+<div class="space"></div>
   <div class="row">
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
-      <div class="card-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/qoFQxxuk3QY/1600x900');">
-        <h2 class="card-recipe-name">
-          <%= recipe.name %>
-        </h2>
-        <div class="card-recipe-details">
-          <ul class="list-inline">
-            <li><%= recipe.time %> |<%= recipe.calories %> kcal</li>
-          </ul>
+      <div class="card-recipe">
+        <div class="setting">
+          <i class="fa fa-heart"></i>
         </div>
-        <div class="card-footer">
-          <!-- Matt: This link needs to be adapted to lead to the shopping list show page -->
-          <%= link_to raw("📝"),recipe_path(recipe), class: "recipe-card-link-shopping-list" %>
-          <!-- Matt: This link leads to the cooking mode path to lead to the cooking mode page -->
-          <%= link_to raw("🍳"), cooking_session_path(recipe), class: "recipe-card-link-cooking-mode" %>
-          <%= link_to 'Popover test', '#', :class => "popover-test btn btn-primary btn-xs btn-popover", :rel => "popover" %>
+        <div class="image"></div>
+        <div class="card-description">
+          <div>
+            <h5 class="sub">Recipe</h5>
+            <h4><%= recipe.name %></h4>
+          </div>
+          <div>
+            <h5 class="sub">Time</h5>
+            <h4><%= recipe.time %></h4>
+          </div>
+          <div>
+            <h5 class="sub">Calories</h5>
+            <h4><%= recipe.calories %></h4>
+          </div>
         </div>
+        <%= link_to "", recipe_path(recipe), class: "card-link" %>
       </div>
       <!-- Matt: This link needs to be adapted to lead to the recipes show page -->
-      <%= link_to "", searches_path, class: "card-link" %>
     </div>
     <% end %>
   </div>
-</div>
+
