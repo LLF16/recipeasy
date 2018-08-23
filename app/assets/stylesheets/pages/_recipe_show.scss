@@ -1,0 +1,39 @@
+.recipe-row {
+  display: flex;
+  height: calc(100vh-70px);
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.box-recipe-image {
+  flex: 0 0 40%;
+}
+
+.recipe-image{
+  width: 500px;
+  border-radius: 5px;
+}
+
+.box-recipe-info {
+  flex: 0 0 60%;
+  margin-left: 40px;
+}
+
+.recipe-info-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recipe-ingredients ul {
+  columns: 2 !important;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+#recipe-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 48px;
+  color: #FF3A4F;
+  background-color: black;
+}
