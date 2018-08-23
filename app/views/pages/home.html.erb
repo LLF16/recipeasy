@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url('<%= image_path'home_page.jpg' %>'), linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);">
+  <div class="banner-content">
+
+  <div class="container">
+    <h1>Recipeasy</h1>
+    <p>Open your fridge, find recipes</p>
+    <%= link_to 'Find recipes', ingredients_path, class: 'btn btn-primary'  %>
+  </div>
+</div>
