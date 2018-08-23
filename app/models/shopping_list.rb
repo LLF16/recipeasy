@@ -4,6 +4,8 @@ class ShoppingList < ApplicationRecord
   has_many :measurements, through: :measurement_shopping_lists
   has_many :ingredients, -> { distinct }, through: :measurements
 
+
+
   def total_price
     sum = 0
     ingredients.each do |ingredient|

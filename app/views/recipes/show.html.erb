@@ -4,7 +4,8 @@
       <h1><%= @recipe.name %></h1>
       <h4>Time: <%= @recipe.time %> min| Calories: <%= @recipe.calories %> kcal | Difficulty: <%= @recipe.difficulty %></h4>
       <p>Description: <%= @recipe.description %></p>
-      <%= link_to "Add to shopping-list", recipe_path(@recipe), class: "btn btn-info" %>
+      <% @shopping_list = current_user.shopping_lists.first %>
+      <%= link_to "Add to shopping-list", shopping_list_recipe_measurement_shopping_lists_path(@shopping_list, @recipe), method: :post, class: "btn btn-info" %>
       <h4>Ingredients</h4>
       <% @recipe.measurements.each do |measurement| %>
         <ul class="list-inline">
