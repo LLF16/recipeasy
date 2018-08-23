@@ -1,42 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-6">
-      <div class="sl-ingredients-list">
-        <h2> Your shopping list </h2>
+      <h2> Your shopping list </h2>
+      <div class="shopping-list-cumulative">
         <ul>
           <% @shopping_list.ingredients.each do |ingredient| %>
-            <%= ingredient.name %>
-            <%= ingredient.measurements_for_shopping_list(@shopping_list).sum(:value) %>
-            <%= ingredient.measurements_for_shopping_list(@shopping_list).first.unit %>
+            <li>
+              <%= ingredient.name %> |
+              <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
+              <%= ingredient.unit %> |
+              <%= ingredient.total_price_in_shopping_list(@shopping_list) %> €
+            </li>
           <% end %>
         </ul>
-
-        <%= @shopping_list.full_price %> €
+        <p>
+        Total = <%= @shopping_list.total_price %> €
+        </p>
       </div>
+
     </div>
 
     <div class="col-xs-12 col-md-6">
       <h2> The recipes </h2>
-      <ul>
+      <ul style= "list-style-type: none">
         <% @shopping_list.recipes.each do |recipe| %>
           <li>
-            <%= recipe.name %>
-            <%= link_to "remove all", "" %>
-            <ul>
-              <% recipe.measurements.each do |measurement| %>
+            <div class="shopping-list-recipe-card">
+              <div class="shopping-list-recipe-card-details">
+                <%= image_tag recipe.photo, class: "shopping-list-recipe-card-photo" %>
+                <h2><%= recipe.name %></h2>
+                <%= link_to "Remove", shopping_list_recipe_path(@shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
+              </div>
 
-                <% if @shopping_list.measurements.include?(measurement) %>
+                <ul class="shopping-list-recipe-card-ingredients">
+                  <% recipe.measurements.each do |measurement| %>
 
-                  <li>
-                    <%= measurement.ingredient.name %>
-                    <%= measurement.value %>
-                    <%= measurement.unit %>
-                    <%= link_to "remove", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"} %>
-                  </li>
+                    <% if @shopping_list.measurements.include?(measurement) %>
 
-                <% end %>
-              <% end %>
-            </ul>
+                      <li>
+                        <%= measurement.ingredient.name %>
+                        <%= link_to "🗑️", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
+                        <br>
+
+                        <div class="shopping-list-recipe-card-values">
+                          <%= measurement.value %>
+                          <%= measurement.ingredient.unit %> for
+                          <%= measurement.ingredient.price %> €
+                        </div>
+
+                      </li>
+
+                    <% end %>
+                  <% end %>
+                </ul>
+            </div>
           </li>
         <% end %>
       </ul>

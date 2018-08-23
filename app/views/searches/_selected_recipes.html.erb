@@ -15,14 +15,14 @@
         </div>
         <div class="card-footer">
           <!-- Matt: This link needs to be adapted to lead to the shopping list show page -->
-          <%= link_to raw("📝"), recipes_path, class: "recipe-card-link-shopping-list" %>
+          <%= link_to raw("📝"),recipe_path(recipe), class: "recipe-card-link-shopping-list" %>
           <!-- Matt: This link leads to the cooking mode path to lead to the cooking mode page -->
           <%= link_to raw("🍳"), cooking_session_path(recipe), class: "recipe-card-link-cooking-mode" %>
           <%= link_to 'Popover test', '#', :class => "popover-test btn btn-primary btn-xs btn-popover", :rel => "popover" %>
         </div>
       </div>
       <!-- Matt: This link needs to be adapted to lead to the recipes show page -->
-      <%= link_to "", recipes_path, class: "card-link" %>
+      <%= link_to "", searches_path, class: "card-link" %>
     </div>
     <% end %>
   </div>
