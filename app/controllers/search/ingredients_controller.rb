@@ -1,7 +1,35 @@
-class IngredientsController < ApplicationController
-  skip_before_action :authenticate_user!
-
+class Search::IngredientsController < ApplicationController
   def index
+
+    ingredients_received = []
+    ingredients_received << Ingredient.find(params[:first])
+    ingredients_received << Ingredient.find(params[:second])
+    ingredients_received << Ingredient.find(params[:third])
+    ingredients_received << Ingredient.find(params[:fourth])
+
+    counter = 1
+
+    # ingredients_received.each do |ingredient|
+    #   if ingredient.empty?
+    #     ingredient =
+
+
+░░░░░░░░░░░█▀▀░░█░░░░░░
+░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░
+░░░░░░█░█░░░░░░░░░░▐░░░
+░░░░░░▐▐░░░░░░░░░▄░▐░░░
+░░░░░░█░░░░░░░░▄▀▀░▐░░░
+░░░░▄▀░░░░░░░░▐░▄▄▀░░░░
+░░▄▀░░░▐░░░░░█▄▀░▐░░░░░
+░░█░░░▐░░░░░░░░▄░█░░░░░
+░░░█▄░░▀▄░░░░▄▀▐░█░░░░░
+░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░
+░░▐█▐▄░░▀░░░░░░▐░█▄▄░░░
+░░░▀▀▄░░░░░░░░▄▐▄▄▄▀░░░
+░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
     get_first_set_ingredients
     get_second_set_ingredients
     get_third_set_ingredients

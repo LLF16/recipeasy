@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :shopping_lists, only: [:show]
   resources :measurement_shopping_lists, only: [:destroy]
   resources :searches, only: :index
+  resources :ingredients, only: :index, module: :search
 end
