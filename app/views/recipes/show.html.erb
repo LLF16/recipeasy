@@ -21,7 +21,8 @@
         </ul>
       </div>
       <div>
-        <%= link_to "Add to shopping-list", recipe_path(@recipe), class: "btn btn-info" %>
+        <% @shopping_list = current_user.shopping_lists.first %>
+        <%= link_to "Add to shopping-list", shopping_list_recipe_measurement_shopping_lists_path(@shopping_list, @recipe), method: :post, class: "btn btn-info" %>
         <%= link_to "Cook now", cooking_session_path(@recipe), class: "btn btn-primary" %>
       </div>
     </div>
