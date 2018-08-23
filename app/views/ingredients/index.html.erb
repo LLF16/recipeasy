@@ -8,7 +8,8 @@
             params[:ingredient_1],
             class: "form-control",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[0].name %>
+            value: @random_ingredients[0].name,
+            autofocus: true %>
         </div>
       </div>
       <div id="ingredients-index-lock-1">
@@ -85,9 +86,9 @@
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger") %>
   <% end %>
 </div>
+
 <div class="container container-selected-recipes">
   <div id="selected-recipes">
-
   </div>
 </div>
 

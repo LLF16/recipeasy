@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :measurement_shopping_lists, only: [:destroy]
   resources :searches, only: :index
+  resources :ingredients, only: :index, module: :search
 end

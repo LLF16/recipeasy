@@ -28,6 +28,28 @@
   height: 20%;
 }
 
+.ingredients-index-bars {
+  & #ingredient_1:active,
+  & #ingredient_2::focus,
+  & #ingredient_3:focus,
+  & #ingredient_4
+
+   {
+
+  visibility: hidden;
+  }
+}
+
+
+// .ingredients-form-input:not(:focus) {
+//   visibility: hidden;
+// }
+
+// .ingredients-form-input:focus {
+//   visibility: visible;
+//   border: 5px solid red;
+// }
+
 #ingredients-index-1,
 #ingredients-index-2,
 #ingredients-index-3,

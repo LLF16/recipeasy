@@ -61,9 +61,3 @@ unlockedLock4.addEventListener("click", (event) => {
     text_field.removeAttribute("disabled");
   }
 });
-
-document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        console.log("hello from the spacebar")
-    }
-}
