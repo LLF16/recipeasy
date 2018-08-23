@@ -24,6 +24,8 @@ class Search::IngredientsController < ApplicationController
       get_two_random
     when 1
       get_three_random
+    when 0
+      get_four_random
     else
       puts "yooooooooooooooo"
     end
@@ -51,10 +53,10 @@ class Search::IngredientsController < ApplicationController
       end
     end
 
-    p "heeeeeeeyyyyyyyyyyyy"
-    p @original_received
-    p @ingredients_to_send
-    p @result
+    # p "heeeeeeeyyyyyyyyyyyy"
+    # p @original_received
+    # p @ingredients_to_send
+    # p @result
 
     render json: {
       first: @result.first,
@@ -73,16 +75,17 @@ class Search::IngredientsController < ApplicationController
 
   def get_four_random
     @ingredient_1 = Ingredient.all.sample(1).first
+    p @ingredient_1
     @recipes_with_ingredient_1 = @ingredient_1.recipes
     @ingredients_to_send << @ingredient_1
 
-    binding.pry
-
     @sample_ingredient_2 = Array.new
     @recipes_with_ingredient_1.each do |recipe|
-      @sample_ingredient_2 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_2 << ingredient
+      end
     end
-    @ingredient2 = @sample_ingredient_2.flatten.sample(1).first
+    @ingredient2 = @sample_ingredient_2.shuffle.first
     @ingredients_to_send << @ingredient_2
 
     @recipes_with_ingredient_2 = @ingredient_2.recipes
@@ -91,9 +94,11 @@ class Search::IngredientsController < ApplicationController
 
     @sample_ingredient_3 = Array.new
     @recipes_with_ingredient_1_2.each do |recipe|
-      @sample_ingredient_3 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_3 << ingredient
+      end
     end
-    @ingredient_3 = @sample_ingredient_3.flatten.sample(1).first
+    @ingredient_3 = @sample_ingredient_3.shuffle.first
     @ingredients_to_send << @ingredient_3
 
     @recipes_with_ingredient_3 = @ingredient_3.recipes
@@ -103,9 +108,11 @@ class Search::IngredientsController < ApplicationController
 
     @sample_ingredient_4 = Array.new
     @recipes_with_ingredient_1_2_3.each do |recipe|
-      @sample_ingredient_4 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_4 << ingredient
+      end
     end
-    @ingredient_4 = @sample_ingredient_4.flatten.sample(1).first
+    @ingredient_4 = @sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
@@ -156,8 +163,8 @@ class Search::IngredientsController < ApplicationController
   end
 
   def get_two_random
-    @ingredient_1 = @ingredients_received.first
     @ingredient_2 = @ingredients_received[1]
+    @ingredient_1 = @ingredients_received.first
 
     @recipes_with_ingredient_1 = @ingredient_1.recipes
     @recipes_with_ingredient_2 = @ingredient_2.recipes
@@ -166,9 +173,12 @@ class Search::IngredientsController < ApplicationController
 
     @sample_ingredient_3 = Array.new
     @recipes_with_ingredient_1_2.each do |recipe|
-      @sample_ingredient_3 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_3 << ingredient
+      end
     end
-    @ingredient_3 = @sample_ingredient_3.flatten.sample(1).first
+
+    @ingredient_3 = @sample_ingredient_3.shuffle.first
     @ingredients_to_send << @ingredient_3
 
     @recipes_with_ingredient_3 = @ingredient_3.recipes
@@ -177,9 +187,11 @@ class Search::IngredientsController < ApplicationController
 
     @sample_ingredient_4 = Array.new
     @recipes_with_ingredient_1_2_3.each do |recipe|
-      @sample_ingredient_4 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_4 << ingredient
+      end
     end
-    @ingredient_4 = @sample_ingredient_4.flatten.sample(1).first
+    @ingredient_4 = @sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
@@ -197,9 +209,11 @@ class Search::IngredientsController < ApplicationController
 
     @sample_ingredient_4 = Array.new
     @recipes_with_ingredient_1_2_3.each do |recipe|
-      @sample_ingredient_4 << recipe.ingredients
+      recipe.ingredients.each do |ingredient|
+        @sample_ingredient_4 << ingredient
+      end
     end
-    @ingredient_4 = @sample_ingredient_4.flatten.sample(1).first
+    @ingredient_4 = @sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
