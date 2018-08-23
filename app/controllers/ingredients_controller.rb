@@ -2,19 +2,19 @@ class IngredientsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    get_first_set_ingredients
-    get_second_set_ingredients
-    get_third_set_ingredients
-    get_fourth_set_ingredients
+    # get_first_set_ingredients
+    # get_second_set_ingredients
+    # get_third_set_ingredients
+    # get_fourth_set_ingredients
 
-    @ingredient_4 = @sample_ingredient_4.flatten.sample(1).first
-    @recipes_with_ingredient_4 = @ingredient_4.recipes
-    @recipes_with_ingredient_1_2_3_4 = @recipes_with_ingredient_1_2_3 & @recipes_with_ingredient_4
+    # @ingredient_4 = @sample_ingredient_4.flatten.sample(1).first
+    # @recipes_with_ingredient_4 = @ingredient_4.recipes
+    # @recipes_with_ingredient_1_2_3_4 = @recipes_with_ingredient_1_2_3 & @recipes_with_ingredient_4
 
-    respond_to do |format|
-      format.html
-      format.json { @ingredients = Ingredient.search(params[:term]) }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json { @ingredients = Ingredient.search(params[:term]) }
+    # end
 
     @random_ingredients = Ingredient.all.sample(4)
     @selected_recipes

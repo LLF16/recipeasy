@@ -36,18 +36,22 @@ document.body.onkeyup = function(e){
       if(item.disabled) {
         array.push(item.defaultValue);
       } else {
-        array.push("");
+        array.push("empty");
       };
     });
-  };
+
   console.log(array)
-  let url = `/ingredient?first=${array[0]}&second=${array[1]}&third=${array[2]}&fourth=${array[3]}`
+  let url = `search/ingredients?first=${array[0]}&second=${array[1]}&third=${array[2]}&fourth=${array[3]}`
+  console.log(url);
   fetch(url)
     .then(response => response.json())
     .then((data) => {
-      data.results.forEach(())
+      console.log("result", data);
     })
-  return array
+
+
+  };
+  // return array
 };
 
 // fetch("/ingredients")
