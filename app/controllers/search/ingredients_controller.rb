@@ -1,5 +1,3 @@
-require "pry-byebug"
-
 class Search::IngredientsController < ApplicationController
   skip_before_action :authenticate_user!
 
