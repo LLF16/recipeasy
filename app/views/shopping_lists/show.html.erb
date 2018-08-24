@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container container-flex">
   <% if @shopping_list.recipes.empty? %>
         <p><%= "You have no recipes yet!" %></p>
         <div><%= link_to "Discover recipes", ingredients_path, class:"btn btn-primary" %></div>
   <% else %>
     <div class="row">
-      <div class="col-xs-12 col-md-6">
+      <div class="col-xs-12 col-md-6" id="shopping-list">
         <h2> Your shopping list </h2>
         <div class="shopping-list-cumulative">
           <ul>
