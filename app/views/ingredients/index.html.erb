@@ -6,9 +6,9 @@
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_1,
             params[:ingredient_1],
-            class: "form-control",
+            class: "form-control first-text-tag",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[0].name,
+            value: @ingredients_to_send[0].name,
             autofocus: true %>
         </div>
       </div>
@@ -18,7 +18,7 @@
         </p>
       </div>
       <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[0].name %></p>
+      <p style="color:white;"><%= @ingredients_to_send[0].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -26,9 +26,9 @@
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_2,
             params[:ingredient_2],
-            class: "form-control",
+            class: "form-control second-text-tag",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[1].name
+            value: @ingredients_to_send[1].name
           %>
         </div>
       </div>
@@ -38,7 +38,7 @@
         </p>
       </div>
       <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[1].name %></p>
+      <p style="color:white;"><%= @ingredients_to_send[1].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -46,9 +46,9 @@
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_3,
             params[:ingredient_3],
-            class: "form-control",
+            class: "form-control third-text-tag",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[2].name
+            value: @ingredients_to_send[2].name
           %>
         </div>
       </div>
@@ -58,7 +58,7 @@
         </p>
       </div>
       <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[2].name %></p>
+      <p style="color:white;"><%= @ingredients_to_send[2].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -66,9 +66,9 @@
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_4,
             params[:ingredient_4],
-            class: "form-control",
+            class: "form-control fourth-text-tag",
             placeholder: "Enter an ingredient",
-            value: @random_ingredients[3].name
+            value: @ingredients_to_send[3].name
           %>
       </div>
      </div>
@@ -78,7 +78,7 @@
         </p>
      </div>
  <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[3].name %></p>
+      <p style="color:white;"><%= @ingredients_to_send[3].name %></p>
     </div>
     </div>
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger") %>

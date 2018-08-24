@@ -47,6 +47,11 @@ document.body.onkeyup = function(e){
     .then(response => response.json())
     .then((data) => {
       console.log("result", data);
+      console.log(data.first.name);
+      document.querySelector('.first-text-tag').value = data.first.name;
+      document.querySelector('.second-text-tag').value = data.second.name;
+      document.querySelector('.third-text-tag').value = data.third.name;
+      document.querySelector('.fourth-text-tag').value = data.fourth.name;
     })
 
 
