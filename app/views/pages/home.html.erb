@@ -1,30 +1,9 @@
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-<div class="banner" style="background-image: url('<%= image_path'home_page.jpg' %>'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4));">
+<div class="banner" style="background-image: url('<%= image_path'home_page.jpg' %>'), linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);">
   <div class="banner-content">
+
   <div class="container">
     <h1>RecipEasy</h1>
-    <div id="home-button">
-    <%= link_to 'Begin the journey!', ingredients_path %>
-    </div>
+    <p>Open your fridge, find recipes</p>
+    <%= link_to 'Find recipes', ingredients_path, class: 'btn btn-primary'  %>
   </div>
-    <!-- <p><strong>Open</strong> your fridge, <strong>discover</strong> recipes</p> -->
-    <div class="content">
-      <div class="content__container">
-        <p class="content__container__text">
-          Let's cook
-        </p>
-        <ul class="content__container__list">
-          <li class="content__container__list__item">hamburgers</li>
-          <li class="content__container__list__item">a romantic dish</li>
-          <li class="content__container__list__item">pizza</li>
-          <li class="content__container__list__item">something good</li>
-        </ul>
-      </div>
-    </div>
-
-
 </div>
-
-
-
