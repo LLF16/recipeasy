@@ -80,10 +80,13 @@
  <!--       M: inserted bad html style here -->
       <p style="color:white;"><%= @random_ingredients[3].name %></p>
     </div>
-    </div>
-    <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger") %>
-  <% end %>
+  </div>
+  <div class="ingredients-index-white-space">
+    <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
+    <% end %>
+  </div>
 </div>
+
 
 <div class="container-selected-recipes">
   <div id="selected-recipes">
