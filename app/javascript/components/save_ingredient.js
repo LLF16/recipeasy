@@ -28,6 +28,25 @@
 //   return array
 // };
 
+
+let shuffleButton = document.querySelector(".ingredients-shuffle-button");
+shuffleButton.addEventListener("click", (event) => {
+  console.log("hello from shuffle");
+  let array = [];
+  let ingredients = document.querySelectorAll('input.form-control');
+  let locked_ingredients = ingredients.forEach((item) => {
+    console.log(item);
+    if(item.disabled) {
+      array.push(item.defaultValue);
+    } else {
+      array.push("empty");
+    };
+    console.log(array)
+  });
+});
+
+
+
 document.body.onkeyup = function(e){
   let array = [];
   if(e.keyCode == 32){
