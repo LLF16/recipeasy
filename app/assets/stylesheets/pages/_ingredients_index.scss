@@ -24,6 +24,23 @@
   }
 }
 
+.ingredients-index-bars:nth-child(1) {
+  background-color: #157A6E;
+}
+
+.ingredients-index-bars:nth-child(2) {
+  background-color: #FF3A4F;
+}
+
+.ingredients-index-bars:nth-child(3) {
+  background-color: #499F68;
+}
+
+.ingredients-index-bars:nth-child(4) {
+  background-color: #06AED5;
+}
+
+
 .ingredients-index-bar-container {
   width: 80%;
   height: 20%;
@@ -139,4 +156,3 @@
 
   }
 }
-

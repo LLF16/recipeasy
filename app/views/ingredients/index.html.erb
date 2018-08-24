@@ -76,12 +76,11 @@
   <div class="ingredients-index-white-space-submit">
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
   </div>
-  <div class="ingredients-index-white-space-shuffle">
-    <%= submit_tag("Shuffle", :anchor => "selected-recipes", id: "get-recipes", class: "ingredients-shuffle-button") %>
-  </div>
   <% end %>
+  <div class="ingredients-index-white-space-shuffle">
+    <%= button_tag("Shuffle", class: "ingredients-shuffle-button") %>
+  </div>
 </div>
-
 
 <div class="container-selected-recipes">
   <div id="selected-recipes">
