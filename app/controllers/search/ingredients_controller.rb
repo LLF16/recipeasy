@@ -49,7 +49,7 @@ class Search::IngredientsController < ApplicationController
         @result << @ingredients_to_send[counter]
         counter += 1
       else
-        @result << item
+        @result << item[0]
       end
     end
 
