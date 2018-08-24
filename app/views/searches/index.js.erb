@@ -10,7 +10,7 @@ function refreshPage(innerHTML) {
     behavior: "smooth"
 });
 
-}
+};
 
 // As we want the ingredients controller to display our results dynamically, we need to render a partial in js
 refreshPage('<%= j render "searches/selected_recipes", selected_recipes: @selected_recipes %>');
