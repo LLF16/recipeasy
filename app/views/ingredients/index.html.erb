@@ -17,8 +17,6 @@
           <i class="fas fa-lock-open" data-locked='false'></i>
         </p>
       </div>
-      <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[0].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -37,8 +35,6 @@
           <i class="fas fa-lock-open" data-locked='false'></i>
         </p>
       </div>
-      <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[1].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -57,8 +53,6 @@
           <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
       </div>
-      <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[2].name %></p>
     </div>
 
     <div class="ingredients-index-bars">
@@ -77,14 +71,15 @@
           <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
      </div>
- <!--       M: inserted bad html style here -->
-      <p style="color:white;"><%= @random_ingredients[3].name %></p>
     </div>
   </div>
-  <div class="ingredients-index-white-space">
+  <div class="ingredients-index-white-space-submit">
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
-    <% end %>
   </div>
+  <div class="ingredients-index-white-space-shuffle">
+    <%= submit_tag("Shuffle", :anchor => "selected-recipes", id: "get-recipes", class: "ingredients-shuffle-button") %>
+  </div>
+  <% end %>
 </div>
 
 

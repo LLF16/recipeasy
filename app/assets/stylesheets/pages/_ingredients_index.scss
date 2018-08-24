@@ -49,6 +49,16 @@
   visibility: hidden;
 }
 
+#ingredient_1,
+#ingredient_2,
+#ingredient_3,
+#ingredient_4 {
+  border-radius: 20px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  padding: 20px;
+}
+
 .fa-lock-open {
   color: white;
 }
@@ -66,7 +76,7 @@
   height: calc(100vh - 70px);
 }
 
-.ingredients-index-white-space {
+.ingredients-index-white-space-submit {
   display: flex;
   justify-content: center;
   height: 130px;
@@ -98,4 +108,35 @@
   }
 }
 
+.ingredients-index-white-space-shuffle {
+  display: flex;
+  justify-content: center;
+  height: 130px;
+  background-color: white;
+  align-items: center;
+  width: 25%;
+  margin: auto;
+  border-radius: 0 0 45px 45px;
+  z-index: 10;
+  position: absolute;
+  top: 70px;
+  left: 37.5%;
+}
+
+.ingredients-shuffle-button {
+  height: 80px;
+  border-radius: 45px;
+  padding: 15px;
+  width: 80%;
+  background-color: #FF3A4F;
+  color: white;
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    color: #FF3A4F;
+    background-color: white;
+    border: 1px solid #FF3A4F;
+
+  }
+}
 
