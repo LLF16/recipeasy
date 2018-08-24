@@ -42,8 +42,8 @@
 .card-recipe > .image {
   width: 100%;
   height: 80%;
-  background: -webkit-linear-gradient(rgba(255,255,255,0) 50%, rgba(252,252,252,0) 50%, rgba(246,246,246,1) 90%), url(pizza.jpeg);
-  background: linear-gradient(rgba(255,255,255,0) 50%, rgba(252,252,252,0) 50%, rgba(246,246,246,1) 90%), url(pizza.jpeg);
+  // background: -webkit-linear-gradient(rgba(255,255,255,0) 50%, rgba(252,252,252,0) 50%, rgba(246,246,246,1) 90%), url(pizza.jpeg);
+  // background: linear-gradient(rgba(255,255,255,0) 50%, rgba(252,252,252,0) 50%, rgba(246,246,246,1) 90%), url(pizza.jpeg);
   background-size: cover !important;
   background-position: center center;
 }
@@ -62,7 +62,16 @@
     text-overflow: ellipsis;
 }
 
-
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
 
 
 // .card-recipe-name {
@@ -83,16 +92,6 @@
 //   left: 8px;
 // }
 
-// .card-link {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   right: 0;
-//   width: 100%;
-//   z-index: 2;
-//   background: black;
-//   opacity: 0;
-// }
 // // .card-recipe-name {
 // //   font-size: 24px;
 // //   position: absolute;

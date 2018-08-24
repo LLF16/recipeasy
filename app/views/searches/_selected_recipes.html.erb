@@ -6,7 +6,7 @@
         <div class="setting">
           <i class="fa fa-heart"></i>
         </div>
-        <div class="image"></div>
+        <div class="image" style="background: -webkit-linear-gradient(rgba(255,255,255,0) 50%, rgba(252, 252, 252, 0) 50%, rgba(246,246,246,1) 90%), url(<%= recipe.photo %>)"></div>
         <div class="card-description">
           <div>
             <h5 class="sub">Recipe</h5>
@@ -23,7 +23,6 @@
         </div>
         <%= link_to "", recipe_path(recipe), class: "card-link" %>
       </div>
-      <!-- Matt: This link needs to be adapted to lead to the recipes show page -->
     </div>
     <% end %>
   </div>

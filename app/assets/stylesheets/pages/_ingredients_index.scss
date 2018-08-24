@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  position: relative;
 }
 
 .ingredients-index-bars {
@@ -40,22 +41,22 @@
   }
 }
 
-
-// .ingredients-form-input:not(:focus) {
-//   visibility: hidden;
-// }
-
-// .ingredients-form-input:focus {
-//   visibility: visible;
-//   border: 5px solid red;
-// }
-
 #ingredients-index-1,
 #ingredients-index-2,
 #ingredients-index-3,
 #ingredients-index-4 {
   font-size: 30px;
   visibility: hidden;
+}
+
+#ingredient_1,
+#ingredient_2,
+#ingredient_3,
+#ingredient_4 {
+  border-radius: 20px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  padding: 20px;
 }
 
 .fa-lock-open {
@@ -74,3 +75,68 @@
 .container-ingredients {
   height: calc(100vh - 70px);
 }
+
+.ingredients-index-white-space-submit {
+  display: flex;
+  justify-content: center;
+  height: 130px;
+  background-color: white;
+  align-items: center;
+  width: 25%;
+  margin: auto;
+  border-radius: 45px 45px 0 0;
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 37.5%;
+}
+
+.ingredients-submit-button {
+  height: 80px;
+  border-radius: 45px;
+  padding: 15px;
+  width: 80%;
+  background-color: #00866A;
+  color: white;
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    color: #00866A;
+    background-color: white;
+    border: 1px solid #00866A;
+
+  }
+}
+
+.ingredients-index-white-space-shuffle {
+  display: flex;
+  justify-content: center;
+  height: 130px;
+  background-color: white;
+  align-items: center;
+  width: 25%;
+  margin: auto;
+  border-radius: 0 0 45px 45px;
+  z-index: 10;
+  position: absolute;
+  top: 70px;
+  left: 37.5%;
+}
+
+.ingredients-shuffle-button {
+  height: 80px;
+  border-radius: 45px;
+  padding: 15px;
+  width: 80%;
+  background-color: #FF3A4F;
+  color: white;
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    color: #FF3A4F;
+    background-color: white;
+    border: 1px solid #FF3A4F;
+
+  }
+}
+
