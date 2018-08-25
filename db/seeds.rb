@@ -339,7 +339,7 @@ testing_urls.each do |url|
     fat: doc.search('.recipe-nutrition .col-3 span')[1].text.strip,
     carb: doc.search('.recipe-nutrition .col-4 span')[1].text.strip,
     protein: doc.search('.recipe-nutrition .col-2 span')[1].text.strip,
-    # difficulty: doc.search('.recipe-difficulty span').text,
+    difficulty: doc.search('.recipe-difficulty span').text,
     time: doc.search('.recipe-time .col-1 div').attr('data-time'),
     serves: serves = doc.search('.stepper-value').text.strip,
     utensils: [],
