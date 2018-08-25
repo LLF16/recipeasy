@@ -57,36 +57,35 @@ clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone 
 
 
 
-# copied from the seeds file. Ignore for now!
-  # @ingredient = Ingredient.find_by(name: doc.search('.fela-c30jy9')[counter].text.strip)
-#     measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
-#     given_price = [10, 25, 3, 18].sample
-#     @ingredient ||= Ingredient.new(
-#     {
-#       name: doc.search('.fela-c30jy9')[counter].text.strip,
-#       photo: "",
-#       vegan: true,
-#       vegetarian: true,
-#       ingredient_family_id: 2,
-#       base: false,
-#       topping: false,
-#       seasoning: true,
-#       unit: measurements[1],
-#       price: given_price
-#     },
-#     );
-#     @ingredient.save!
-#     measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
-#     Measurement.create!([
-#       {
-#         ingredient_id: @ingredient.id,
-#         recipe_id: @recipe.id,
-#         value: measurements[0]
-#       },
-#     ]);
-#     counter += 1
-#   end
-#   puts "Created #{Ingredient.all.length} ingredients"
-#   puts "Created #{Measurement.all.length} measurements"
-#   sleep(1)
-# end
+  @ingredient = Ingredient.find_by(name: doc.search('.fela-c30jy9')[counter].text.strip)
+    measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+    given_price = [10, 25, 3, 18].sample
+    @ingredient ||= Ingredient.new(
+    {
+      name: doc.search('.fela-c30jy9')[counter].text.strip,
+      photo: "",
+      vegan: true,
+      vegetarian: true,
+      ingredient_family_id: 2,
+      base: false,
+      topping: false,
+      seasoning: true,
+      unit: measurements[1],
+      price: given_price
+    },
+    );
+    @ingredient.save!
+    measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+    Measurement.create!([
+      {
+        ingredient_id: @ingredient.id,
+        recipe_id: @recipe.id,
+        value: measurements[0]
+      },
+    ]);
+    counter += 1
+  end
+  puts "Created #{Ingredient.all.length} ingredients"
+  puts "Created #{Measurement.all.length} measurements"
+  sleep(1)
+end
