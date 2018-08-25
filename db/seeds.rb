@@ -331,6 +331,7 @@ testing_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
 
+# scraping recipes
   new_recipe = Recipe.new(
   {
     name: doc.search('.recipe-title').text.strip,
@@ -345,8 +346,16 @@ testing_urls.each do |url|
     utensils: [],
   })
 
+# scraping recipe.utensils
   doc.search('.recipe-utensils .comma-separated-list li').each do |utensil|
     new_recipe.utensils << utensil.text.strip
+  end
+
+# scraping recipe.steps
+i = 1
+  doc.search('.recipe-steps .step p').each do |step|
+    new_recipe.steps[i] = step.text.strip
+    i += 1
   end
 
   new_recipe.save!
