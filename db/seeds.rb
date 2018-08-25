@@ -331,7 +331,7 @@ testing_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
 
-# scraping recipes
+# SCRAPING RECIPES
   new_recipe = Recipe.new(
   {
     name: doc.search('.recipe-title').text.strip,
@@ -352,14 +352,66 @@ testing_urls.each do |url|
   end
 
 # scraping recipe.steps
-i = 1
+  i = 1
   doc.search('.recipe-steps .step p').each do |step|
     new_recipe.steps[i] = step.text.strip
     i += 1
   end
 
   new_recipe.save!
-  p new_recipe
+# END SCRAPING RECIPES
+
+# SCRAPING INGREDIENTS
+
+  counter = 0
+  scraped_ingredients = []
+  while counter < doc.search('.ingredients tr').length
+    scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+    counter += 1
+  end
+
+# scraped_ingredients.each do |scraped_ingredient|
+#     clean_name = clean_ingredients_array.select do |name|
+#         scraped_ingredient.include?(name) || scraped_ingredient.include?(name.pluralize)
+#     end
+
+#     ingredient_found = Ingredient.where(name: clean_name).first
+#     if ingredient_found
+#         ingredient_found.display_name[new_recipe.id] = scraped_ingredient
+
+
+#     else
+#         ingredient = Ingredient.new(
+#         name: clean_name.first
+#         )
+#         ingredient.display_names[new_recipe.id] =  scraped_ingredient
+#     end
+#     ingredient.save
+# end
+
+
+
+# scraped_ingredients.each do |scraped_ingredient|
+#   clean_ingredients_array.each do |name|
+#     if scraped_ingredient.include?(name) || scraped_ingredient.include?(name.pluralize)
+#     clean_name = name
+#     else
+#       clean_name = scraped_ingredient
+#     end
+#   end
+# end
+
+
+# How an ingredient looks like
+# Ingredient {
+#     name = "tomato"
+#     display_names = {
+#     34: "Canned Tomatoes",
+#     76: "Diced Tomatoes",
+#     84: "Canned Tomatoes"
+#     }
+#     ...
+# }
 
 
 
