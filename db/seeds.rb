@@ -303,3 +303,57 @@
 # # ]);
 
 # # puts "Created #{RecipeUser.all.length} Recipe Users"
+
+
+
+
+# NEW SCRAPING SCRIPT
+
+require "open-uri"
+require "nokogiri"
+
+
+clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola
+  lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta
+  egg shallot chilli zucchini beef mushrooms prosciutto peas  fusilli  eggplant broccoli
+  avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts )
+
+
+testing_urls = [
+'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
+'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
+'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
+'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
+'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
+]
+
+testing_urls.each do |url|
+  html_file = open(url).read
+  doc = Nokogiri::HTML(html_file)
+
+  new_recipe = Recipe.new(
+  {
+    name: doc.search('.recipe-title').text.strip,
+    photo: doc.search('.recipe-header__image-container img').first.values[1],
+    calories: doc.search('.recipe-nutrition .col-1 span')[1].text.strip,
+    fat: doc.search('.recipe-nutrition .col-3 span')[1].text.strip,
+    carb: doc.search('.recipe-nutrition .col-4 span')[1].text.strip,
+    protein: doc.search('.recipe-nutrition .col-2 span')[1].text.strip,
+    # difficulty: doc.search('.recipe-difficulty span').text,
+    time: doc.search('.recipe-time .col-1 div').attr('data-time'),
+    serves: serves = doc.search('.stepper-value').text.strip,
+    utensils: [],
+  })
+
+  doc.search('.recipe-utensils .comma-separated-list li').each do |utensil|
+    new_recipe.utensils << utensil.text.strip
+  end
+
+  new_recipe.save!
+  p new_recipe
+
+
+
+
+  sleep(1)
+end
