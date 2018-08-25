@@ -366,32 +366,60 @@ testing_urls.each do |url|
     counter += 1
   end
 
-  p scraped_ingredients
 
   scraped_ingredients.each do |scraped_ingredient|
-    p scraped_ingredient
     clean_ingredients.select do |clean_name|
       if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
-        # ingredient.display_name[new_recipe.id] = scraped_ingredient
-        # scraped_ingredient = name
-        # ingredient.name = scraped_ingredient
         ingredient_found = Ingredient.where(name: clean_name).first
         if ingredient_found
           ingredient_found.display_name[new_recipe.id] = scraped_ingredient
+          p ingredient_found
         else
           ingredient = Ingredient.new(
-            name: clean_name.first
+            name: clean_name
             )
           ingredient.display_name[new_recipe.id] =  scraped_ingredient
+          p ingredient
+          ingredient.save!
         end
-        ingredient.save!
-      else
-       ingredient = Ingredient.create!(name: scraped_ingredient)
+      # else
+      end
+      ingredient = Ingredient.where(name: scraped_ingredient)
+      unless ingredient.present?
+        p "ok"
+        ingredient = Ingredient.create!(name: scraped_ingredient)
+        p ingredient
       end
     end
+    # ingredient = Ingredient.create!(name: scraped_ingredient)
+    # p ingredient
   end
 
-p ingredient
+
+  # if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
+  #       # ingredient.display_name[new_recipe.id] = scraped_ingredient
+  #       # scraped_ingredient = name
+  #       # ingredient.name = scraped_ingredient
+  #       ingredient_found = Ingredient.where(name: clean_name).first
+  #       if ingredient_found
+  #         ingredient_found.display_name[new_recipe.id] = scraped_ingredient
+  #       else
+  #         ingredient = Ingredient.new(
+  #           name: clean_name
+  #           )
+  #         ingredient.display_name[new_recipe.id] =  scraped_ingredient
+  #       ingredient.save!
+  #       end
+  #       # p ingredient.name
+  #       # p ingredient.display_name
+  #     else
+  #      ingredient = Ingredient.create!(name: scraped_ingredient)
+  #      # p ingredient.name
+  #     end
+  # end
+
+  # p Ingredient.all
+
 
 
 
