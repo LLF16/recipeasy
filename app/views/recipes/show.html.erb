@@ -20,11 +20,7 @@
           <% end %>
         </ul>
       </div>
-      <div>
-        <% @shopping_list = current_user.shopping_lists.first %>
-        <%= link_to "Add to shopping-list", shopping_list_recipe_measurement_shopping_lists_path(@shopping_list, @recipe), method: :post, class: "btn btn-info" %>
-        <%= link_to "Cook now", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
-      </div>
+<!-- Insert code here from doc! -->
     </div>
   </div>
     <div class="recipe-row">
