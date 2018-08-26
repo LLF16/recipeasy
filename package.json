@@ -4,7 +4,6 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
-    "bootstrap-sweetalert": "^1.0.1",
     "jquery": "^3.3.1",
     "jquery-confirm": "^3.3.2"
   },
