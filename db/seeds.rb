@@ -314,10 +314,10 @@ require "nokogiri"
 
 testing_urls = [
   'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
-# 'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
-# 'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
-# 'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
-# 'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
+'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
+'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
+'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
+'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
 ]
 
 testing_urls.each do |url|
@@ -360,48 +360,105 @@ clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone 
 
 counter = 0
 scraped_ingredients = []
+scraped_measurements = []
 while counter < doc.search('.ingredients tr').length
   scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+  scraped_measurements << doc.search('.ingredients tr .ingredients__col-1')[counter].text.strip
   counter += 1
 end
 
-main_ingredients =[]
+p scraped_measurements
+
+main_ingredients = []
+main_measurements = []
 scraped_ingredients.each do |scraped_ingredient|
   clean_ingredients.select do |clean_name|
     if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
       ingredient_found = Ingredient.where(name: clean_name).first
       if ingredient_found
         ingredient_found.display_name[new_recipe.id] = scraped_ingredient
-        p "found"
-        p ingredient_found
+        measurement = Measurement.new
+        measurement.ingredient_id = ingredient_found.id
+        measurement.recipe_id = new_recipe.id
+        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.save!
+        # p measurement
+        # p "found"
+        # p ingredient_found
         main_ingredients << scraped_ingredient
+        main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
       else
         ingredient = Ingredient.new(
           name: clean_name
           )
         ingredient.display_name[new_recipe.id] =  scraped_ingredient
         ingredient.save!
-        p "new clean"
-        p ingredient
+        measurement = Measurement.new
+        measurement.ingredient_id = ingredient.id
+        measurement.recipe_id = new_recipe.id
+        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.save!
+        p measurement
+        # p "new clean"
+        # p ingredient
         main_ingredients << scraped_ingredient
+        main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
       end
     end
   end
 end
 
 ingredients_to_be_scraped = scraped_ingredients - main_ingredients
+measuremements_to_be_scraped = scraped_measurements - main_measurements
+
 ingredients_to_be_scraped.each do |scraped_ingredient|
   ingredient = Ingredient.where(name: scraped_ingredient).first
   unless ingredient.present?
     ingredient = Ingredient.create!(name: scraped_ingredient)
-    p "new scraped"
-    p ingredient
+    measurement = Measurement.new
+    measurement.ingredient_id = ingredient.id
+    measurement.recipe_id = new_recipe.id
+    measurement.value = measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)]
+    measurement.save!
+    p measurement
+    # p "new scraped"
+    # p ingredient
   end
+
 end
 #END SCRAPING INGREDIENTS--------------------------------------------------------
 
 #SCRAPING MEASUREMENTS-----------------------------------------------------------
-
+#   counter = 0
+#   while counter < doc.search('.fela-bj2f19').length
+#     @ingredient = Ingredient.find_by(name: doc.search('.fela-c30jy9')[counter].text.strip)
+#     measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+#     given_price = [10, 25, 3, 18].sample
+#     @ingredient ||= Ingredient.new(
+#     {
+#       name: doc.search('.fela-c30jy9')[counter].text.strip,
+#       photo: "",
+#       vegan: true,
+#       vegetarian: true,
+#       ingredient_family_id: 2,
+#       base: false,
+#       topping: false,
+#       seasoning: true,
+#       unit: measurements[1],
+#       price: given_price
+#     },
+#     );
+#     @ingredient.save!
+#     measurements = doc.search('.fela-2htk9c')[counter].text.strip.split(" ")
+#     Measurement.create!([
+#       {
+#         ingredient_id: @ingredient.id,
+#         recipe_id: @recipe.id,
+#         value: measurements[0]
+#       },
+#     ]);
+#     counter += 1
+#   end
 #END SCRAPING MEASUREMENTS-------------------------------------------------------
 
 sleep(1)
