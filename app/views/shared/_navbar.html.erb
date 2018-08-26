@@ -3,7 +3,17 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
-
+  <div>
+    <%= link_to recipes_path, class: "recipe-of-the-day-small" do %>
+        <%= image_tag "question_mark" %>
+      <% end %>
+    <%= link_to recipes_path, class: "recipe-of-the-day" do %>
+        <%= image_tag "question_mark" %>
+      <% end %>
+    <%= link_to recipes_path, class: "recipe-of-the-day-small" do %>
+        <%= image_tag "question_mark" %>
+      <% end %>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
