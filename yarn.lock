@@ -868,7 +868,13 @@ bonjour@^3.5.0:
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
 
-bootstrap@3:
+bootstrap-sweetalert@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-sweetalert/-/bootstrap-sweetalert-1.0.1.tgz#164f3e6155265cd398d681b471d56afdfdc65f2d"
+  dependencies:
+    bootstrap "~3"
+
+bootstrap@3, bootstrap@~3:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
@@ -2939,7 +2945,13 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-jquery@^3.3.1:
+jquery-confirm@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/jquery-confirm/-/jquery-confirm-3.3.2.tgz#c80a7a1517c738f5e5735993bb168e938d08f582"
+  dependencies:
+    jquery ">=1.6"
+
+jquery@>=1.6, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
