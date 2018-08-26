@@ -189,3 +189,30 @@
 // HERE :
 // y = 4 -> Animation between two lines
 // x = 12.66 -> Time spent on a line
+
+
+// Responsive
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) {
+  .content {
+    width: 770px;
+  }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+  .content {
+    display: none;
+  }
+  #home-title {
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .content {
+    display: none;
+  }
+  #home-title {
+    font-size: 56px;
+  }
+}
