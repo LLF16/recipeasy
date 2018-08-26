@@ -313,7 +313,7 @@ require "open-uri"
 require "nokogiri"
 
 testing_urls = [
-'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
+  'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
 # 'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
 # 'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
 # 'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
@@ -324,148 +324,85 @@ testing_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
 
-# SCRAPING RECIPES
-  new_recipe = Recipe.new(
-  {
-    name: doc.search('.recipe-title').text.strip,
-    photo: doc.search('.recipe-header__image-container img').first.values[1],
-    calories: doc.search('.recipe-nutrition .col-1 span')[1].text.strip,
-    fat: doc.search('.recipe-nutrition .col-3 span')[1].text.strip,
-    carb: doc.search('.recipe-nutrition .col-4 span')[1].text.strip,
-    protein: doc.search('.recipe-nutrition .col-2 span')[1].text.strip,
-    difficulty: doc.search('.recipe-difficulty span').text,
-    time: doc.search('.recipe-time .col-1 div').attr('data-time'),
-    serves: serves = doc.search('.stepper-value').text.strip,
-    utensils: [],
-  })
+# SCRAPING RECIPES---------------------------------------------------------------
+new_recipe = Recipe.new(
+{
+  name: doc.search('.recipe-title').text.strip,
+  photo: doc.search('.recipe-header__image-container img').first.values[1],
+  calories: doc.search('.recipe-nutrition .col-1 span')[1].text.strip,
+  fat: doc.search('.recipe-nutrition .col-3 span')[1].text.strip,
+  carb: doc.search('.recipe-nutrition .col-4 span')[1].text.strip,
+  protein: doc.search('.recipe-nutrition .col-2 span')[1].text.strip,
+  difficulty: doc.search('.recipe-difficulty span').text,
+  time: doc.search('.recipe-time .col-1 div').attr('data-time'),
+  serves: serves = doc.search('.stepper-value').text.strip,
+  utensils: [],
+})
 
 # scraping recipe.utensils
-  doc.search('.recipe-utensils .comma-separated-list li').each do |utensil|
-    new_recipe.utensils << utensil.text.strip
-  end
+doc.search('.recipe-utensils .comma-separated-list li').each do |utensil|
+  new_recipe.utensils << utensil.text.strip
+end
 
 # scraping recipe.steps
-  i = 1
-  doc.search('.recipe-steps .step p').each do |step|
-    new_recipe.steps[i] = step.text.strip
-    i += 1
-  end
+i = 1
+doc.search('.recipe-steps .step p').each do |step|
+  new_recipe.steps[i] = step.text.strip
+  i += 1
+end
 
-  new_recipe.save!
-# END SCRAPING RECIPES
+new_recipe.save!
+# END SCRAPING RECIPES-----------------------------------------------------------
 
-# SCRAPING INGREDIENTS
-
-  clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot chilli zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts )
-
-
-  counter = 0
-  scraped_ingredients = []
-  while counter < doc.search('.ingredients tr').length
-    scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
-    counter += 1
-  end
+# SCRAPING INGREDIENTS-----------------------------------------------------------
+clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot chilli zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts )
 
 
-  scraped_ingredients.each do |scraped_ingredient|
-    clean_ingredients.select do |clean_name|
-      if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
-        ingredient_found = Ingredient.where(name: clean_name).first
-        if ingredient_found
-          ingredient_found.display_name[new_recipe.id] = scraped_ingredient
-          p ingredient_found
-        else
-          ingredient = Ingredient.new(
-            name: clean_name
-            )
-          ingredient.display_name[new_recipe.id] =  scraped_ingredient
-          p ingredient
-          ingredient.save!
-        end
-      # else
-      end
-      ingredient = Ingredient.where(name: scraped_ingredient)
-      unless ingredient.present?
-        p "ok"
-        ingredient = Ingredient.create!(name: scraped_ingredient)
+counter = 0
+scraped_ingredients = []
+while counter < doc.search('.ingredients tr').length
+  scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+  counter += 1
+end
+
+main_ingredients =[]
+scraped_ingredients.each do |scraped_ingredient|
+  clean_ingredients.select do |clean_name|
+    if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
+      ingredient_found = Ingredient.where(name: clean_name).first
+      if ingredient_found
+        ingredient_found.display_name[new_recipe.id] = scraped_ingredient
+        p "found"
+        p ingredient_found
+        main_ingredients << scraped_ingredient
+      else
+        ingredient = Ingredient.new(
+          name: clean_name
+          )
+        ingredient.display_name[new_recipe.id] =  scraped_ingredient
+        ingredient.save!
+        p "new clean"
         p ingredient
+        main_ingredients << scraped_ingredient
       end
     end
-    # ingredient = Ingredient.create!(name: scraped_ingredient)
-    # p ingredient
   end
+end
 
+ingredients_to_be_scraped = scraped_ingredients - main_ingredients
+ingredients_to_be_scraped.each do |scraped_ingredient|
+  ingredient = Ingredient.where(name: scraped_ingredient).first
+  unless ingredient.present?
+    ingredient = Ingredient.create!(name: scraped_ingredient)
+    p "new scraped"
+    p ingredient
+  end
+end
+#END SCRAPING INGREDIENTS--------------------------------------------------------
 
-  # if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
-  #       # ingredient.display_name[new_recipe.id] = scraped_ingredient
-  #       # scraped_ingredient = name
-  #       # ingredient.name = scraped_ingredient
-  #       ingredient_found = Ingredient.where(name: clean_name).first
-  #       if ingredient_found
-  #         ingredient_found.display_name[new_recipe.id] = scraped_ingredient
-  #       else
-  #         ingredient = Ingredient.new(
-  #           name: clean_name
-  #           )
-  #         ingredient.display_name[new_recipe.id] =  scraped_ingredient
-  #       ingredient.save!
-  #       end
-  #       # p ingredient.name
-  #       # p ingredient.display_name
-  #     else
-  #      ingredient = Ingredient.create!(name: scraped_ingredient)
-  #      # p ingredient.name
-  #     end
-  # end
+#SCRAPING MEASUREMENTS-----------------------------------------------------------
 
-  # p Ingredient.all
+#END SCRAPING MEASUREMENTS-------------------------------------------------------
 
-
-
-
-
-
-
-
-  #     ingredient_found = Ingredient.where(name: clean_name).first
-  #     if ingredient_found
-  #         ingredient_found.display_name[new_recipe.id] = scraped_ingredient
-
-  #     else
-  #         ingredient = Ingredient.new(
-  #         name: clean_name.first
-  #         )
-  #         ingredient.display_names[new_recipe.id] =  scraped_ingredient
-  #     end
-  #     ingredient.save
-  # end
-
-
-
-  # scraped_ingredients.each do |scraped_ingredient|
-  #   clean_ingredients_array.each do |name|
-  #     if scraped_ingredient.include?(name) || scraped_ingredient.include?(name.pluralize)
-  #     clean_name = name
-  #     else
-  #       clean_name = scraped_ingredient
-  #     end
-  #   end
-  # end
-
-
-# How an ingredient looks like
-# Ingredient {
-#     name = "tomato"
-#     display_names = {
-#     34: "Canned Tomatoes",
-#     76: "Diced Tomatoes",
-#     84: "Canned Tomatoes"
-#     }
-#     ...
-# }
-
-
-
-
-  sleep(1)
+sleep(1)
 end
