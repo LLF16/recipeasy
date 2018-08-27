@@ -1,46 +1,108 @@
-
-
-.recipe-row {
+.banner-recipe {
+  color: white;
+  text-align: center;
+  height: 500px;
+  background-size: cover !important;
   display: flex;
-  height: calc(100vh - 70px);
-  justify-content: space-around;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#cook-now {
+  height: 150px;
+  width: 150px;
+  background-color: #FF3A4F;
+  border-radius: 50%;
+  border: none;
+  display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
-.box-recipe-image {
-  flex: 0 0 40%;
+.cook-now-button {
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
 }
 
-.recipe-image{
-  width: 500px;
+.shopping-list-submit {
+  height: 150px;
+  width: 150px;
+  background-color: #00ACA5;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+}
+
+#add-to-shopping-list {
+  background-color: transparent;
+  border: none;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+
+.recipe-show-wrapper {
+  background-color: #FFFFFF;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-show-image-box {
+  position: relative;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.white-box-show {
+  border: 1px solid #cfd8dc;
+  padding: 20px;
+  margin-left: 20px;
   border-radius: 5px;
-}
-
-.box-recipe-info {
-  flex: 0 0 60%;
-  margin-left: 40px;
-  margin-bottom: 25px;
+  width: 65%;
 }
 
 .recipe-info-details {
-  display: flex;
-  justify-content: space-around;
-}
 
-.recipe-ingredients ul {
-  columns: 2 !important;
-  -webkit-columns: 2;
-  -moz-columns: 2;
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    float: left;
+    display: block;
+    padding: 5px 16px;
+  }
+
+  li:first-child {
+    padding-left: 0;
+  }
 }
 
 #recipe-title {
-  font-family: 'Special Elite', cursive;
-  font-size: 48px;
-  color: #FF3A4F;
-  background-color: black;
+  font-size: 40px;
+  font-weight: lighter;
 }
 
-.hide-cooking-steps {
-  display: none;
-}

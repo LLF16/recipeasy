@@ -1,35 +1,47 @@
-<div class="container">
-  <div class="recipe-row">
-    <div class="box-recipe-image">
-      <%= image_tag @recipe.photo, class: 'recipe-image' %>
-    </div>
-    <div class="box-recipe-info">
-      <h1 id='recipe-title'><%= @recipe.name %></h1>
-      <div class="recipe-info-details">
-        <p><i class="far fa-clock"></i> <%= @recipe.time %> </p>
-        <p><i class="fas fa-weight"></i> <%= @recipe.calories %> kcal</p>
-        <p><i class="far fa-thumbs-up"></i> <%= @recipe.difficulty %></p>
-      </div>
-      <h4>Description</h4>
-      <p><%= @recipe.description %></p>
-      <h4>Ingredients</h4>
-      <div class="recipe-ingredients">
-        <ul class="list-inline">
-          <% @recipe.measurements.each do |measurement| %>
-          <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.ingredient.unit %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div>
-        <%= button_tag "#{current_user ? "Add to shopping list" : "Log in to add to shopping list"}", class: "btn btn-info", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
-        <%= link_to "Cook now", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
-      </div>
-    </div>
-  </div>
-    <div class="recipe-row">
-    <div id="cooking-steps">
 
+<div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
+    <div class="shopping-list-submit">
+      <%= button_tag "#{current_user ? "Add to shopping list" : "Log in to add to shopping list"}", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+    </div>
+    <div class="cook-now-button">
+      <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
     </div>
   </div>
 </div>
+
+  <div class="recipe-show-wrapper">
+    <div class="container">
+      <div class="row-recipe-show">
+        <div class="recipe-show-image-box col-xs-12 col-md-8">
+
+          <div class="box-recipe-info">
+            <h1 id='recipe-title'><%= @recipe.name %></h1>
+            <div class="recipe-info-details">
+              <ul>
+                <li><%= @recipe.time %> ⏱️ </li>
+                <li><%= @recipe.calories %>kcal 🍔</li>
+                <li><%= @recipe.difficulty %></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="white-box-show">
+            <p>Ingredients</p>
+              <div class="recipe-ingredients">
+                <ul class="ingredients-list">
+                <% @recipe.measurements.each do |measurement| %>
+                  <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.ingredient.unit %>
+                  </li>
+                <% end %>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-row">
+    <div id="cooking-steps">
+    </div>
+  </div>
 
