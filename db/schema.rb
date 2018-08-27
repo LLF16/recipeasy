@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_124939) do
+ActiveRecord::Schema.define(version: 2018_08_25_115114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_124939) do
     t.boolean "seasoning"
     t.float "price"
     t.string "unit"
+    t.string "display_name"
     t.index ["ingredient_family_id"], name: "index_ingredients_on_ingredient_family_id"
   end
 
