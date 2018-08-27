@@ -20,10 +20,9 @@
           <% end %>
         </ul>
       </div>
-<<<<<<< HEAD
       <div>
         <% @shopping_list = current_user.shopping_lists.first %>
-        <%= link_to "Add to shopping-list", shopping_list_recipe_measurement_shopping_lists_path(@shopping_list, @recipe), method: :post, class: "btn btn-info", id: "add-to-shopping-list" %>
+        <%= button_tag "Add to shopping-list", class: "btn btn-info", id: "add-to-shopping-list", data: { path: shopping_list_recipe_measurement_shopping_lists_path(@shopping_list, @recipe) } %>
         <%= link_to "Cook now", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
         <%= link_to "Test", '#', id: "test-id", class: 'btn btn-success', remote: true %>
       </div>

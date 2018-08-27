@@ -14,9 +14,18 @@ class ShoppingLists::MeasurementShoppingListsController < ApplicationController
         measurement_id: measurement.id
         )
       new_measurement.save
-
     end
-    redirect_to recipe_path(@recipe)
-  end
 
+    if @recipe.measurements.all?(&:persisted?)
+      respond_to do |format|
+        format.html { redirect_to recipe_path(@recipe) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'recipes/show'}
+        format.js
+      end
+    end
+  end
 end
