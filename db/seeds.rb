@@ -132,7 +132,6 @@ scraped_ingredients.each do |scraped_ingredient|
     if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
       ingredient_found = Ingredient.where(name: clean_name).first
       if ingredient_found
-        ingredient_found.display_name[new_recipe.id] = scraped_ingredient
         ingredient_unit = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ")
         if ingredient_unit.length >= 2
           ingredient_found.unit = ingredient_unit.last
@@ -140,6 +139,7 @@ scraped_ingredients.each do |scraped_ingredient|
         measurement = Measurement.new
         measurement.ingredient_id = ingredient_found.id
         measurement.recipe_id = new_recipe.id
+        measurement.display_name = scraped_ingredient
         measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ").first
         measurement.save!
         # p "found"
@@ -151,7 +151,6 @@ scraped_ingredients.each do |scraped_ingredient|
         ingredient = Ingredient.new(
           name: clean_name
           )
-        ingredient.display_name[new_recipe.id] =  scraped_ingredient
         ingredient_unit = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ")
         if ingredient_unit.length >= 2
           ingredient.unit = ingredient_unit.last
@@ -160,6 +159,7 @@ scraped_ingredients.each do |scraped_ingredient|
         measurement = Measurement.new
         measurement.ingredient_id = ingredient.id
         measurement.recipe_id = new_recipe.id
+        measurement.display_name =  scraped_ingredient
         measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ").first
         measurement.save!
         p ingredient
@@ -186,6 +186,7 @@ ingredients_to_be_scraped.each do |scraped_ingredient|
     measurement = Measurement.new
     measurement.ingredient_id = ingredient.id
     measurement.recipe_id = new_recipe.id
+    measurement.display_name = scraped_ingredient
     unless measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)].nil?
       measurement.value = measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)].split(" ").first
     else
