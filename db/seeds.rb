@@ -25,9 +25,6 @@ BeverageCategory.destroy_all if Rails.env.development?
 puts "Destroy ingredients"
 Ingredient.destroy_all if Rails.env.development?
 
-puts "Destroy ingredient_families"
-IngredientFamily.destroy_all if Rails.env.development?
-
 puts "Destroy shopping_lists"
 ShoppingList.destroy_all if Rails.env.development?
 
@@ -231,19 +228,19 @@ MeasurementShoppingList.create!([
   },
   {
     shopping_list_id: 1,
-    measurement_id: 86
+    measurement_id: 40
   },
   {
     shopping_list_id: 1,
-    measurement_id: 80
+    measurement_id: 42
   },
   {
     shopping_list_id: 1,
-    measurement_id: 81
+    measurement_id: 41
   },
   {
     shopping_list_id: 1,
-    measurement_id: 84
+    measurement_id: 25
   },
   {
     shopping_list_id: 1,
@@ -257,11 +254,11 @@ MeasurementShoppingList.create!([
   # },
   {
     shopping_list_id: 2,
-    measurement_id: 2
+    measurement_id: 29
   },
   {
     shopping_list_id: 3,
-    measurement_id: 2
+    measurement_id: 25
   }
 ]);
 puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
