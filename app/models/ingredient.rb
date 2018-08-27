@@ -3,7 +3,7 @@ class Ingredient < ApplicationRecord
   has_many :measurements
   has_many :recipes, through: :measurements
 
-  serialize :display_name, Hash
+
 
   enum category: [:base, :topping, :side]
 

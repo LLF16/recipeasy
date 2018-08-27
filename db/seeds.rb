@@ -42,31 +42,31 @@ ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-puts "Creating users..."
-User.create!([
-  {
-    last_name: "Gordon",
-    vegan: false,
-    vegetarian: false,
-    email: "gramsey@example.com",
-    password: "123456"
-  },
-  {
-    last_name: "Mum",
-    vegan: false,
-    vegetarian: false,
-    email: "mum@example.com",
-    password: "123456"
-  },
-  {
-    last_name: "Jamie",
-    vegan: false,
-    vegetarian: false,
-    email: "joliver@example.com",
-    password: "123456"
-  }
-]);
-puts "Created #{User.all.length} users"
+# puts "Creating users..."
+# User.create!([
+#   {
+#     last_name: "Gordon",
+#     vegan: false,
+#     vegetarian: false,
+#     email: "gramsey@example.com",
+#     password: "123456"
+#   },
+#   {
+#     last_name: "Mum",
+#     vegan: false,
+#     vegetarian: false,
+#     email: "mum@example.com",
+#     password: "123456"
+#   },
+#   {
+#     last_name: "Jamie",
+#     vegan: false,
+#     vegetarian: false,
+#     email: "joliver@example.com",
+#     password: "123456"
+#   }
+# ]);
+# puts "Created #{User.all.length} users"
 
 testing_urls = [
   'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
@@ -111,8 +111,7 @@ new_recipe.save!
 # END SCRAPING RECIPES-----------------------------------------------------------
 
 # SCRAPING INGREDIENTS-----------------------------------------------------------
-clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot chilli zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts )
-
+clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot chili zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts salt pepper )
 
 counter = 0
 scraped_ingredients = []
@@ -123,40 +122,50 @@ while counter < doc.search('.ingredients tr').length
   counter += 1
 end
 
+
 p scraped_measurements
 
 main_ingredients = []
 main_measurements = []
 scraped_ingredients.each do |scraped_ingredient|
+  scraped_ingredient.downcase!
   clean_ingredients.select do |clean_name|
     if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
       ingredient_found = Ingredient.where(name: clean_name).first
       if ingredient_found
-        ingredient_found.display_name[new_recipe.id] = scraped_ingredient
         measurement = Measurement.new
+        measurement_unit = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ")
+        if measurement_unit.length >= 2
+          measurement.unit = measurement_unit.last
+        end
         measurement.ingredient_id = ingredient_found.id
         measurement.recipe_id = new_recipe.id
-        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.display_name = scraped_ingredient
+        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ").first
         measurement.save!
-        # p measurement
         # p "found"
-        # p ingredient_found
+        p ingredient_found
+        p measurement
         main_ingredients << scraped_ingredient
         main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
       else
         ingredient = Ingredient.new(
           name: clean_name
           )
-        ingredient.display_name[new_recipe.id] =  scraped_ingredient
         ingredient.save!
         measurement = Measurement.new
+        measurement_unit = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ")
+        if measurement_unit.length >= 2
+          measurement.unit = measurement_unit.last
+        end
         measurement.ingredient_id = ingredient.id
         measurement.recipe_id = new_recipe.id
-        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.display_name =  scraped_ingredient
+        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ").first
         measurement.save!
+        p ingredient
         p measurement
         # p "new clean"
-        # p ingredient
         main_ingredients << scraped_ingredient
         main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
       end
@@ -168,17 +177,27 @@ ingredients_to_be_scraped = scraped_ingredients - main_ingredients
 measuremements_to_be_scraped = scraped_measurements - main_measurements
 
 ingredients_to_be_scraped.each do |scraped_ingredient|
+  scraped_ingredient.downcase!
   ingredient = Ingredient.where(name: scraped_ingredient).first
   unless ingredient.present?
     ingredient = Ingredient.create!(name: scraped_ingredient)
     measurement = Measurement.new
+    measurement_unit = scraped_measurements[scraped_ingredients.index(scraped_ingredient)].split(" ")
+    if measurement_unit.length >= 2
+      measurement.unit = measurement_unit.last
+    end
     measurement.ingredient_id = ingredient.id
     measurement.recipe_id = new_recipe.id
-    measurement.value = measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)]
+    measurement.display_name = scraped_ingredient
+    unless measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)].nil?
+      measurement.value = measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)].split(" ").first
+    else
+      measurement.value = nil
+    end
     measurement.save!
+    p ingredient
     p measurement
     # p "new scraped"
-    # p ingredient
   end
 
 end
@@ -186,79 +205,79 @@ end
 sleep(1)
 end
 
-puts "Creating shopping lists..."
-ShoppingList.create!([
-  {
-    user_id: 1,
-    total_price: 100
-  },
-  {
-    user_id: 2,
-    total_price: 400
-  },
-  {
-    user_id: 3,
-    total_price: 150
-  }
-]);
-puts "Created #{ShoppingList.all.length} shopping lists"
+# puts "Creating shopping lists..."
+# ShoppingList.create!([
+#   {
+#     user_id: 1,
+#     total_price: 100
+#   },
+#   {
+#     user_id: 2,
+#     total_price: 400
+#   },
+#   {
+#     user_id: 3,
+#     total_price: 150
+#   }
+# ]);
+# puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-puts "Creating measurement shopping lists..."
-MeasurementShoppingList.create!([
-  {
-    shopping_list_id: 1,
-    measurement_id: 1
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 2
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 3
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 4
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 5
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 40
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 42
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 41
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 25
-  },
-  {
-    shopping_list_id: 1,
-    measurement_id: 33
-  },
-  # this one has nil value
-  # {
-  #   shopping_list_id: 1,
-  #   measurement_id: 54,
-  #   price: 20
-  # },
-  {
-    shopping_list_id: 2,
-    measurement_id: 29
-  },
-  {
-    shopping_list_id: 3,
-    measurement_id: 25
-  }
-]);
-puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+# puts "Creating measurement shopping lists..."
+# MeasurementShoppingList.create!([
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 1
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 2
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 3
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 4
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 5
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 40
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 42
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 41
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 25
+#   },
+#   {
+#     shopping_list_id: 1,
+#     measurement_id: 33
+#   },
+#   # this one has nil value
+#   # {
+#   #   shopping_list_id: 1,
+#   #   measurement_id: 54,
+#   #   price: 20
+#   # },
+#   {
+#     shopping_list_id: 2,
+#     measurement_id: 29
+#   },
+#   {
+#     shopping_list_id: 3,
+#     measurement_id: 25
+#   }
+# ]);
+# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
