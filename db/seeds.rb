@@ -140,9 +140,9 @@ scraped_ingredients.each do |scraped_ingredient|
   clean_ingredients.select do |clean_name|
     if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
       ingredient_found = Ingredient.where(name: clean_name).first
+      # ingredient_found.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
       if ingredient_found
         measurement = Measurement.new
-        measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
         measurement.ingredient_id = ingredient_found.id
         measurement.recipe_id = new_recipe.id
         measurement.display_name = scraped_ingredient
@@ -158,9 +158,9 @@ scraped_ingredients.each do |scraped_ingredient|
         ingredient = Ingredient.new(
           name: clean_name
           )
+        ingredient.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
         ingredient.save!
         measurement = Measurement.new
-        measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
         measurement.ingredient_id = ingredient.id
         measurement.recipe_id = new_recipe.id
         measurement.display_name =  scraped_ingredient
@@ -185,9 +185,10 @@ ingredients_to_be_scraped.each do |scraped_ingredient|
   scraped_ingredient.downcase!
   ingredient = Ingredient.where(name: scraped_ingredient).first
   unless ingredient.present?
-    ingredient = Ingredient.create!(name: scraped_ingredient)
+    ingredient = Ingredient.new(name: scraped_ingredient)
+    ingredient.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
+    ingredient.save!
     measurement = Measurement.new
-    measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
     measurement.ingredient_id = ingredient.id
     measurement.recipe_id = new_recipe.id
     measurement.display_name = scraped_ingredient
