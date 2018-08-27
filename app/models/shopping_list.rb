@@ -20,4 +20,8 @@ class ShoppingList < ApplicationRecord
     MeasurementShoppingList.joins(:measurement).where("measurements.recipe_id = ?", a_recipe.id)
   end
 
+  def has_recipe(a_recipe)
+    recipes.include?(a_recipe)
+  end
+
 end
