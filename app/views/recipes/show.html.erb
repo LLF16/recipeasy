@@ -1,7 +1,11 @@
 
 <div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
     <div class="shopping-list-submit">
-      <%= button_tag "#{current_user ? "Add to shopping list" : "Log in to add to shopping list"}", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+      <% if current_user %>
+        <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+      <% else %>
+      <%= link_to "Log in to add to shopping list", new_user_session_path, class: "btn btn-danger" %>
+      <% end %>
     </div>
     <div class="cook-now-button">
       <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
