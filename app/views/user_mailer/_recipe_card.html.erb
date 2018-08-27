@@ -1,0 +1,15 @@
+
+  <div class="shopping-list-recipe-card">
+    <div class="shopping-list-recipe-card-details">
+      <h2><%= recipe.name %></h2>
+    </div>
+      <ul class="shopping-list-recipe-card-ingredients">
+        <% recipe.measurements.each do |measurement| %>
+          <% if @shopping_list.measurements.include?(measurement) %>
+            <%= render "measurement", measurement: measurement, shopping_list: @shopping_list %>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+
+

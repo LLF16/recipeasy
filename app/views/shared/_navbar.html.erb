@@ -20,7 +20,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Shopping list (#{current_user.shopping_lists.first.recipes.length})", shopping_list_path(current_user.shopping_lists.first), class: "navbar-wagon-item navbar-wagon-link", id: "shopping-list-amount", data: { amount: current_user.shopping_lists.first.recipes.length } %>
+      <%= link_to "Shopping list (#{current_user.shopping_list.recipes.length})", shopping_list_path(current_user.shopping_list), class: "navbar-wagon-item navbar-wagon-link", id: "shopping-list-amount", data: { amount: current_user.shopping_list.recipes.length } %>
 
 
       <!-- Avatar with dropdown menu -->

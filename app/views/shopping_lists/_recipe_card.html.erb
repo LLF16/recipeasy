@@ -1,0 +1,18 @@
+<li>
+  <div class="shopping-list-recipe-card">
+    <div class="shopping-list-recipe-card-details">
+      <%= image_tag recipe.photo, class: "shopping-list-recipe-card-photo" %>
+      <h2><%= recipe.name %></h2>
+      <%= link_to "Remove", shopping_list_recipe_path(shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
+    </div>
+
+      <ul class="shopping-list-recipe-card-ingredients">
+        <% recipe.measurements.each do |measurement| %>
+
+          <% if @shopping_list.measurements.include?(measurement) %>
+            <%= render "shopping_lists/measurement", measurement: measurement, shopping_list: @shopping_list %>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+</li>

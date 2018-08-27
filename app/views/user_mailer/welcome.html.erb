@@ -1,0 +1,10 @@
+<p>Hi <%= @user.last_name %>,</p>
+
+<p>Here's your shopping list. Have fun shopping!</p>
+
+<% @shopping_list.recipes.each do |recipe| %>
+  <%= render "recipe_card", measurement: @measurement, shopping_list: @shopping_list, recipe: recipe %>
+<% end %>
+
+
+
