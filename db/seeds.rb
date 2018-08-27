@@ -129,9 +129,6 @@ while counter < doc.search('.ingredients tr').length
   counter += 1
 end
 
-p scraped_measurements_value
-p scraped_measurements_unit
-
 main_ingredients = []
 main_measurements_unit = []
 main_measurements_value = []
@@ -146,7 +143,15 @@ scraped_ingredients.each do |scraped_ingredient|
         measurement.ingredient_id = ingredient_found.id
         measurement.recipe_id = new_recipe.id
         measurement.display_name = scraped_ingredient
-        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
+        if ingredient_found.unit == "kg"
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+          ingredient.unit = "g"
+        elsif ingredient_found.unit == "l"
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+          ingredient.unit = "ml"
+        else
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+        end
         measurement.save!
         # p ingredient_found
         # p measurement
@@ -164,7 +169,15 @@ scraped_ingredients.each do |scraped_ingredient|
         measurement.ingredient_id = ingredient.id
         measurement.recipe_id = new_recipe.id
         measurement.display_name =  scraped_ingredient
-        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
+        if ingredient.unit == "kg"
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+          ingredient.unit = "g"
+        elsif ingredient.unit == "l"
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+          ingredient.unit = "ml"
+        else
+          measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+        end
         measurement.save!
         # p ingredient
         # p measurement
@@ -192,7 +205,15 @@ ingredients_to_be_scraped.each do |scraped_ingredient|
     measurement.ingredient_id = ingredient.id
     measurement.recipe_id = new_recipe.id
     measurement.display_name = scraped_ingredient
-    measurement.value = measuremements_to_be_scraped_value[ingredients_to_be_scraped.index(scraped_ingredient)]
+    if ingredient.unit == "kg"
+      measurement.value = measuremements_to_be_scraped_value[ingredients_to_be_scraped.index(scraped_ingredient)].to_f*1000
+      ingredient.unit = "g"
+    elsif ingredient.unit == "l"
+      measurement.value = measuremements_to_be_scraped_value[ingredients_to_be_scraped.index(scraped_ingredient)].to_f*1000
+      ingredient.unit = "ml"
+    else
+      measurement.value = measuremements_to_be_scraped_value[ingredients_to_be_scraped.index(scraped_ingredient)].to_f
+    end
     measurement.save!
     # p ingredient
     # p measurement
@@ -200,6 +221,7 @@ ingredients_to_be_scraped.each do |scraped_ingredient|
   end
 
 end
+
 
 sleep(1)
 end
