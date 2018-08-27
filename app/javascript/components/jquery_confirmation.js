@@ -2,7 +2,7 @@ import "jquery-confirm"
 
 function amazingConfirmation () {
 
-$(".betterneverquits").confirm({
+$("#test-id").confirm({
     columnClass: 'col-md-4 col-md-offset-4',
     // boxWidth: '30%',
     useBootstrap: false,
@@ -18,9 +18,14 @@ $(".betterneverquits").confirm({
                  console.log('the user clicked confirm');
             }
         },
-        cancel: function(){
+        cancel: {
+            text: "dude",
+            btnClass: 'btn-danger',
+            keys: [ 'esc'],
+            action: function(){
                 console.log('the user clicked cancel');
         }
+      }
     }
 });
 };
