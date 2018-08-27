@@ -81,15 +81,17 @@ puts "Created #{User.all.length} users"
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
 
+puts "Creating recipe #{@recipes_urls.index(url)}...."
+
 # SCRAPING RECIPES---------------------------------------------------------------
 new_recipe = Recipe.new(
 {
   name: doc.search('.recipe-title').text.strip,
   photo: doc.search('.recipe-header__image-container img').first.values[1],
-  calories: doc.search('.recipe-nutrition .col-1 span')[1].text.strip,
-  fat: doc.search('.recipe-nutrition .col-3 span')[1].text.strip,
-  carb: doc.search('.recipe-nutrition .col-4 span')[1].text.strip,
-  protein: doc.search('.recipe-nutrition .col-2 span')[1].text.strip,
+  calories: doc.search('.recipe-nutrition .col-1 span')[1].try(:text),
+  fat: doc.search('.recipe-nutrition .col-3 span')[1].try(:text),
+  carb: doc.search('.recipe-nutrition .col-4 span')[1].try(:text),
+  protein: doc.search('.recipe-nutrition .col-2 span')[1].try(:text),
   difficulty: doc.search('.recipe-difficulty span').text,
   time: doc.search('.recipe-time .col-1 div').attr('data-time'),
   serves: serves = doc.search('.stepper-value').text.strip,
