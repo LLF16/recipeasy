@@ -43,31 +43,31 @@ ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-# puts "Creating users..."
-# User.create!([
-#   {
-#     last_name: "Gordon",
-#     vegan: false,
-#     vegetarian: false,
-#     email: "gramsey@example.com",
-#     password: "123456"
-#   },
-#   {
-#     last_name: "Mum",
-#     vegan: false,
-#     vegetarian: false,
-#     email: "mum@example.com",
-#     password: "123456"
-#   },
-#   {
-#     last_name: "Jamie",
-#     vegan: false,
-#     vegetarian: false,
-#     email: "joliver@example.com",
-#     password: "123456"
-#   }
-# ]);
-# puts "Created #{User.all.length} users"
+puts "Creating users..."
+User.create!([
+  {
+    last_name: "Gordon",
+    vegan: false,
+    vegetarian: false,
+    email: "gramsey@example.com",
+    password: "123456"
+  },
+  {
+    last_name: "Mum",
+    vegan: false,
+    vegetarian: false,
+    email: "mum@example.com",
+    password: "123456"
+  },
+  {
+    last_name: "Jamie",
+    vegan: false,
+    vegetarian: false,
+    email: "joliver@example.com",
+    password: "123456"
+  }
+]);
+puts "Created #{User.all.length} users"
 
 # testing_urls = [
 #   'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
@@ -203,79 +203,79 @@ end
 sleep(1)
 end
 
-# puts "Creating shopping lists..."
-# ShoppingList.create!([
-#   {
-#     user_id: 1,
-#     total_price: 100
-#   },
-#   {
-#     user_id: 2,
-#     total_price: 400
-#   },
-#   {
-#     user_id: 3,
-#     total_price: 150
-#   }
-# ]);
-# puts "Created #{ShoppingList.all.length} shopping lists"
+puts "Creating shopping lists..."
+ShoppingList.create!([
+  {
+    user_id: 1,
+    total_price: 100
+  },
+  {
+    user_id: 2,
+    total_price: 400
+  },
+  {
+    user_id: 3,
+    total_price: 150
+  }
+]);
+puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-# puts "Creating measurement shopping lists..."
-# MeasurementShoppingList.create!([
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 1
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 2
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 3
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 4
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 5
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 40
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 42
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 41
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 25
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 33
-#   },
-#   # this one has nil value
-#   # {
-#   #   shopping_list_id: 1,
-#   #   measurement_id: 54,
-#   #   price: 20
-#   # },
-#   {
-#     shopping_list_id: 2,
-#     measurement_id: 29
-#   },
-#   {
-#     shopping_list_id: 3,
-#     measurement_id: 25
-#   }
-# ]);
-# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+puts "Creating measurement shopping lists..."
+MeasurementShoppingList.create!([
+  {
+    shopping_list_id: 1,
+    measurement_id: 1
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 4
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 5
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 40
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 42
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 41
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 25
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 33
+  },
+  # this one has nil value
+  # {
+  #   shopping_list_id: 1,
+  #   measurement_id: 54,
+  #   price: 20
+  # },
+  {
+    shopping_list_id: 2,
+    measurement_id: 29
+  },
+  {
+    shopping_list_id: 3,
+    measurement_id: 25
+  }
+]);
+puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
