@@ -1,6 +1,8 @@
 class Search::IngredientsController < ApplicationController
   skip_before_action :authenticate_user!
 
+
+
   def index
     @ingredients_received = []
     @ingredients_received << Ingredient.where(name: "#{params[:first]}")
@@ -69,10 +71,16 @@ class Search::IngredientsController < ApplicationController
 
   end
 
+
+
+  # p @clean_array.flatten!
   # private
 
+
+
   def get_four_random
-    @ingredient_1 = Ingredient.all.sample(1).first
+
+    @ingredient_1 = Ingredient.clean_ingredients.shuffle.first
     @recipes_with_ingredient_1 = @ingredient_1.recipes
     @ingredients_to_send << @ingredient_1
 
@@ -84,7 +92,11 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_2 = @sample_ingredient_2.shuffle.first
+    @new_sample_ingredient_2 = @sample_ingredient_2.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    # @new_sample_ingredient_2
+    @ingredient_2 = @new_sample_ingredient_2.shuffle.first
     @ingredients_to_send << @ingredient_2
 
     @recipes_with_ingredient_2 = @ingredient_2.recipes
@@ -99,7 +111,11 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_3 = @sample_ingredient_3.shuffle.first
+    @new_sample_ingredient_3 = @sample_ingredient_3.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    # @new_sample_ingredient_3
+    @ingredient_3 = @new_sample_ingredient_3.shuffle.first
     @ingredients_to_send << @ingredient_3
 
     @recipes_with_ingredient_3 = @ingredient_3.recipes
@@ -115,7 +131,11 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_4 = @sample_ingredient_4.shuffle.first
+    @new_sample_ingredient_4 = @sample_ingredient_4.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    # @new_sample_ingredient_4
+    @ingredient_4 = @new_sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
@@ -133,7 +153,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_2 = @sample_ingredient_2.shuffle.first
+    @new_sample_ingredient_2 = @sample_ingredient_2.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_2 = @new_sample_ingredient_2.shuffle.first
 
     @ingredients_to_send << @ingredient_2
 
@@ -151,7 +174,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_3 = @sample_ingredient_3.shuffle.first
+    @new_sample_ingredient_3 = @sample_ingredient_3.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_3 = @new_sample_ingredient_3.shuffle.first
     @ingredients_to_send << @ingredient_3
 
     @recipes_with_ingredient_3 = @ingredient_3.recipes
@@ -166,7 +192,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_4 = @sample_ingredient_4.shuffle.first
+    @new_sample_ingredient_4 = @sample_ingredient_4.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_4 = @new_sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
@@ -188,8 +217,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-
-    @ingredient_3 = @sample_ingredient_3.shuffle.first
+    @new_sample_ingredient_3 = @sample_ingredient_3.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_3 = @new_sample_ingredient_3.shuffle.first
     @ingredients_to_send << @ingredient_3
 
     @recipes_with_ingredient_3 = @ingredient_3.recipes
@@ -204,7 +235,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_4 = @sample_ingredient_4.shuffle.first
+    @new_sample_ingredient_4 = @sample_ingredient_4.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_4 = @new_sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
@@ -228,7 +262,10 @@ class Search::IngredientsController < ApplicationController
         end
       end
     end
-    @ingredient_4 = @sample_ingredient_4.shuffle.first
+    @new_sample_ingredient_4 = @sample_ingredient_4.select do |sample_ingredient|
+      Ingredient.ingredient_names.include?(sample_ingredient.name)
+    end
+    @ingredient_4 = @new_sample_ingredient_4.shuffle.first
     @ingredients_to_send << @ingredient_4
     return @ingredients_to_send
   end
