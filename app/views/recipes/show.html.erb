@@ -16,7 +16,7 @@
       <div class="recipe-ingredients">
         <ul class="list-inline">
           <% @recipe.measurements.each do |measurement| %>
-          <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.ingredient.unit %></li>
+          <li> <%= measurement.display_name.capitalize %>  | <%= measurement.value %> <%= measurement.ingredient.unit %></li>
           <% end %>
         </ul>
       </div>
