@@ -34,53 +34,52 @@ $("#test-id").confirm({
 export { amazingConfirmation };
 
 function addToSl () {
-
-$("#add-to-shopping-list").confirm({
-    columnClass: 'col-md-4 col-md-offset-4',
-    // boxWidth: '30%',
-    useBootstrap: false,
-    title: 'What is up?',
-    content: 'Here goes a little content',
-    theme: 'modern',
-    type: 'green',
-    buttons: {
-        ok: {
-            text: "ok!",
-            btnClass: 'btn-primary',
-            keys: ['enter'],
-            action: function(){
-              // post request
-              // measurement
-              fetch($("#add-to-shopping-list").data('path'), {
-                method: 'post',
-                body: JSON.stringify(),
-                headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRF-Token': Rails.csrfToken()
-                },
-                credentials: 'same-origin'
-              }).then(function(response) {
-                if (response.ok) {
-                  var amount =  $("#shopping-list-amount").data('amount');
-                  amount++
-                  $("#shopping-list-amount").text(`Shopping list (${amount})`);
-
-                }
-              })
-            }
+  var recipe = $("#recipe-title").data('recipe');
+  // const recipe = document.getElementById("recipe-title").dataset.recipe;
+  console.log(recipe)
+  var button = $("#add-to-shopping-list")
+    console.log(button.data('saved'));
+    button.confirm({
+      columnClass: 'col-md-4 col-md-offset-4',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      title: 'Confirmation',
+      content: `Success. You added ${recipe} to your shopping list.` ,
+      theme: 'modern',
+      autoClose: 'Enjoy|4000',
+      buttons: {
+          Enjoy: {
+              text: 'Enjoy'
+          },
         },
-        cancel: {
-            text: "dude",
-            method: "post",
-            btnClass: 'btn-danger',
-            keys: [ 'esc'],
-            action: function(){
-              // do nothing
-        }
-      }
-    }
-});
+      type: 'green',
+      onContentReady: function(){
+                // post request
+                // measurement
+                fetch($("#add-to-shopping-list").data('path'), {
+                  method: 'post',
+                  body: JSON.stringify(),
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': Rails.csrfToken()
+                  },
+                  credentials: 'same-origin'
+                }).then(function(response) {
+                  if (response.ok) {
+                    var amount =  $("#shopping-list-amount").data('amount');
+                    amount++
+                    $("#shopping-list-amount").text(`Shopping list (${amount})`);
+                    $("#add-to-shopping-list").addClass('hidden');
+
+                  }
+                })
+              }
+
+
+      });
+
 };
+
 
 export { addToSl };
 
