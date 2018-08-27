@@ -1,7 +1,7 @@
 <div class="container-ingredients">
   <%= form_tag searches_path, method: :get, remote: true do %>
  <div class="ingredients-index-container">
-    <div class="ingredients-index-bars">
+    <div class="ingredients-index-bar" style=“background-image: url(<%= @ingredients_to_send[0].photo_url %>), linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))“>
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_1,
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="ingredients-index-bars">
+    <div class="ingredients-index-bar">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_2,
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="ingredients-index-bars">
+    <div class="ingredients-index-bar">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_3,
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="ingredients-index-bars">
+    <div class="ingredients-index-bar">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_4,

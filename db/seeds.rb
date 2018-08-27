@@ -376,5 +376,8 @@ puts "Creating ingredient pictures..."
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/v1535200968/Recipeasy/basil.jpg'
   elsif ingredient.name == "chicken"
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/v1535373966/Recipeasy/chicken.jpg'
+  else
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/v1535373966/Recipeasy/chicken.jpg'
+
   end
 end
