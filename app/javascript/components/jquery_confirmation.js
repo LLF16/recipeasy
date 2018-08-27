@@ -36,9 +36,9 @@ export { amazingConfirmation };
 function addToSl () {
   var recipe = $("#recipe-title").data('recipe');
   // const recipe = document.getElementById("recipe-title").dataset.recipe;
-  console.log(recipe);
+  // console.log(recipe);
   var button = $("#add-to-shopping-list")
-    console.log(button.data('saved'));
+    // console.log(button.data('saved'));
     button.confirm({
       columnClass: 'col-md-4 col-md-offset-4',
       // boxWidth: '30%',
