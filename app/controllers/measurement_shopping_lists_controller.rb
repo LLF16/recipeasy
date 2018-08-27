@@ -4,7 +4,7 @@ before_action :set_sl_measurement
   def destroy
     @shopping_list = @sl_measurement.shopping_list
     if @sl_measurement.destroy
-      redirect_to shopping_list_path(@shopping_list)
+      redirect_to shopping_list_path(@shopping_list), notice: 'Delete success'
     else
       render :new
     end
