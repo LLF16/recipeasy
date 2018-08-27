@@ -1,8 +1,11 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <%= image_tag "red_logo.png", height: 50 %>
   <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
   <div>
     <%= link_to recipes_path, class: "recipe-of-the-day-small" do %>
         <%= image_tag "question_mark" %>
@@ -14,13 +17,12 @@
         <%= image_tag "question_mark" %>
       <% end %>
   </div>
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Shopping list (#{current_user.shopping_lists.first.recipes.length})", shopping_list_path(current_user.shopping_lists.first), class: "navbar-wagon-item navbar-wagon-link" %>
+
+
+      <%= link_to "Shopping List (#{current_user.shopping_lists.first.recipes.length})", shopping_list_path(current_user.shopping_lists.first), class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
