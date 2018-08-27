@@ -3,6 +3,74 @@
 require "open-uri"
 require "nokogiri"
 
+# DELETING EXISTING DATA FROM THE CURRENT DATABASE
+puts "Destroy recipe_users"
+RecipeUser.destroy_all if Rails.env.development?
+
+puts "Destroy measurement_shopping_lists"
+MeasurementShoppingList.destroy_all if Rails.env.development?
+
+puts "Destroy measurements"
+Measurement.destroy_all if Rails.env.development?
+
+puts "Destroy recipe_beverages"
+RecipeBeverage.destroy_all if Rails.env.development?
+
+puts "Destroy beverages"
+Beverage.destroy_all if Rails.env.development?
+
+puts "Destroy beverage_categories"
+BeverageCategory.destroy_all if Rails.env.development?
+
+puts "Destroy ingredients"
+Ingredient.destroy_all if Rails.env.development?
+
+puts "Destroy ingredient_families"
+IngredientFamily.destroy_all if Rails.env.development?
+
+puts "Destroy shopping_lists"
+ShoppingList.destroy_all if Rails.env.development?
+
+puts "Destroy recipe_users"
+RecipeUser.destroy_all if Rails.env.development?
+
+puts "Destroy recipes"
+Recipe.destroy_all if Rails.env.development?
+
+puts "Destroy users"
+User.destroy_all if Rails.env.development?
+
+puts "Resetting IDs"
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
+puts "Creating users..."
+User.create!([
+  {
+    last_name: "Gordon",
+    vegan: false,
+    vegetarian: false,
+    email: "gramsey@example.com",
+    password: "123456"
+  },
+  {
+    last_name: "Mum",
+    vegan: false,
+    vegetarian: false,
+    email: "mum@example.com",
+    password: "123456"
+  },
+  {
+    last_name: "Jamie",
+    vegan: false,
+    vegetarian: false,
+    email: "joliver@example.com",
+    password: "123456"
+  }
+]);
+puts "Created #{User.all.length} users"
+
 testing_urls = [
   'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
   'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
@@ -120,3 +188,80 @@ end
 
 sleep(1)
 end
+
+puts "Creating shopping lists..."
+ShoppingList.create!([
+  {
+    user_id: 1,
+    total_price: 100
+  },
+  {
+    user_id: 2,
+    total_price: 400
+  },
+  {
+    user_id: 3,
+    total_price: 150
+  }
+]);
+puts "Created #{ShoppingList.all.length} shopping lists"
+
+
+puts "Creating measurement shopping lists..."
+MeasurementShoppingList.create!([
+  {
+    shopping_list_id: 1,
+    measurement_id: 1
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 4
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 5
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 86
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 80
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 81
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 84
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 33
+  },
+  # this one has nil value
+  # {
+  #   shopping_list_id: 1,
+  #   measurement_id: 54,
+  #   price: 20
+  # },
+  {
+    shopping_list_id: 2,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 3,
+    measurement_id: 2
+  }
+]);
+puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
