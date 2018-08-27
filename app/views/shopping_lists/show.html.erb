@@ -13,13 +13,9 @@
                 <%= ingredient.name %> |
                 <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
                 <%= ingredient.unit %> |
-                <%= ingredient.total_price_in_shopping_list(@shopping_list) %> €
               </li>
             <% end %>
           </ul>
-          <p>
-          Total = <%= @shopping_list.total_price %> €
-          </p>
         </div>
 
       </div>
@@ -49,7 +45,6 @@
                           <div class="shopping-list-recipe-card-values">
                             <%= measurement.value %>
                             <%= measurement.ingredient.unit %> for
-                            <%= measurement.ingredient.price %> €
                           </div>
 
                         </li>

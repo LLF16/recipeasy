@@ -1,7 +1,7 @@
 class ShoppingLists::MeasurementShoppingListsController < ApplicationController
 
   def create
-    @shopping_list = ShoppingList.find(params[:shopping_list_id])
+    @shopping_list = current_user.shopping_lists.first
     @recipe = Recipe.find(params[:recipe_id])
 
     if @shopping_list.recipes.include?(@recipe)
@@ -14,9 +14,18 @@ class ShoppingLists::MeasurementShoppingListsController < ApplicationController
         measurement_id: measurement.id
         )
       new_measurement.save
-
     end
-    redirect_to recipe_path(@recipe)
-  end
 
+    if @recipe.measurements.all?(&:persisted?)
+      respond_to do |format|
+        format.html { redirect_to recipe_path(@recipe) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'recipes/show'}
+        format.js
+      end
+    end
+  end
 end

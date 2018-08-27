@@ -2,6 +2,7 @@
 
 require "open-uri"
 require "nokogiri"
+require_relative "recipe_urls"
 
 # DELETING EXISTING DATA FROM THE CURRENT DATABASE
 puts "Destroy recipe_users"
@@ -68,15 +69,15 @@ User.create!([
 ]);
 puts "Created #{User.all.length} users"
 
-testing_urls = [
-  'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
-  'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
-  'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
-  'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
-  'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
-]
+# testing_urls = [
+#   'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
+#   'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
+#   'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
+#   'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
+#   'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
+# ]
 
-testing_urls.each do |url|
+@recipes_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
 
@@ -111,74 +112,90 @@ new_recipe.save!
 # END SCRAPING RECIPES-----------------------------------------------------------
 
 # SCRAPING INGREDIENTS-----------------------------------------------------------
-clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot chilli zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts honey asparagus goatcheese bellpeppers pinenuts )
-
+clean_ingredients = %w(mozzarella tomato basil onion garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts asparagus pinenuts salt thyme)
+clean_ingredients << "chili pepper"
+clean_ingredients << "bell pepper"
+clean_ingredients << "goat cheese"
+clean_ingredients << "olive oil"
 
 counter = 0
 scraped_ingredients = []
-scraped_measurements = []
+scraped_measurements_unit = []
+scraped_measurements_value = []
 while counter < doc.search('.ingredients tr').length
   scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
-  scraped_measurements << doc.search('.ingredients tr .ingredients__col-1')[counter].text.strip
+  scraped_measurements_unit << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
+  scraped_measurements_value << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
   counter += 1
 end
 
-p scraped_measurements
+p scraped_measurements_value
+p scraped_measurements_unit
 
 main_ingredients = []
-main_measurements = []
+main_measurements_unit = []
+main_measurements_value = []
 scraped_ingredients.each do |scraped_ingredient|
+  scraped_ingredient.downcase!
   clean_ingredients.select do |clean_name|
     if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
       ingredient_found = Ingredient.where(name: clean_name).first
       if ingredient_found
-        ingredient_found.display_name[new_recipe.id] = scraped_ingredient
         measurement = Measurement.new
+        measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
         measurement.ingredient_id = ingredient_found.id
         measurement.recipe_id = new_recipe.id
-        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.display_name = scraped_ingredient
+        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
         measurement.save!
+        # p ingredient_found
         # p measurement
         # p "found"
-        # p ingredient_found
         main_ingredients << scraped_ingredient
-        main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        main_measurements_unit << scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
+        main_measurements_value << scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
       else
         ingredient = Ingredient.new(
           name: clean_name
           )
-        ingredient.display_name[new_recipe.id] =  scraped_ingredient
         ingredient.save!
         measurement = Measurement.new
+        measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
         measurement.ingredient_id = ingredient.id
         measurement.recipe_id = new_recipe.id
-        measurement.value = scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        measurement.display_name =  scraped_ingredient
+        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
         measurement.save!
-        p measurement
-        # p "new clean"
         # p ingredient
+        # p measurement
+        # p "new clean"
         main_ingredients << scraped_ingredient
-        main_measurements << scraped_measurements[scraped_ingredients.index(scraped_ingredient)]
+        main_measurements_unit << scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
+        main_measurements_value << scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)]
       end
     end
   end
 end
 
 ingredients_to_be_scraped = scraped_ingredients - main_ingredients
-measuremements_to_be_scraped = scraped_measurements - main_measurements
+measuremements_to_be_scraped_unit = scraped_measurements_unit - main_measurements_unit
+measuremements_to_be_scraped_value = scraped_measurements_value - main_measurements_value
 
 ingredients_to_be_scraped.each do |scraped_ingredient|
+  scraped_ingredient.downcase!
   ingredient = Ingredient.where(name: scraped_ingredient).first
   unless ingredient.present?
     ingredient = Ingredient.create!(name: scraped_ingredient)
     measurement = Measurement.new
+    measurement.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
     measurement.ingredient_id = ingredient.id
     measurement.recipe_id = new_recipe.id
-    measurement.value = measuremements_to_be_scraped[ingredients_to_be_scraped.index(scraped_ingredient)]
+    measurement.display_name = scraped_ingredient
+    measurement.value = measuremements_to_be_scraped_value[ingredients_to_be_scraped.index(scraped_ingredient)]
     measurement.save!
-    p measurement
-    # p "new scraped"
     # p ingredient
+    # p measurement
+    # p "new scraped"
   end
 
 end

@@ -1,9 +1,9 @@
-# @recipes_urls = [
+@recipes_urls = [
 # 'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
 # 'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
 # 'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
 # 'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
-# 'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
+'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
 # 'https://www.kitchenstories.com/en/recipes/ricotta-and-spinach-gnudi',
 # 'https://www.kitchenstories.com/en/recipes/chicken-milanese-with-spaghetti',
 # 'https://www.kitchenstories.com/en/recipes/spinach-lasagna',
@@ -18,7 +18,7 @@
 # 'https://www.kitchenstories.com/en/recipes/asparagus-and-herb-frittata',
 # 'https://www.kitchenstories.com/en/recipes/pasta-with-spinach-pesto',
 # 'https://www.kitchenstories.com/en/recipes/linguine-with-scallops-and-lemon',
-# 'https://www.kitchenstories.com/en/recipes/spaghetti-with-fennel-tomato-and-mint',
+'https://www.kitchenstories.com/en/recipes/spaghetti-with-fennel-tomato-and-mint',
 # 'https://www.kitchenstories.com/en/recipes/braised-ox-cheeks-with-celery-puree-and-gremolata',
 # 'https://www.kitchenstories.com/en/recipes/italian-style-pasta-salad',
 # 'https://www.kitchenstories.com/en/recipes/radicchio-pasta-with-gorgonzola-and-walnuts',
@@ -199,5 +199,5 @@
 # 'https://www.kitchenstories.com/en/recipes/lemon-chicken-tikka-masala',
 # 'https://www.kitchenstories.com/en/recipes/palak-paneer',
 # 'https://www.kitchenstories.com/en/recipes/veggie-coconut-curry'
-# ]
+]
 
