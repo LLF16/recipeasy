@@ -46,7 +46,9 @@ shuffleButton.addEventListener("click", (event) => {
   fetch(url)
     .then(response => response.json())
     .then((data) => {
+      console.log(data);
       let data_array = [];
+      let backgrounds = document.querySelectorAll('.ingredients-index-bar');
       data_array.push(data.first);
       data_array.push(data.second);
       data_array.push(data.third);
@@ -57,6 +59,14 @@ shuffleButton.addEventListener("click", (event) => {
         item.defaultValue = data_array[counter].name;
         counter ++;
       });
+
+      let second_counter = 0;
+      console.log(second_counter);
+      backgrounds.forEach((item) => {
+        item.style.backgroundImage = "url(`${data_array[second_counter].photo.url}`)";
+        console.log(item.style);
+        second_counter ++;
+      });
     });
 });
 
@@ -65,7 +75,6 @@ document.body.onkeyup = function(e){
   let array = [];
   if(e.keyCode == 32){
     let ingredients = document.querySelectorAll('input.form-control');
-
     let locked_ingredients = ingredients.forEach((item) => {
       // console.log(item)
       // console.log(item.defaultValue)
@@ -83,6 +92,8 @@ document.body.onkeyup = function(e){
     .then(response => response.json())
     .then((data) => {
       let data_array = [];
+      let backgrounds = document.querySelectorAll('.ingredients-index-bar');
+      console.log(data);
       data_array.push(data.first);
       data_array.push(data.second);
       data_array.push(data.third);
@@ -92,6 +103,16 @@ document.body.onkeyup = function(e){
       ingredients.forEach((item) => {
         item.defaultValue = data_array[counter].name;
         counter ++;
+      });
+
+      let second_counter = 0;
+      backgrounds.forEach((item) => {
+      console.log(second_counter);
+        // item.style.backgroundImage = `"url('${data_array[second_counter].photo.url}')"`;
+        item.style.backgroundImage = 'url(' + data_array[second_counter].photo.url + ')';
+
+        console.log(item.style.backgroundImage);
+        second_counter ++;
       });
     });
 
@@ -105,3 +126,6 @@ document.body.onkeyup = function(e){
 //   .then((data) => {
 //     console.log(data);
 //   });
+
+
+// document.querySelector('#index-bar-first').style.backgroundImage =  "url('https://res.cloudinary.com/decmti7fk/image/upload/v1535201319/Recipeasy/ricotta.jpg')"
