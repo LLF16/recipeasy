@@ -22,7 +22,7 @@
       </div>
       <div>
 <!--  -->
-        <%= link_to "Add to shopping-list", recipe_measurement_shopping_lists_path(@recipe), method: :post, class: "btn btn-info" %>
+        <%= link_to "#{current_user ? "Add to shopping list" : "Log in to add to shopping list"}", recipe_measurement_shopping_lists_path(@recipe), method: :post, class: "btn btn-info" %>
         <%= link_to "Cook now", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
       </div>
     </div>
