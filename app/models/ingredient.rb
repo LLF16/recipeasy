@@ -16,9 +16,9 @@ class Ingredient < ApplicationRecord
      Measurement.joins([:measurement_shopping_lists, :ingredient]).where("shopping_list_id = ?", shopping_list.id).where(ingredient_id: id).sum(:value)
   end
 
-  def total_price_in_shopping_list(shopping_list)
-    self.price * self.total_amount_in_shopping_list(shopping_list)
-  end
+  # def total_price_in_shopping_list(shopping_list)
+  #   self.price * self.total_amount_in_shopping_list(shopping_list)
+  # end
 
   def total_price_for_measurement(measurement)
   measurement.value
