@@ -1,7 +1,7 @@
 class ShoppingLists::MeasurementShoppingListsController < ApplicationController
 
   def create
-    @shopping_list = ShoppingList.find(params[:shopping_list_id])
+    @shopping_list = current_user.shopping_lists.first
     @recipe = Recipe.find(params[:recipe_id])
 
     if @shopping_list.recipes.include?(@recipe)

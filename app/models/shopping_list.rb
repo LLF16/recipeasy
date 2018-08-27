@@ -4,13 +4,13 @@ class ShoppingList < ApplicationRecord
   has_many :measurements, through: :measurement_shopping_lists
   has_many :ingredients, -> { distinct }, through: :measurements
 
-  def total_price
-    sum = 0
-    ingredients.each do |ingredient|
-      sum += ingredient.total_price_in_shopping_list(self)
-    end
-    sum
-  end
+  # def total_price
+  #   sum = 0
+  #   ingredients.each do |ingredient|
+  #     sum += ingredient.total_price_in_shopping_list(self)
+  #   end
+  #   sum
+  # end
 
   def recipes
     Recipe.joins(measurements: :measurement_shopping_lists).distinct.where("measurement_shopping_lists.shopping_list_id = ?", id)

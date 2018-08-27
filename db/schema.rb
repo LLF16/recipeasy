@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_115114) do
+ActiveRecord::Schema.define(version: 2018_08_27_104418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2018_08_25_115114) do
     t.boolean "seasoning"
     t.float "price"
     t.string "unit"
-    t.string "display_name"
     t.index ["ingredient_family_id"], name: "index_ingredients_on_ingredient_family_id"
   end
 
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_08_25_115114) do
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "display_name"
     t.index ["ingredient_id"], name: "index_measurements_on_ingredient_id"
     t.index ["recipe_id"], name: "index_measurements_on_recipe_id"
   end
@@ -97,12 +97,16 @@ ActiveRecord::Schema.define(version: 2018_08_25_115114) do
     t.string "name"
     t.string "photo"
     t.integer "calories"
-    t.integer "difficulty"
     t.integer "serves"
     t.string "time"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "carb"
+    t.integer "fat"
+    t.integer "protein"
+    t.text "utensils"
+    t.string "difficulty"
   end
 
   create_table "shopping_lists", force: :cascade do |t|

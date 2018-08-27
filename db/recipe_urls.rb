@@ -1,9 +1,9 @@
-# @recipes_urls = [
-# 'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
-# 'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
-# 'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
-# 'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
-# 'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
+@recipes_urls = [
+'https://www.kitchenstories.com/en/recipes/mozzarella-stuffed-gnocchi-with-tomato-confit',
+'https://www.kitchenstories.com/en/recipes/5-ingredient-pasta-with-red-pepper-pesto',
+'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
+'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
+'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
 # 'https://www.kitchenstories.com/en/recipes/ricotta-and-spinach-gnudi',
 # 'https://www.kitchenstories.com/en/recipes/chicken-milanese-with-spaghetti',
 # 'https://www.kitchenstories.com/en/recipes/spinach-lasagna',
@@ -199,5 +199,5 @@
 # 'https://www.kitchenstories.com/en/recipes/lemon-chicken-tikka-masala',
 # 'https://www.kitchenstories.com/en/recipes/palak-paneer',
 # 'https://www.kitchenstories.com/en/recipes/veggie-coconut-curry'
-# ]
+]
 
