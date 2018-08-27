@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shopping_lists
+  has_one :shopping_list
   has_many :recipe_users
   has_many :recipes, through: :recipe_users
 end

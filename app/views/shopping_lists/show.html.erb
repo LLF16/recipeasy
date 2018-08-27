@@ -1,86 +1,29 @@
 <div class="container container-flex">
   <% if @shopping_list.recipes.empty? %>
-        <p><%= "You have no recipes yet!" %></p>
-        <div><%= link_to "Discover recipes", ingredients_path, class:"btn btn-primary" %></div>
+    <p><%= "You have no recipes yet!" %></p>
+    <div><%= link_to "Discover recipes", ingredients_path, class:"btn btn-primary" %>
+    </div>
   <% else %>
     <div class="row">
+
       <div class="col-xs-12 col-md-6" id="shopping-list">
         <h2> Your shopping list </h2>
         <div class="shopping-list-cumulative">
-          <ul>
-            <% @shopping_list.ingredients.each do |ingredient| %>
-              <li>
-                <h5><%= ingredient.name.capitalize %></h5>
-                <!-- if the ingredient has only one relative and their names are the same, then it won't display the relative's name -->
-                  <% unless ingredient.relatives_in_shopping_list(@shopping_list).length == 1 && ingredient.relatives_in_shopping_list(@shopping_list).first.display_name == ingredient.name %>
-                    <% ingredient.relatives_in_shopping_list(@shopping_list).each do |relative| %>
-                      <% unless ["salt", "pepper"].include?(ingredient.name) %>
-                        <ul>
-                          <li>
-                            <%= relative.display_name %>
-                            <% if relative.value  %>
-                              | <%= relative.value %>
-                              <%= ingredient.unit %>
-                            <% end %>
-                          </li>
-                        </ul>
-                      <% end %>
-                    <% end %>
-                    <!-- remove this when styling :) -->
-                    ------------ <br>
-                  <% end %>
-                <!-- do not display the value if it's zero (like in "flour for dusting") -->
-                <% if ingredient.total_amount_in_shopping_list(@shopping_list) != 0 %>
-                  Total:
-                  <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
-                  <%= ingredient.unit %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+          <%= render "ingredient", shopping_list: @shopping_list %>
         </div>
-
       </div>
 
       <div class="col-xs-12 col-md-6">
         <h2> The recipes </h2>
+        <%= link_to "Send shopping list as email", send_email_shopping_list_url(@user), method: :get %>
         <ul style= "list-style-type: none">
           <% @shopping_list.recipes.each do |recipe| %>
-            <li>
-              <div class="shopping-list-recipe-card">
-                <div class="shopping-list-recipe-card-details">
-                  <%= image_tag recipe.photo, class: "shopping-list-recipe-card-photo" %>
-                  <h2><%= recipe.name %></h2>
-                  <%= link_to "Remove", shopping_list_recipe_path(@shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
-                </div>
-
-                  <ul class="shopping-list-recipe-card-ingredients">
-                    <% recipe.measurements.each do |measurement| %>
-
-                      <% if @shopping_list.measurements.include?(measurement) %>
-
-                        <li id="ingredient-name", data-ingredient="<%= measurement.display_name.capitalize %>">
-                          <%= measurement.display_name.capitalize %>
-                          <%= link_to "🗑️", measurement_shopping_list_path(measurement.measurement_for(@shopping_list)), method: :delete, data: {confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
-                          <br>
-                          <div class="shopping-list-recipe-card-values">
-                            <%= measurement.value %>
-                            <%= measurement.ingredient.unit %>
-                          </div>
-
-                        </li>
-
-                      <% end %>
-                    <% end %>
-                  </ul>
-              </div>
-            </li>
+             <%= render "recipe_card", measurement: @measurement, shopping_list: @shopping_list, recipe: recipe %>
           <% end %>
         </ul>
       </div>
     </div>
   <% end %>
-
 </div>
 
 

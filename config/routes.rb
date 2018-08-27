@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show]
   resources :shopping_lists, only: [:show] do
     resources :recipes, only: :destroy, module: :shopping_lists
+    member do
+      get 'send_email'
+    end
   end
   resources :measurement_shopping_lists, only: [:destroy]
   resources :searches, only: :index
