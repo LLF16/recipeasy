@@ -130,3 +130,32 @@ function sendEmailSL () {
 
 
 export { sendEmailSL };
+
+
+function startCookingMode () {
+  var btn = $("#cook-now")
+    // console.log(button.data('saved'));
+    btn.confirm({
+      // columnClass: 'col-md-4 col-md-offset-4',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      title: 'Cooking Mode',
+      content: `Press ESC to close window. Press -> to mark cooking step as finished. Press <- to unmark previous cooking step.` ,
+      theme: 'supervan',
+      buttons: {
+          Ok: {
+              text: 'Cook Now',
+              action: function(){
+                  window.scrollTo({
+                    top: 800,
+                    behavior: "smooth"
+                  });
+              }
+          },
+        },
+      type: 'green'
+    });
+};
+
+
+export { startCookingMode };

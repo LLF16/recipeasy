@@ -20,9 +20,17 @@ function showCookingSteps(innerHTML) {
     })
   });
 
-    window.scrollTo({
-    top: 800,
-    behavior: "smooth"
+
+
+
+
+    document.addEventListener("keyup", (event) => {
+    if (event.key === "w"){
+    let wholeDiv = document.querySelector("#cooking-mode .active")
+    // let activeClass = document.querySelector(".active")
+    wholeDiv.classList.remove("active")
+    wholeDiv.nextElementSibling.classList.add("active")
+    }
     });
 
 
@@ -41,9 +49,9 @@ function showCookingSteps(innerHTML) {
     // const recipeRow = document.getElementById('cooking-steps');
     // recipeRow.classList.toggle('hide');
     newCookingSteps.innerHTML = "";
-   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
   });
 
