@@ -32,7 +32,9 @@
 let shuffleButton = document.querySelector(".ingredients-shuffle-button");
 shuffleButton.addEventListener("click", (event) => {
   let array = [];
-  let ingredients = document.querySelectorAll('input.form-control');
+  // let first_ingredient = document.querySelectorAll('.form-control')[0].value
+  let ingredients = document.querySelectorAll('.form-control');
+  console.log(ingredients)
   let ingredientNames = document.querySelectorAll('.slot-ingredient-name');
   let locked_ingredients = ingredients.forEach((item) => {
     if(item.disabled) {
@@ -87,7 +89,7 @@ shuffleButton.addEventListener("click", (event) => {
 document.body.onkeyup = function(e){
   let array = [];
   if(e.keyCode == 32){
-    let ingredients = document.querySelectorAll('input.form-control');
+    let ingredients = document.querySelectorAll('.form-control');
     let locked_ingredients = ingredients.forEach((item) => {
       // console.log(item)
       // console.log(item.defaultValue)
