@@ -59,6 +59,12 @@
   height: 20%;
 }
 
+.slot-ingredient-name {
+  color: white;
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  font-weight: lighter;
+}
+
 .ingredients-index-bars {
   & #ingredient_1:active,
   & #ingredient_2::focus,
