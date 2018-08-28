@@ -1,11 +1,10 @@
-<li>
+<div class="banner-shopping-list" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path recipe.photo, class: 'recipe-image' %>');">
   <div class="shopping-list-recipe-card">
-    <div class="shopping-list-recipe-card-details">
-      <%= image_tag recipe.photo, class: "shopping-list-recipe-card-photo" %>
+
       <h2><%= recipe.name %></h2>
       <%= link_to "Remove", shopping_list_recipe_path(shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
     </div>
-
+    <div class="shopping-list-ingredients"></div>
       <ul class="shopping-list-recipe-card-ingredients">
         <% recipe.measurements.each do |measurement| %>
 
@@ -15,4 +14,4 @@
         <% end %>
       </ul>
   </div>
-</li>
+

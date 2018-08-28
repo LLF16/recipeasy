@@ -10,9 +10,30 @@
   display: flex;
 }
 
-#shopping-list {
-  flex: 0 0 450px;
-  height: 100vh;
-  position: sticky !important;
-  top: 0 !important;
+// #shopping-list {
+//   flex: 0 0 450px;
+//   height: 100vh;
+//   position: sticky !important;
+//   top: 0 !important;
+// }
+
+.jconfirm-content {
+
+  ul {
+    list-style-type: none;
+    text-align: left;
+  }
 }
+
+.banner-shopping-list {
+  height: 100%;
+  color: white;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  margin: 20px 0 20px 0;
+  border-radius: 15px;
+  justify-content: space-between;
+  padding: 20px;
+}
+

@@ -1,11 +1,12 @@
 .shopping-list-recipe-card {
   display: flex;
   border: 1px solid lightgrey;
-  border-radius: 5px;
-  background: white;
+  border-radius: 15px;
+  background: transparent;
   margin: 10px;
   padding: 20px;
   justify-content: center;
+  height: 100px;
 }
 
 .shopping-list-recipe-card-photo {
@@ -22,7 +23,7 @@
 .shopping-list-recipe-card-details {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
 }
 
 .shopping-list-recipe-card h2 {
@@ -31,7 +32,28 @@
 }
 
 .shopping-list-recipe-card-ingredients {
-  flex-grow: 1;
+  // flex-grow: 1;
+  list-style-type: none;
+
+  li {
+    // display: inline-block
+    max-width: 250px;
+    text-overflow: ellipsis;
+    opacity: 0.8;
+  }
+
+  li:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  li:nth-child(odd) {
+    background-color: #00DEC7;
+  }
+
+  li:nth-child(even) {
+    background-color: #00ACA5;
+  }
 }
 
 .shopping-list-recipe-card-ingredients li {
