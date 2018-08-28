@@ -1,35 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="xs-col-6 xs-col-offset-3">
-        <h1 id="recipe-title"><%= @recipe.name %></h1>
-<!-- take the first step of the recipe and give it the active class for the tab -->
-        <% step1 = @recipe.steps.first %>
-          <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#step-<%= step1[0] %>">Step <%= step1[0] %></a></li>
-            <!-- take all other steps but the first and iterate over them -->
-            <% @recipe.steps.drop(1).each do |steps| %>
-             <li><a data-toggle="tab" href="#step-<%= steps[0] %>">Step <%= steps[0] %></a></li>
-            <% end %>
-          </ul>
-
-          <div class="tab-content">
-
-              <div id="step-<%= step1[0] %>" class="tab-pane fade in active">
-                <h3>Some headline</h3>
-                <p><%= step1[1] %></p>
-              </div>
-            <% @recipe.steps.drop(1).each do |steps| %>
-                <div id="step-<%= steps[0] %>" class="tab-pane fade">
-                  <h3>Some headline</h3>
-                  <p><%= steps[1] %></p>
-                </div>
-
-            <% end %>
-          </div>
-
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="cooking-mode-header">
+        <h2>Let's start cooking!</h2>
+        <div class="hide-btn">
+          <%= button_tag "Hide", class: "btn btn-success btn-xs", id: "hide-cooking-steps"%>
+        </div>
       </div>
+      <div id="cooking-mode">
+        <div class="cooking-step-card" id="step1">
+          <div class='cooking-step-upvote'>
+            <div class="cooking-step-sign">🍳</div>
+            <% step1 = @recipe.steps.first %>
+            <div class='cooking-step-count'>Step <%= step1[0] %></div>
+          </div>
+          <div class="cooking-step-description">
+            <p><%= step1[1] %></p>
+          </div>
+        </div>
+        <% @recipe.steps.drop(1).each do |steps| %>
+        <div class="cooking-step-card" id="step<%= steps[0] %>">
+          <div class="cooking-step-upvote">
+            <div class="cooking-step-sign">🍳</div>
+            <div class="cooking-step-count">Step <%= steps[0] %></div>
+          </div>
+          <div class="cooking-step-description">
+            <p><%= steps[1] %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
-
 
