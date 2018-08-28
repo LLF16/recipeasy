@@ -2,16 +2,13 @@
   <div class="row">
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
+
+
       <div class="card-recipe">
         <div class="setting">
           <i class="fa fa-heart"></i>
         </div>
-        <div class="image" style="background: -webkit-linear-gradient(rgba(255,255,255,0) 50%, rgba(252, 252, 252, 0) 50%, rgba(246,246,246,1) 90%), url(<%= recipe.photo %>)"></div>
-        <div class="card-description">
-          <div>
-            <h5 class="sub">Recipe</h5>
-            <h4><%= recipe.name %></h4>
-          </div>
+         <div class="selected-recipes-facts">
           <div>
             <h5 class="sub">Time</h5>
             <h4><%= recipe.time %></h4>
@@ -21,9 +18,20 @@
             <h4><%= recipe.calories %></h4>
           </div>
         </div>
+        <div class="image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo %>)"></div>
+        <div class="card-description">
+          <div>
+            <p class="selected-recipe-title">Recipe</p>
+            <h4><%= recipe.name %></h4>
+          </div>
+        </div>
+
         <%= link_to "", recipe_path(recipe), class: "card-link" %>
       </div>
     </div>
     <% end %>
   </div>
 
+
+
+<!-- -webkit-linear-gradient(rgba(255,255,255,0) 50%, rgba(252, 252, 252, 0) 50%, rgba(246,246,246,1) 90%), -->

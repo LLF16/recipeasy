@@ -5,15 +5,28 @@ function refreshPage(innerHTML) {
   const newRecipes = document.getElementById('selected-recipes');
   newRecipes.innerHTML = innerHTML;
 // after adding some HTML we now want to be directly redirected to this specific part of the page
+  // setTimeout(revealFunction, 1000);
+
   window.scrollTo({
     top: 733,
     behavior: "smooth"
-});
+  });
+  revealFunction()
 
 };
+
+function revealFunction() {
+    showFacts = document.querySelectorAll(".selected-recipes-facts");
+    showFacts.forEach(function(showFact) {
+      showFact.classList.add("show");
+    });
+
+  }
+
 
 // As we want the ingredients controller to display our results dynamically, we need to render a partial in js
 refreshPage('<%= j render "searches/selected_recipes", selected_recipes: @selected_recipes %>');
 
 
 
+//
