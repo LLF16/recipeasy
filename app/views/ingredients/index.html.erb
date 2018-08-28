@@ -1,7 +1,7 @@
 <div class="container-ingredients">
   <%= form_tag searches_path, method: :get, remote: true do %>
  <div class="ingredients-index-container">
-    <div id="index-bar-first" class="ingredients-index-bar">
+    <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[0].photo_url %>)" >
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_1,
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div id="index-bar-second" class="ingredients-index-bar">
+    <div id="index-bar-second" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[1].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_2,
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div id="index-bar-third" class="ingredients-index-bar">
+    <div id="index-bar-third" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[2].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_3,
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div id="index-bar-fourth" class="ingredients-index-bar">
+    <div id="index-bar-fourth" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[3].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_4,
