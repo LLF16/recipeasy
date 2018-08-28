@@ -1,6 +1,7 @@
 // the first line is awaiting for change in the first input to enable the locking mechanism
 // so if nothing is in the field you can't lock it
-document.querySelectorAll('input.form-control')[0].addEventListener("change", (event) => {
+
+document.querySelectorAll('.form-control')[0].addEventListener("input", (event) => {
   const unlockedLock1 = document.querySelector("#ingredients-index-1 .fas");
   unlockedLock1.addEventListener("click", (event) => {
     const text_field = document.querySelector("#ingredient_1");
@@ -17,7 +18,8 @@ document.querySelectorAll('input.form-control')[0].addEventListener("change", (e
 // here below is the shuffle function
 
     let array = [];
-    let ingredients = document.querySelectorAll('input.form-control');
+    let ingredients = document.querySelectorAll('.form-control');
+    // let first_ingredient = document.querySelectorAll('.form-control')[0].value
     let ingredientNames = document.querySelectorAll('.slot-ingredient-name');
     let locked_ingredients = ingredients.forEach((item) => {
       if(item.disabled) {
@@ -26,6 +28,7 @@ document.querySelectorAll('input.form-control')[0].addEventListener("change", (e
         array.push("empty");
       };
     });
+    // array.unshift(first_ingredient)
     console.log(array)
     let url = `search/ingredients?first=${array[0]}&second=${array[1]}&third=${array[2]}&fourth=${array[3]}`;
     console.log(url);

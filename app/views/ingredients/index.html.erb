@@ -4,19 +4,14 @@
     <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= image_path "fridge.jpg" %>)" >
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
-          <%= text_field_tag :ingredient_1,
-            params[:ingredient_1],
-            class: "form-control first-text-tag",
-            placeholder: "Enter an ingredient",
-            value: "",
-            autofocus: true,
-            list: "ingredient_1_select" %>
-            <datalist id="ingredient_1_select">
-              <% @ingredients.each do |ingredient| %>
-              <option><%= ingredient.name %></option>
-              <% end %>
-            </datalist>
-          <h3 class="slot-ingredient-name"></h3>
+
+          <select id="ingredient_1" name="ingredient_1" class="form-control first-text-tag">
+            <option value="" selected disabled hidden>Select an ingredient...</option>
+
+            <% @ingredients.each do |ingredient| %>
+              <option value="<%= ingredient.name %>"><%= ingredient.name %></option>
+            <% end %>
+          </select>
 
         </div>
       </div>
