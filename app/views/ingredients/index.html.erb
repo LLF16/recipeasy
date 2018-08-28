@@ -71,15 +71,17 @@
           <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
      </div>
-
     </div>
   </div>
   <div class="ingredients-index-white-space-submit">
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
   </div>
   <% end %>
-  <div class="ingredients-index-white-space-shuffle">
-    <%= button_tag("Shuffle", class: "ingredients-shuffle-button") %>
+  <div class="ingredients-index-white-space-shuffle hidden-xs">
+    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
+  </div>
+  <div class="ingredients-index-white-space-shuffle-small hidden-md">
+    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
   </div>
 </div>
 
