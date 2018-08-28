@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+    def create
+    super
+    flash.delete(:notice)
+  end
+
+  # DELETE /resource/sign_out
+  def destroy
+    super
+    flash.delete(:notice)
+  end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
