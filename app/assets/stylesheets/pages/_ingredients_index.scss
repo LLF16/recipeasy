@@ -41,9 +41,28 @@
 // }
 
 
+// hide the form inputs
+.second-text-tag {
+  visibility: hidden;
+}
+
+.third-text-tag {
+  visibility: hidden;
+}
+
+.fourth-text-tag {
+  visibility: hidden;
+}
+
 .ingredients-index-bar-container {
   width: 80%;
   height: 20%;
+}
+
+.slot-ingredient-name {
+  color: white;
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  font-weight: lighter;
 }
 
 .ingredients-index-bars {

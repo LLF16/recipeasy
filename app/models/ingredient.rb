@@ -26,7 +26,7 @@ class Ingredient < ApplicationRecord
 
   class << self
     def ingredient_names
-      %w(mozzarella chili\spepper bell\spepper olive\soil goat\scheese tomatoes basil onions garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne conchiglie linguine leek pancetta chicken arugula spinach ricotta egg shallot zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts asparagus pinenuts salt thyme)
+      %w(mozzarella chili\spepper bell\spepper olive\soil goat\scheese tomatoes basil onions garlic potatoes mascarpone parmesan pecorino gorgonzola lasagne tagliatelle spaghetti macaroni penne linguine leek pancetta chicken arugula spinach ricotta egg shallot zucchini beef mushrooms prosciutto peas fusilli eggplant broccoli avocado carrots hazelnuts asparagus pinenuts thyme)
     end
 
     def clean_ingredients

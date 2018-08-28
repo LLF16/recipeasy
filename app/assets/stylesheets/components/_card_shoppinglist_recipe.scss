@@ -3,7 +3,7 @@
   border: 1px solid lightgrey;
   border-radius: 15px;
   background: transparent;
-  margin: 10px;
+  margin: 7px 5px 15px 25px;
   padding: 20px;
   justify-content: center;
   color: white;
@@ -70,6 +70,7 @@
   border-radius: 15px;
   border: #00DEC7;
   padding: 15px;
+  outline: none;
 
   &:hover {
     background-color: #00ACA5;
@@ -80,8 +81,8 @@
   color: #FF3A4F;
   font-size: 40px;
   position: absolute;
-  left: -3px;
-  top: -3px;
+  left: -1px;
+  top: -1px;
 }
 
 
