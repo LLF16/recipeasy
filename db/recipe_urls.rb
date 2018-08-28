@@ -4,7 +4,7 @@
 'https://www.kitchenstories.com/en/recipes/tagliatelle-with-pancetta-leek-and-tomato',
 'https://www.kitchenstories.com/en/recipes/spaghetti-in-marinara-sauce',
 'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
-# 'https://www.kitchenstories.com/en/recipes/ricotta-and-spinach-gnudi',
+'https://www.kitchenstories.com/en/recipes/ricotta-and-spinach-gnudi',
 # 'https://www.kitchenstories.com/en/recipes/chicken-milanese-with-spaghetti',
 # 'https://www.kitchenstories.com/en/recipes/spinach-lasagna',
 # 'https://www.kitchenstories.com/en/recipes/zoodle-bolognese',
