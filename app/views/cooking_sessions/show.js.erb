@@ -27,15 +27,16 @@ function showCookingSteps(innerHTML) {
     const recipeRow = document.getElementById('cooking-steps');
     console.log(recipeRow)
     recipeRow.classList.toggle('hide');
-  });
+
     window.scrollTo({
     top: 733,
     behavior: "smooth"
-});
-  window.scrollTo({
+    });
+    window.scrollTo({
     top: 0,
     behavior: "smooth"
-});
+    });
+  });
 
  const hideCookingSteps = document.getElementById('hide-cooking-steps');
   hideCookingSteps.addEventListener('click', (event) => {

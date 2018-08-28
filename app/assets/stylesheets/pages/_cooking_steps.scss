@@ -85,11 +85,7 @@
   margin: auto;
 }
 
-
-
-
 #cooking-mode:hover > div {
-  // background: #2C363F;
   cursor: pointer;
   opacity: 0.5;
 }
@@ -97,12 +93,10 @@
 #cooking-mode:hover > div:hover {
   opacity: 1.0;
   transform: scale(1.1);
+  .cooking-step-count {
+    color: green;
+  }
 }
-
-.cooking-step-card:hover p {
-  // color: #48ad26;
-}
-
 
 .cooking-step-upvote:hover, .cooking-step-upvote.cooking-step-upvote-upvoted {
   color: #5898f1;
