@@ -9,7 +9,15 @@
             class: "form-control first-text-tag",
             placeholder: "Enter an ingredient",
             value: @ingredients_to_send[0].name,
-            autofocus: true %>
+            autofocus: true,
+            list: "ingredient_1_select" %>
+            <datalist id="ingredient_1_select">
+              <% @ingredient_1_select.each do |ingredient| %>
+              <option><%= ingredient.name %></option>
+              <% end %>
+            </datalist>
+          <h3 class="slot-ingredient-name"> Test</h3>
+
         </div>
       </div>
       <div id="ingredients-index-lock-1">
@@ -29,6 +37,7 @@
             value: @ingredients_to_send[1].name
           %>
         </div>
+      <h3 class="slot-ingredient-name"> Test</h3>
       </div>
       <div id="ingredients-index-lock-2">
         <p id="ingredients-index-2">
@@ -47,6 +56,7 @@
             value: @ingredients_to_send[2].name
           %>
         </div>
+      <h3 class="slot-ingredient-name"> Test</h3>
       </div>
       <div id="ingredients-index-lock-3">
         <p id="ingredients-index-3">
@@ -65,6 +75,7 @@
             value: @ingredients_to_send[3].name
           %>
       </div>
+      <h3 class="slot-ingredient-name"> Test</h3>
      </div>
      <div id="ingredients-index-lock-4">
         <p id="ingredients-index-4">

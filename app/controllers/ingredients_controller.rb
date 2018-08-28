@@ -10,6 +10,7 @@ class IngredientsController < ApplicationController
   def get_four_random
     @ingredients_to_send = Array.new
     @ingredient_1 = Ingredient.clean_ingredients.shuffle.first
+    @ingredient_1_select = Ingredient.clean_ingredients
     @recipes_with_ingredient_1 = @ingredient_1.recipes
     @ingredients_to_send << @ingredient_1
 

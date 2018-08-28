@@ -33,9 +33,10 @@ let shuffleButton = document.querySelector(".ingredients-shuffle-button");
 shuffleButton.addEventListener("click", (event) => {
   let array = [];
   let ingredients = document.querySelectorAll('input.form-control');
+  let ingredientNames = document.querySelectorAll('.slot-ingredient-name');
   let locked_ingredients = ingredients.forEach((item) => {
     if(item.disabled) {
-      array.push(item.defaultValue);
+      array.push(item.value);
     } else {
       array.push("empty");
     };
@@ -55,8 +56,9 @@ shuffleButton.addEventListener("click", (event) => {
       data_array.push(data.fourth);
 
       let counter = 0;
-      ingredients.forEach((item) => {
-        item.defaultValue = data_array[counter].name;
+      // changed below to ingredientNames (the text fields) instead of ingredients (the old inputs)
+      ingredientNames.forEach((item) => {
+        item.innerText = data_array[counter].name;
         counter ++;
       });
 
@@ -81,7 +83,7 @@ document.body.onkeyup = function(e){
       // console.log(item)
       // console.log(item.defaultValue)
       if(item.disabled) {
-        array.push(item.defaultValue);
+        array.push(item.value);
       } else {
         array.push("empty");
       };
@@ -103,7 +105,7 @@ document.body.onkeyup = function(e){
 
       let counter = 0;
       ingredients.forEach((item) => {
-        item.defaultValue = data_array[counter].name;
+        item.value = data_array[counter].name;
         counter ++;
       });
 
