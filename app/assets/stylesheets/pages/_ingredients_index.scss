@@ -74,6 +74,7 @@
   font-size: 16px;
   text-overflow: ellipsis;
   padding: 20px;
+  text-align: center;
 }
 
 .fa-lock-open {
@@ -117,6 +118,7 @@
   color: white;
   transition: all .1s ease-in-out;
   border: #00866A;
+  outline: none;
 
   &:hover {
     color: #00866A;
@@ -150,6 +152,7 @@
   color: white;
   transition: all .1s ease-in-out;
   border: #FF3A4F;
+  outline: none;
 
   &:hover {
     color: #FF3A4F;
@@ -183,6 +186,13 @@
     width: 50%;
     top: unset;
   }
+
+  // #ingredients-index-lock-1,
+  // #ingredients-index-lock-2,
+  // #ingredients-index-lock-3,
+  // #ingredients-index-lock-4 {
+  //   cursor: pointer;
+  // }
 
   .ingredients-index-white-space-shuffle-small {
     display: flex;
@@ -219,6 +229,8 @@
   #ingredients-index-4 {
     visibility: visible;
   }
+
+
 
   .ingredients-shuffle-button {
     height: 50px;
