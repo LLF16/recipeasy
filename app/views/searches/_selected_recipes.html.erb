@@ -8,21 +8,24 @@
         <div class="setting">
           <i class="fa fa-heart"></i>
         </div>
-        <div class="image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo %>)"></div>
-        <div class="card-description">
+         <div class="selected-recipes-facts">
           <div>
-            <p class="selected-recipe-title">Recipe</p>
-            <h4><%= recipe.name %></h4>
-          </div>
-          <!-- <div>
             <h5 class="sub">Time</h5>
             <h4><%= recipe.time %></h4>
           </div>
           <div>
             <h5 class="sub">Calories</h5>
             <h4><%= recipe.calories %></h4>
-          </div> -->
+          </div>
         </div>
+        <div class="image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo %>)"></div>
+        <div class="card-description">
+          <div>
+            <p class="selected-recipe-title">Recipe</p>
+            <h4><%= recipe.name %></h4>
+          </div>
+        </div>
+
         <%= link_to "", recipe_path(recipe), class: "card-link" %>
       </div>
     </div>
