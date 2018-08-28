@@ -3,7 +3,6 @@ class SearchesController < ApplicationController
 
   def index
     if params.present?
-      p params
 
       sql_query_1 = "\
       ingredients.name ILIKE :query1 \
@@ -30,17 +29,31 @@ class SearchesController < ApplicationController
       @recipes_4 = Recipe.joins(:ingredients).where(sql_query_4,
         query4: params["ingredient_4"])
 
-      p @recipes = @recipes_1 & @recipes_2 & @recipes_3 & @recipes_4
+      @recipes = @recipes_1 & @recipes_2 & @recipes_3 & @recipes_4
+
+      p @recipes_1.length
+      p @recipes_2.length
+      p @recipes_3.length
+      p @recipes_4.length
 
       p @recipes.length
 
       @selected_recipes = []
-      #recipe - RANDOM
-      p @selected_recipes << @recipes.shuffle.first
-      # recipe - LEAST TIME
-      @selected_recipes << @recipes.sort_by{|recipe| recipe[:time]}.first
-      # recipe - MOST CALORIES
-      @selected_recipes << @recipes.sort_by{|recipe| recipe[:calories]}.first
+
+      if @recipes.length > 2
+        # recipe - LEAST TIME
+        @recipe_time = @recipes.sort_by{|recipe| recipe[:time]}.first
+        @selected_recipes << @recipe_time
+        # recipe - MOST CALORIES
+        @recipes.delete(@recipe_time)
+        @recipe_calories = @recipes.sort_by{|recipe| recipe[:calories]}.last
+        @selected_recipes << @recipe_calories
+        #recipe - RANDOM
+        @recipes.delete(@recipe_calories)
+        @selected_recipes << @recipes.shuffle.first
+      else
+        @selected_recipes = @recipes
+      end
     else
       @recipes = Recipe.all
     end
