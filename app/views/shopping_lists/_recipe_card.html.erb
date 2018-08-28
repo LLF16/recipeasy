@@ -1,8 +1,11 @@
 <div class="banner-shopping-list" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path recipe.photo, class: 'recipe-image' %>');">
+   <%= link_to shopping_list_recipe_path(shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" do %>
+      <i class="far fa-times-circle"></i>
   <div class="shopping-list-recipe-card">
 
       <h2><%= recipe.name %></h2>
-      <%= link_to "Remove", shopping_list_recipe_path(shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
+
+      <% end %>
     </div>
     <div class="shopping-list-ingredients"></div>
       <ul class="shopping-list-recipe-card-ingredients">

@@ -6,7 +6,15 @@
   margin: 10px;
   padding: 20px;
   justify-content: center;
-  height: 100px;
+  color: white;
+  align-items: center;
+
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .shopping-list-recipe-card-photo {
@@ -55,6 +63,28 @@
     background-color: #00ACA5;
   }
 }
+
+#email-send {
+  background-color: #00DEC7;
+  color: white;
+  border-radius: 15px;
+  border: #00DEC7;
+  padding: 15px;
+
+  &:hover {
+    background-color: #00ACA5;
+  }
+}
+
+.fa-times-circle {
+  color: #FF3A4F;
+  font-size: 40px;
+  position: absolute;
+  left: -3px;
+  top: -3px;
+}
+
+
 
 .shopping-list-recipe-card-ingredients li {
   margin: 5px;
