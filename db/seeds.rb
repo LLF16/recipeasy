@@ -227,6 +227,7 @@ ingredients_to_be_scraped.each do |scraped_ingredient|
     # p ingredient.name
     # p measurement
     # sleep(2)
+
   else ingredient.present?
     ingredient = Ingredient.new(name: scraped_ingredient)
     ingredient.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
