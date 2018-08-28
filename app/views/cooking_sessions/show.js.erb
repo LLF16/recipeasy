@@ -38,8 +38,9 @@ function showCookingSteps(innerHTML) {
 
  const hideCookingSteps = document.getElementById('hide-cooking-steps');
   hideCookingSteps.addEventListener('click', (event) => {
-    const recipeRow = document.getElementById('cooking-steps');
-    recipeRow.classList.toggle('hide');
+    // const recipeRow = document.getElementById('cooking-steps');
+    // recipeRow.classList.toggle('hide');
+    newCookingSteps.innerHTML = "";
    window.scrollTo({
     top: 0,
     behavior: "smooth"
