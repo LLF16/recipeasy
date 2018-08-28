@@ -105,6 +105,7 @@ document.body.onkeyup = function(e){
     .then(response => response.json())
     .then((data) => {
       let data_array = [];
+      let ingredientNames = document.querySelectorAll('.slot-ingredient-name');
       let backgrounds = document.querySelectorAll('.ingredients-index-bar');
       console.log(data);
       data_array.push(data.first);
@@ -113,10 +114,20 @@ document.body.onkeyup = function(e){
       data_array.push(data.fourth);
 
       let counter = 0;
-      ingredients.forEach((item) => {
-        item.value = data_array[counter].name;
+      ingredientNames.forEach((item) => {
+        item.innerText = data_array[counter].name;
         counter ++;
       });
+
+      // old logic that changes the value inside the text input. Need to keep it
+      // cause the locking mechanism still works on the input field (that are just hidden)
+      let counter_1 = 0;
+      ingredients.forEach((item) => {
+        item.value = data_array[counter_1].name;
+        counter_1 ++;
+      });
+
+
 
       let second_counter = 0;
       backgrounds.forEach((item) => {
