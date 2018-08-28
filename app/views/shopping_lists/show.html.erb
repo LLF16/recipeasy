@@ -1,29 +1,24 @@
 <div class="container container-flex">
   <% if @shopping_list.recipes.empty? %>
     <p><%= "You have no recipes yet!" %></p>
-    <div><%= link_to "Discover recipes", ingredients_path, class:"btn btn-primary" %>
+    <div>
+      <%= link_to "Discover recipes", ingredients_path, class:"btn btn-primary" %>
     </div>
   <% else %>
-    <div class="row">
+    <div>
+      <h2> Your shopping list </h2>
+      <%= button_tag "Send shopping list as email", id: "email-send", data: { path: send_email_shopping_list_url(@user), shopping_list: @shopping_list } %>
+      <div class="shopping-list-container">
 
-      <div class="col-xs-12 col-md-6" id="shopping-list">
-        <h2> Your shopping list </h2>
-        <div class="shopping-list-cumulative">
-          <%= render "ingredient", shopping_list: @shopping_list %>
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-md-6">
-        <h2> The recipes </h2>
-        <%= link_to "Send shopping list as email", send_email_shopping_list_url(@user), method: :get %>
-        <ul style= "list-style-type: none">
           <% @shopping_list.recipes.each do |recipe| %>
              <%= render "recipe_card", measurement: @measurement, shopping_list: @shopping_list, recipe: recipe %>
           <% end %>
-        </ul>
+
       </div>
     </div>
   <% end %>
 </div>
+<%= content_tag :div, class: "temp_information", data: { ingredients: render("ingredient", shopping_list: @shopping_list) } do %>
+<% end %>
 
 

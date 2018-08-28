@@ -1,7 +1,7 @@
 <div class="container-ingredients">
   <%= form_tag searches_path, method: :get, remote: true do %>
  <div class="ingredients-index-container">
-    <div id="index-bar-first" class="ingredients-index-bar">
+    <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[0].photo_url %>)" >
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_1,
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div id="index-bar-second" class="ingredients-index-bar">
+    <div id="index-bar-second" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[1].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_2,
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div id="index-bar-third" class="ingredients-index-bar">
+    <div id="index-bar-third" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[2].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_3,
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div id="index-bar-fourth" class="ingredients-index-bar">
+    <div id="index-bar-fourth" class="ingredients-index-bar" style= "background-image: url(<%= @ingredients_to_send[3].photo_url %>)">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_4,
@@ -71,15 +71,17 @@
           <i class="fas fa-lock-open" data-locked='false'"></i>
         </p>
      </div>
-
     </div>
   </div>
   <div class="ingredients-index-white-space-submit">
     <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
   </div>
   <% end %>
-  <div class="ingredients-index-white-space-shuffle">
-    <%= button_tag("Shuffle", class: "ingredients-shuffle-button") %>
+  <div class="ingredients-index-white-space-shuffle hidden-xs">
+    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
+  </div>
+  <div class="ingredients-index-white-space-shuffle-small hidden-md">
+    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
   </div>
 </div>
 

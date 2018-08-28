@@ -7,4 +7,6 @@ import { amazingConfirmation } from "components/jquery_confirmation";
 amazingConfirmation();
 import { addToSl } from "components/jquery_confirmation";
 addToSl();
+import { sendEmailSL } from "components/jquery_confirmation";
+sendEmailSL();
 

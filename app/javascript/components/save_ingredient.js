@@ -61,10 +61,12 @@ shuffleButton.addEventListener("click", (event) => {
       });
 
       let second_counter = 0;
-      console.log(second_counter);
       backgrounds.forEach((item) => {
-        item.style.backgroundImage = "url(`${data_array[second_counter].photo.url}`)";
-        console.log(item.style);
+        console.log(second_counter);
+        // item.style.backgroundImage = `"url('${data_array[second_counter].photo.url}')"`;
+        item.style.backgroundImage = 'url(' + data_array[second_counter].photo.url + ')';
+
+        console.log(item.style.backgroundImage);
         second_counter ++;
       });
     });
