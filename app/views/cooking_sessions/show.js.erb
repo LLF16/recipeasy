@@ -1,6 +1,6 @@
-
 console.log("Hello, you look awesome!"); // be kind, always!
-console.log(window.scrollY) // to figure out how far we have to scroll
+console.log(window.scrollY); // to figure out how far we have to scroll
+console.log(window.scrollX);
 
 
 // created a function that takes some HTML and insert it into a specific div(#id)
@@ -9,25 +9,53 @@ function showCookingSteps(innerHTML) {
   const newCookingSteps = document.getElementById('cooking-steps');
   newCookingSteps.innerHTML = innerHTML;
   const cookNow = document.getElementById('cook-now');
-  cookNow.addEventListener('click', (event) => {
-    console.log("Test");
-    console.log(event.currentTarget);
-    const recipeRow = document.getElementById('cooking-steps');
-    console.log(recipeRow)
-    recipeRow.classList.toggle('hide');
+
+  const cards = newCookingSteps.querySelectorAll(".cooking-step-card");
+
+  cards.forEach((card) => {
+    // console.log(card)
+    card.addEventListener("click", function(event) {
+      // console.log(event)
+      event.currentTarget.classList.toggle("active")
+    })
   });
-// after adding some HTML we now want to be directly redirected to this specific part of the page
-  window.scrollTo({
-    top: 733,
+
+    window.scrollTo({
+    top: 800,
     behavior: "smooth"
-});
-  window.scrollTo({
+    });
+
+
+  // cookNow.addEventListener('click', (event) => {
+  //   // console.log("Test");
+  //   // console.log(event.currentTarget);
+  //   const recipeRow = document.getElementById('cooking-steps');
+  //   // console.log(recipeRow)
+  //   recipeRow.classList.toggle('hide');
+
+
+  // });
+
+ const hideCookingSteps = document.getElementById('hide-cooking-steps');
+  hideCookingSteps.addEventListener('click', (event) => {
+    const recipeRow = document.getElementById('cooking-steps');
+    recipeRow.classList.toggle('hide');
+   window.scrollTo({
     top: 0,
     behavior: "smooth"
-});
+    });
+  });
+
+
+
+    // const nextStep = document.getElementById("#step2");
+    // nextStep.addEventListener("click", event => {
+    //   return event.target.classList.add("active");
+    // });
+// after adding some HTML we now want to be directly redirected to this specific part of the page
+
 
 }
-
 // As we want the ingredients controller to display our results dynamically, we need to render a partial in js
 showCookingSteps('<%= j render "cooking_sessions/cooking_steps", cooking_sessions: @recipe %>');
 

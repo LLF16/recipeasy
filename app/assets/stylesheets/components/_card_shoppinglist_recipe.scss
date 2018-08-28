@@ -1,11 +1,20 @@
 .shopping-list-recipe-card {
   display: flex;
   border: 1px solid lightgrey;
-  border-radius: 5px;
-  background: white;
-  margin: 10px;
+  border-radius: 15px;
+  background: transparent;
+  margin: 7px 5px 15px 25px;
   padding: 20px;
   justify-content: center;
+  color: white;
+  align-items: center;
+
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .shopping-list-recipe-card-photo {
@@ -22,7 +31,7 @@
 .shopping-list-recipe-card-details {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
 }
 
 .shopping-list-recipe-card h2 {
@@ -31,8 +40,52 @@
 }
 
 .shopping-list-recipe-card-ingredients {
-  flex-grow: 1;
+  // flex-grow: 1;
+  list-style-type: none;
+
+  li {
+    // display: inline-block
+    max-width: 250px;
+    text-overflow: ellipsis;
+    opacity: 0.8;
+  }
+
+  li:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  li:nth-child(odd) {
+    background-color: #00DEC7;
+  }
+
+  li:nth-child(even) {
+    background-color: #00ACA5;
+  }
 }
+
+#email-send {
+  background-color: #00DEC7;
+  color: white;
+  border-radius: 15px;
+  border: #00DEC7;
+  padding: 15px;
+  outline: none;
+
+  &:hover {
+    background-color: #00ACA5;
+  }
+}
+
+.fa-times-circle {
+  color: #FF3A4F;
+  font-size: 40px;
+  position: absolute;
+  left: -1px;
+  top: -1px;
+}
+
+
 
 .shopping-list-recipe-card-ingredients li {
   margin: 5px;

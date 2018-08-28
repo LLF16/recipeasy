@@ -1,12 +1,13 @@
 <li>
   <%= measurement.display_name.capitalize %>
-  <%= link_to "🗑️", measurement_shopping_list_url(measurement.measurement_for(shopping_list)), method: :delete, data: {confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
+
   <br>
 
   <div class="shopping-list-recipe-card-values">
     <% unless measurement.value == 0 %>
       <%= measurement.value %>
       <%= measurement.ingredient.unit %>
+      <%= link_to "🗑", measurement_shopping_list_url(measurement.measurement_for(shopping_list)), method: :delete, data: {confirm: "Are you sure?"}, class: "shopping-list-recipe-card-remove" %>
     <% end %>
   </div>
 

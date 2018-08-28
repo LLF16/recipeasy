@@ -83,4 +83,50 @@ function addToSl () {
 
 export { addToSl };
 
+// -------------------------------------
 
+function sendEmailSL () {
+  // var recipe = $("#recipe-title").data('recipe');
+  // const recipe = document.getElementById("recipe-title").dataset.recipe;
+  // console.log(recipe);
+  var button = $("#email-send")
+  var shoppingList = $('.temp_information').data('shopping_list')
+  var ingredients = $('.temp_information').data('ingredients')
+  console.log(ingredients)
+    // console.log(button.data('saved'));
+    button.confirm({
+      columnClass: 'col-md-8 col-md-offset-2',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      title: 'Shopping List',
+      content: ingredients,
+      theme: 'modern',
+      // autoClose: 'Enjoy|4000',
+      buttons: {
+          send: {
+              text: 'send',
+              action: function(){
+                fetch($("#email-send").data('path'), {
+                  method: 'get',
+                  body: JSON.stringify(),
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': Rails.csrfToken()
+                  },
+                  credentials: 'same-origin'
+                })
+              }
+          },
+          cancel: {
+              text: 'cancel'
+          }
+        },
+      type: 'green',
+
+
+      });
+
+};
+
+
+export { sendEmailSL };

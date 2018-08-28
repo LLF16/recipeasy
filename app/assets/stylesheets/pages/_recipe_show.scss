@@ -26,27 +26,38 @@
 }
 
 .cook-now-button {
-  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
 }
+
 
 .shopping-list-submit {
   height: 150px;
   width: 150px;
-  background-color: #00ACA5;
+  background-color: transparent;
   border-radius: 50%;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+
+
 }
 
 #add-to-shopping-list {
-  background-color: transparent;
-  border: none;
+  height: 150px;
+  width: 150px;
+  background-color: #00ACA5;
+  border-radius: 50%;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: none;
 }
 
 

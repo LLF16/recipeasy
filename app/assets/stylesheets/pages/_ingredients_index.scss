@@ -41,9 +41,28 @@
 // }
 
 
+// hide the form inputs
+.second-text-tag {
+  visibility: hidden;
+}
+
+.third-text-tag {
+  visibility: hidden;
+}
+
+.fourth-text-tag {
+  visibility: hidden;
+}
+
 .ingredients-index-bar-container {
   width: 80%;
   height: 20%;
+}
+
+.slot-ingredient-name {
+  color: white;
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  font-weight: lighter;
 }
 
 .ingredients-index-bars {
@@ -74,6 +93,7 @@
   font-size: 16px;
   text-overflow: ellipsis;
   padding: 20px;
+  text-align: center;
 }
 
 .fa-lock-open {
@@ -117,6 +137,7 @@
   color: white;
   transition: all .1s ease-in-out;
   border: #00866A;
+  outline: none;
 
   &:hover {
     color: #00866A;
@@ -150,6 +171,7 @@
   color: white;
   transition: all .1s ease-in-out;
   border: #FF3A4F;
+  outline: none;
 
   &:hover {
     color: #FF3A4F;
@@ -161,7 +183,7 @@
 
 // Media responsiveness
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 770px) {
 
   .ingredients-index-container {
   display: flex;
@@ -183,6 +205,13 @@
     width: 50%;
     top: unset;
   }
+
+  // #ingredients-index-lock-1,
+  // #ingredients-index-lock-2,
+  // #ingredients-index-lock-3,
+  // #ingredients-index-lock-4 {
+  //   cursor: pointer;
+  // }
 
   .ingredients-index-white-space-shuffle-small {
     display: flex;
@@ -219,6 +248,8 @@
   #ingredients-index-4 {
     visibility: visible;
   }
+
+
 
   .ingredients-shuffle-button {
     height: 50px;
