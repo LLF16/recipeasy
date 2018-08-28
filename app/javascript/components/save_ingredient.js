@@ -56,11 +56,20 @@ shuffleButton.addEventListener("click", (event) => {
       data_array.push(data.fourth);
 
       let counter = 0;
-      // changed below to ingredientNames (the text fields) instead of ingredients (the old inputs)
       ingredientNames.forEach((item) => {
         item.innerText = data_array[counter].name;
         counter ++;
       });
+
+      // old logic that changes the value inside the text input. Need to keep it
+      // cause the locking mechanism still works on the input field (that are just hidden)
+      let counter_1 = 0;
+      ingredients.forEach((item) => {
+        item.value = data_array[counter_1].name;
+        counter_1 ++;
+      });
+
+
 
       let second_counter = 0;
       backgrounds.forEach((item) => {
