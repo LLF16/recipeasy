@@ -4,8 +4,10 @@
   <br>
 
   <div class="shopping-list-recipe-card-values">
-    <%= measurement.value %>
-    <%= measurement.ingredient.unit %>
+    <% unless measurement.value == 0 %>
+      <%= measurement.value %>
+      <%= measurement.ingredient.unit %>
+    <% end %>
   </div>
 
 </li>
