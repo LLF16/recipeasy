@@ -77,7 +77,7 @@ shuffleButton.addEventListener("click", (event) => {
           console.log(second_counter);
           // item.style.backgroundImage = `"url('${data_array[second_counter].photo.url}')"`;
           item.style.backgroundImage = 'url(' + data_array[second_counter].photo.url + ')';
-
+          item.style.backgroundSize = 'cover';
           console.log(item.style.backgroundImage);
           second_counter ++;
         });

@@ -80,15 +80,14 @@
                 <tbody class="ingredients-list">
                 <% @recipe.measurements.each do |measurement| %>
                   <tr>
-                    <td class="ingredients__col-1">
-                      <% if  measurement.value === 0%>
-
-                      <% else %>
-                      <%= measurement.value %> <%= measurement.ingredient.unit %>
-                      <% end %>
-                    </td>
                     <td class= "ingredients__col-2">
                       <%= measurement.display_name.capitalize %>
+                    </td>
+                    <td class="ingredients__col-1">
+                      <% unless measurement.value == 0%>
+                        <%= measurement.value.round %>
+                        <%= measurement.ingredient.unit %>
+                      <% end  %>
                     </td>
                   </tr>
 
