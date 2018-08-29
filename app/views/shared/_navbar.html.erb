@@ -17,7 +17,7 @@
     <% if user_signed_in? %>
     <div>
       <!-- Links when logged in -->
-      <%= link_to "Shopping list (#{current_user.shopping_list.recipes.length})", shopping_list_path(current_user.shopping_list), class: "navbar-wagon-item navbar-wagon-link", id: "shopping-list-amount", data: { amount: current_user.shopping_list.recipes.length } %>
+      <%= link_to "Shopping list (#{current_user.shopping_list.recipes.length})", shopping_list_path(current_user.shopping_list), class: "navbar-wagon-item navbar-wagon-link", id: "shopping-list-amount", data: { amount: current_user.shopping_list.recipes.length, id: "number" } %>
     </div>
 
       <!-- Avatar with dropdown menu -->
