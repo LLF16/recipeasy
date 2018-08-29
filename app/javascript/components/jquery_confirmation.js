@@ -139,8 +139,11 @@ function startCookingMode () {
       // columnClass: 'col-md-4 col-md-offset-4',
       // boxWidth: '30%',
       useBootstrap: false,
-      title: 'Cooking Mode',
-      content: `Press ESC to close window. Press -> to mark cooking step as finished. Press <- to unmark previous cooking step.` ,
+      icon: 'fa fa-spinner fa-spin',
+      escapeKey: 'Ok',
+      backgroundDismiss: true,
+      title: 'Cooking Mode is launching...',
+      content: `<div style="font-size: 14px;">Press <strong style="font-size: 20px;">ESC</strong> to launch cooking mode. <br><br>Press <br> <strong style="font-size: 30px;"> -> </strong> <br>to mark cooking step as finished.</div>` ,
       theme: 'supervan',
       buttons: {
           Ok: {

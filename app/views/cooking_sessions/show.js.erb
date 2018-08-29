@@ -25,12 +25,50 @@ function showCookingSteps(innerHTML) {
 
 
     document.addEventListener("keyup", (event) => {
-    if (event.key === "w"){
-    let wholeDiv = document.querySelector("#cooking-mode .active")
-    // let activeClass = document.querySelector(".active")
-    wholeDiv.classList.remove("active")
-    wholeDiv.nextElementSibling.classList.add("active")
-    }
+      let wholeDiv = document.querySelector("#cooking-mode .active")
+      console.log("current", wholeDiv)
+      console.log("next", wholeDiv.nextElementSibling)
+
+      // IF NEXT SIBLING EXIST && KEY TYPED IS W
+      if (event.key === 'ArrowRight' && wholeDiv.nextElementSibling != null){
+        console.log("Changing the active class")
+        // let activeClass = document.querySelector(".active")
+        wholeDiv.classList.remove("active")
+        wholeDiv.nextElementSibling.classList.add("active")
+        console.log("Class changed")
+        console.log(wholeDiv)
+        console.log(wholeDiv.nextElementSibling)
+        document.querySelector("#cooking-mode .active").scrollIntoView({
+          behavior: "smooth"
+        });
+        // if (document.querySelector("#cooking-mode").lastElementChild === wholeDiv.nextElementSibling){
+        // if (true) {}
+        console.log("check", wholeDiv.nextElementSibling)
+      // IF NEXT SIBLING DOES NOT EXIST && KEY TYPED IS W
+      } else if (event.key === 'ArrowRight') {
+        alert("fvghjkl");
+        cards.forEach((card) => {
+          card.classList.add("active");
+          //   setTimeout(function(){}, 1000);
+        });
+      }
+          // setTimeout(function() {
+          //   alert("fvghjkl")
+
+          //   // $.alert({
+          //   //     title: 'Alert!',
+          //   //     content: 'Simple alert!',
+          //   // });
+          // }, 1000);
+          // cards.forEach((card) => {
+          //   card.classList.add("active");
+          // //   setTimeout(function(){}, 1000);
+          // });
+        // };
+      // $('html, body').animate({
+      //                 scrollTop: $("#cooking-mode .active").offset().top
+      //             }, 2000);
+      // }
     });
 
 
