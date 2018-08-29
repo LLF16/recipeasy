@@ -5,10 +5,11 @@
   background-size: cover !important;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 0 200px;
 }
 
 #cook-now {
@@ -37,14 +38,18 @@
 
 
 .shopping-list-submit {
-  height: 150px;
-  width: 150px;
+  // height: 150px;
+  // width: 150px;
+  color: white;
   background-color: transparent;
   border-radius: 50%;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  // position: absolute;
+  // right: 5px;
+  // bottom: 10px;
 }
 
 #log-in-required-shopping-list {
@@ -64,14 +69,15 @@
 }
 
 #add-to-shopping-list {
-  height: 150px;
-  width: 150px;
+  // height: 60px;
+  // width: 150px;
+  padding: 10px;
   background-color: #00ACA5;
-  border-radius: 50%;
+  border-radius: 5px;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-top: 10px;
+  // margin-right: 10px;
   border: none;
   opacity: 0.7;
 }
@@ -111,6 +117,7 @@
   margin-left: 50px;
   border-radius: 5px;
   width: 70%;
+  position: relative;
 }
 
 .recipe-utensils h4 {
@@ -170,9 +177,16 @@
   width: 100%;
 }
 
+.recipe-show-banner-box {
+  width: 1111px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 #recipe-title {
-  font-size: 40px;
-  font-weight: lighter;
+  font-size: 56px;
+  font-weight: bolder;
 }
 
 .nutrition__col-1 {
