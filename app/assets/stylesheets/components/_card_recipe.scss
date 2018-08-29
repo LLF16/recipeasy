@@ -31,15 +31,19 @@
   margin-right: auto;
   margin-left: auto;
   border: solid 1 px #484848;
-  // box-shadow: 0 4px 10px 1px;
   margin-bottom: 20px;
 }
 
 .tag-description {
   display: flex;
   align-items: center;
+  align-content: middle;
   justify-content: space-around;
   font-size: 36px;
+  border: solid 1px black;
+  align-text: center;
+  padding: 15px;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.5);
 }
 
 .recipe-tag {
@@ -58,27 +62,36 @@
 
 .box-tag {
   display: inline-block;
+  vertical-align: middle;
   text-align: center;
   align-content: center;
   align-items: center;
   & p {
     font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 .tag-time {
   background-color: #F4F4F8;
   border: solid 2px #FF3A4F;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tag-calories {
   background-color: #F4F4F8;
   border: solid 2px #00ACA5;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tag-diego {
   background-color: #F4F4F8;
   border: solid 2px #D4AF37;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recipe-tag-section {

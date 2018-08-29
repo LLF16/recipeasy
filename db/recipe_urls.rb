@@ -128,7 +128,6 @@
 'https://www.kitchenstories.com/en/recipes/spicy-pork-chops-with-canarian-wrinkly-potatoes-and-mojo-verde',
 'https://www.kitchenstories.com/en/recipes/spanish-roasted-potatoes-with-salsa-brava',
 'https://www.kitchenstories.com/en/recipes/seared-vegetables-with-romesco-sauce',
-'https://www.kitchenstories.com/en/recipes/valencian-paella',
 'https://www.kitchenstories.com/en/recipes/goat-cheese-creme-brulee-with-lamb-s-lettuce-and-apple-dressing',
 'https://www.kitchenstories.com/en/recipes/french-omelette-with-prosciutto-and-avocado',
 'https://www.kitchenstories.com/en/recipes/lobster-in-bisque-sauce',
