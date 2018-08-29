@@ -94,7 +94,7 @@ document.body.onkeyup = function(e){
     let locked_ingredients = ingredients.forEach((item) => {
       // console.log(item)
       // console.log(item.defaultValue)
-      if(item.disabled) {
+      if(item.classList.contains("disabled")) {
         array.push(item.value);
       } else {
         array.push("empty");
