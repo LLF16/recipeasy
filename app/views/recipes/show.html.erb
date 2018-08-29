@@ -4,7 +4,7 @@
       <% if current_user %>
         <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
       <% else %>
-      <%= link_to "Log in to add to shopping list", new_user_session_path, class: "btn btn-danger" %>
+      <%= link_to "Log in to add to shopping list", new_user_session_path, id: "log-in-required-shopping-list" %>
       <% end %>
     </div>
     <div class="cook-now-button">
@@ -23,23 +23,78 @@
               <%= @recipe.name %></h1>
             <div class="recipe-info-details">
               <ul>
-                <li><%= @recipe.time %> ⏱️ </li>
-                <li><%= @recipe.calories %>kcal 🍔</li>
-                <li><%= @recipe.difficulty %></li>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.time %> min. </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.serves %> people </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.difficulty %></li>
+                </div>
               </ul>
             </div>
 
+            <div class="nutrition-details-show">
+              <h4>Nutrition per serving</h4>
+              <div class="all-nutrition">
+                <div class="nutrition__col-1">
+                  <span>Cal</span>
+                  <br>
+                  <span><%= @recipe.calories %> </span>
+                </div>
+                <div class="nutrition__col-2">
+                  <span>Fat</span>
+                  <br>
+                  <span><%= @recipe.fat %> </span>
+                </div>
+                <div class="nutrition__col-3">
+                  <span>Carb</span>
+                  <br>
+                  <span><%= @recipe.carb %> </span>
+                </div>
+                <div class="nutrition__col-4">
+                  <span>Protein</span>
+                  <br>
+                  <span><%= @recipe.protein %> </span>
+                </div>
+            </div>
+            </div>
+            <div class="recipe-utensils">
+              <h4>
+                Utensils
+              </h4>
+                <%= @recipe.utensils.first.capitalize %>,
+                <% @recipe.utensils.drop(1).each do |utensil| %>
+                  <% if utensil != @recipe.utensils.last %>
+                    <%=   utensil %>,
+                  <% else %>
+                    <%= utensil %>
+                  <% end %>
+                <% end %>
+            </div>
           </div>
           <div class="white-box-show">
-            <p>Ingredients</p>
-              <div class="recipe-ingredients">
-                <ul class="ingredients-list">
+            <h4>Ingredients</h4>
+              <table class="recipe-ingredients">
+                <tbody class="ingredients-list">
                 <% @recipe.measurements.each do |measurement| %>
-                  <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.ingredient.unit %>
-                  </li>
+                  <tr>
+                    <td class="ingredients__col-1">
+                      <% if  measurement.value === 0%>
+
+                      <% else %>
+                      <%= measurement.value %> <%= measurement.ingredient.unit %>
+                      <% end %>
+                    </td>
+                    <td class= "ingredients__col-2">
+                      <%= measurement.display_name.capitalize %>
+                    </td>
+                  </tr>
+
                 <% end %>
-                </ul>
-              </div>
+                </tbody>
+              </table>
             </div>
         </div>
       </div>

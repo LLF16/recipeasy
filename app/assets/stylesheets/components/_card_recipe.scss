@@ -1,5 +1,5 @@
 .space {
-  height: 100px;
+  height: 70px;
 }
 
 .card-recipe {
@@ -13,7 +13,7 @@
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
   -webkit-transition:all .4s cubic-bezier(1,.4,.4,1);
   transition:all .4s cubic-bezier(1,.4,.4,1);
-  margin: 5px;
+  margin: 5px 10px 10px 10px;
   border-radius: 3px;
   margin-bottom: 15px;
 }
@@ -25,6 +25,74 @@
     right:15px;
     top:15px;
 }
+
+.container-tag {
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  border: solid 1 px #484848;
+  // box-shadow: 0 4px 10px 1px;
+  margin-bottom: 20px;
+}
+
+.tag-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 36px;
+}
+
+.recipe-tag {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.box-tag {
+  display: inline-block;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  & p {
+    font-size: 16px;
+  }
+}
+
+.tag-time {
+  background-color: #F4F4F8;
+  border: solid 2px #FF3A4F;
+}
+
+.tag-calories {
+  background-color: #F4F4F8;
+  border: solid 2px #00ACA5;
+}
+
+.tag-diego {
+  background-color: #F4F4F8;
+  border: solid 2px #D4AF37;
+}
+
+.recipe-tag-section {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.recipe-tag-section > .recipe-tag {
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+}
+
 
 .card-recipe > .setting >.fa:first-child{
     margin-bottom:15px;
@@ -54,10 +122,9 @@
   overflow-y: hidden;
 
 }
-// .card-recipe .card-description h4,
-// .card-description h5 {
-//   margin:0; padding:0;
-// }
+.card-recipe .card-description h4 {
+  font-weight: bold;
+}
 
 .selected-recipe-title {
   margin-bottom: -10px;
@@ -73,11 +140,31 @@
   margin: 10px;
   border-radius: 5px;
   opacity: 0;
-  transition: all 2.5s ease-out;
+  transition: all 1.8s ease-out;
+  height: 20px;
+  padding: 8px;
+
 }
 
 .show{
   opacity: 1;
+  height: 11em;
+
+  .content-recipes-facts {
+    opacity: 1;
+    transform:scaleY(1);
+  }
+}
+
+.content-recipes-facts {
+  overflow:hidden;
+  transition:transform 0.3s ease-out;
+  height:auto;
+  transform:scaleY(0);
+  transform-origin:top;
+  p {
+    font-size: 16px;
+  }
 }
 
 

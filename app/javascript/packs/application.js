@@ -1,4 +1,4 @@
-import "bootstrap";
+
 import "components/autocomplete";
 import { amamazingPopOver } from "components/popover";
 amamazingPopOver();
@@ -13,3 +13,4 @@ import { startCookingMode } from "components/jquery_confirmation";
 startCookingMode();
 import { finishCookingMode } from "components/jquery_confirmation";
 finishCookingMode();
+import "bootstrap";

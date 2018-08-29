@@ -133,16 +133,17 @@
   border-radius: 45px;
   padding: 15px;
   width: 80%;
-  background-color: #00866A;
-  color: white;
+  background-color: white;
+  color: #00ACA5;
   transition: all .1s ease-in-out;
-  border: #00866A;
+  border: 5px solid #00ACA5;
   outline: none;
+  font-weight: bold;
 
   &:hover {
-    color: #00866A;
-    background-color: white;
-    border: 1px solid #00866A;
+    color: white;
+    background-color: #00ACA5;
+    border: 1px solid #00ACA5;
 
   }
 }
@@ -167,17 +168,18 @@
   border-radius: 45px;
   padding: 15px;
   width: 80%;
-  background-color: #FF3A4F;
+  background-color: #E80D4D;
   color: white;
   transition: all .1s ease-in-out;
-  border: #FF3A4F;
+  border: #E80D4D;
   outline: none;
+  overflow: hidden;
 
   &:hover {
-    color: #FF3A4F;
+    color: #E80D4D;
     background-color: white;
-    border: 1px solid #FF3A4F;
-
+    border: 5px solid #E80D4D;
+    font-weight: bold;
   }
 }
 
