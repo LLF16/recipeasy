@@ -1,8 +1,41 @@
 <div class="space"></div>
+<div class="container-tag">
+  <div class="tag-description">
+    <div class="box-tag">
+      <div class="recipe-tag tag-time">⏰</div>
+      <div class="recipe-tag-text">
+        <p>The <strong>fastest</strong> to cook</p>
+      </div>
+    </div>
+    <div class="box-tag">
+      <div class="recipe-tag tag-calories">🍩</div>
+      <div class="recipe-tag-text">
+        <p>Our <strong>calories king</strong> for your selection</p>
+      </div>
+    </div>
+    <div class="box-tag">
+      <div class="recipe-tag tag-diego">👨‍🍳</div>
+      <div class="recipe-tag-text">
+        <p><strong>Recommended</strong> by our RecipEasy chef</p>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="row">
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
       <div class="card-recipe">
+        <div class="recipe-tag-section">
+          <% if recipe == @selected_recipes.sort_by{|recipe| recipe[:time]}.first%>
+            <div class="recipe-tag tag-time">⏰</div>
+          <% end %>
+          <% if recipe == @selected_recipes.sort_by{|recipe| recipe[:calories]}.last %>
+            <div class="recipe-tag tag-calories">🍩</div>
+          <% end %>
+          <% if recipe == @selected_recipes.shuffle.first && @selected_recipes.length > 1%>
+            <div class="recipe-tag tag-diego">👨‍🍳</div>
+          <% end %>
+        </div>
          <div class="selected-recipes-facts">
           <div class="content-recipes-facts">
             <p class="selected-recipe-title">Time</p>
