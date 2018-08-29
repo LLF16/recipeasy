@@ -135,6 +135,8 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
       unlockedLock4.classList.remove("fa-lock");
       unlockedLock4.classList.add("fa-lock-open");
       text_field.classList.remove("disabled");
+      document.querySelector('#hdn_test_1').value = text_field.value
+
     }
   });
 
