@@ -32,12 +32,6 @@ ActiveRecord::Schema.define(version: 2018_08_29_130217) do
     t.index ["beverage_category_id"], name: "index_beverages_on_beverage_category_id"
   end
 
-  create_table "ingredient_families", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "photo"
