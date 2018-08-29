@@ -13,7 +13,7 @@
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
   -webkit-transition:all .4s cubic-bezier(1,.4,.4,1);
   transition:all .4s cubic-bezier(1,.4,.4,1);
-  margin: 5px;
+  margin: 5px 10px 10px 10px;
   border-radius: 3px;
   margin-bottom: 15px;
 }
@@ -72,11 +72,31 @@
   margin: 10px;
   border-radius: 5px;
   opacity: 0;
-  transition: all 2.5s ease-out;
+  transition: all 1.8s ease-out;
+  height: 20px;
+  padding: 8px;
+
 }
 
 .show{
   opacity: 1;
+  height: 11em;
+
+  .content-recipes-facts {
+    opacity: 1;
+    transform:scaleY(1);
+  }
+}
+
+.content-recipes-facts {
+  overflow:hidden;
+  transition:transform 0.3s ease-out;
+  height:auto;
+  transform:scaleY(0);
+  transform-origin:top;
+  p {
+    font-size: 16px;
+  }
 }
 
 

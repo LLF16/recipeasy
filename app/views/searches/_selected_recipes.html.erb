@@ -2,20 +2,19 @@
   <div class="row">
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
-
-
       <div class="card-recipe">
-        <div class="setting">
-          <i class="fa fa-heart"></i>
-        </div>
          <div class="selected-recipes-facts">
           <div class="content-recipes-facts">
             <p class="selected-recipe-title">Time</p>
-            <h4><%= recipe.time %></h4>
+            <h4><%= recipe.time %> min.</h4>
           </div>
           <div class="content-recipes-facts">
             <p class="selected-recipe-title">Calories</p>
-            <h4><%= recipe.calories %></h4>
+            <h4><%= recipe.calories %> kcal</h4>
+          </div>
+          <div class="content-recipes-facts">
+            <p class="selected-recipe-title">Serves</p>
+            <h4><%= recipe.serves %> people</h4>
           </div>
         </div>
         <div class="image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= recipe.photo %>)"></div>
