@@ -162,3 +162,34 @@ function startCookingMode () {
 
 
 export { startCookingMode };
+
+function finishCookingMode () {
+  var finished = $("#finished-cooking")
+    // console.log(button.data('saved'));
+    $("#finished-cooking").confirm({
+      // columnClass: 'col-md-4 col-md-offset-4',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      // icon: 'fa fa-spinner fa-spin',
+      escapeKey: 'Ok',
+      backgroundDismiss: true,
+      title: 'Finished Cooking',
+      content: 'Enjoy your meal.',
+      theme: 'modern',
+      buttons: {
+          Ok: {
+              text: 'Enjoy!',
+              action: function(){
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+              }
+          },
+        },
+      type: 'green'
+    });
+};
+
+
+export { finishCookingMode };

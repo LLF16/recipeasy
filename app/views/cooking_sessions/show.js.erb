@@ -46,7 +46,7 @@ function showCookingSteps(innerHTML) {
         console.log("check", wholeDiv.nextElementSibling)
       // IF NEXT SIBLING DOES NOT EXIST && KEY TYPED IS W
       } else if (event.key === 'ArrowRight') {
-        alert("fvghjkl");
+        document.getElementById("finished-cooking").click();
         cards.forEach((card) => {
           card.classList.add("active");
           //   setTimeout(function(){}, 1000);
