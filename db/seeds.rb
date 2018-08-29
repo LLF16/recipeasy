@@ -77,8 +77,6 @@ puts "Created #{User.all.length} users"
 #   'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
 # ]
 
-puts "Creating recipes..."
-
 @recipes_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
@@ -129,16 +127,16 @@ scraped_ingredients = []
 scraped_measurements_unit = []
 scraped_measurements_value = []
 while counter < doc.search('.ingredients tr').length
-  # p doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+  p doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
   scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
-  # p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
+  p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
   scraped_measurements_unit << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
-  # p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
+  p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
   scraped_measurements_value << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
-  # p counter += 1
+  p counter += 1
 end
 
-# p "End scraping ingredients and measurements and start creating data..."
+p "End scraping ingredients and measurements and start creating data..."
 
 main_ingredients = []
 main_measurements_unit = []
@@ -259,7 +257,7 @@ end
 sleep(1)
 end
 
-# p Measurement.count
+p Measurement.count
 
 puts "Creating shopping lists..."
 ShoppingList.create!([
@@ -421,7 +419,7 @@ Ingredient.clean_ingredients.each do |ingredient|
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/leek.jpg'
     ingredient.save!
   elsif ingredient.name == "beef"
-    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/beef.jpg'
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/meat.jpg'
     ingredient.save!
   elsif ingredient.name == "potatoes"
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/potato.jpg'
@@ -446,9 +444,6 @@ Ingredient.clean_ingredients.each do |ingredient|
     ingredient.save!
   elsif ingredient.name == "penne"
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/penne.jpg'
-    ingredient.save!
-  elsif ingredient.name == "beef"
-    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/meat.jpg'
     ingredient.save!
   elsif ingredient.name == "macaroni"
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/macaroni.jpg'
