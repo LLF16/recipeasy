@@ -1,5 +1,5 @@
 .space {
-  height: 70px;
+  height: 50px;
 }
 
 .card-recipe {
@@ -27,19 +27,22 @@
 }
 
 .container-tag {
-  width: 800px;
-  margin-right: auto;
-  margin-left: auto;
-  border: solid 1 px #484848;
-  // box-shadow: 0 4px 10px 1px;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 0px;
 }
 
 .tag-description {
   display: flex;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
+  align-content: middle;
   justify-content: space-around;
   font-size: 36px;
+  align-text: center;
+  padding: 15px;
 }
 
 .recipe-tag {
@@ -58,27 +61,40 @@
 
 .box-tag {
   display: inline-block;
+  width: 200px;
+  vertical-align: middle;
   text-align: center;
   align-content: center;
   align-items: center;
-  & p {
-    font-size: 16px;
-  }
+  border-left: 1px solid #b9b9b9;
+  padding-left: 20px
+}
+
+.recipe-tag-text {
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tag-time {
   background-color: #F4F4F8;
   border: solid 2px #FF3A4F;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tag-calories {
   background-color: #F4F4F8;
   border: solid 2px #00ACA5;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tag-diego {
   background-color: #F4F4F8;
   border: solid 2px #D4AF37;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recipe-tag-section {
@@ -91,6 +107,7 @@
   height: 50px;
   width: 50px;
   font-size: 24px;
+  margin-right: 10px;
 }
 
 
