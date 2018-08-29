@@ -3,15 +3,21 @@
   <div class="tag-description">
     <div class="box-tag">
       <div class="recipe-tag tag-time">⏰</div>
-      <p>The <strong>fastest</strong> to cook</p>
+      <div class="recipe-tag-text">
+        <p>The <strong>fastest</strong> to cook</p>
+      </div>
     </div>
     <div class="box-tag">
       <div class="recipe-tag tag-calories">🍩</div>
-      <p>Our <strong>calories king</strong> for your selection</p>
+      <div class="recipe-tag-text">
+        <p>Our <strong>calories king</strong> for your selection</p>
+      </div>
     </div>
     <div class="box-tag">
       <div class="recipe-tag tag-diego">👨‍🍳</div>
-      <p><strong>Recommended</strong> by our RecipEasy chef</p>
+      <div class="recipe-tag-text">
+        <p><strong>Recommended</strong> by our RecipEasy chef</p>
+      </div>
     </div>
   </div>
 </div>
@@ -26,7 +32,7 @@
           <% if recipe == @selected_recipes.sort_by{|recipe| recipe[:calories]}.last %>
             <div class="recipe-tag tag-calories">🍩</div>
           <% end %>
-          <% if recipe == @selected_recipes.shuffle.first %>
+          <% if recipe == @selected_recipes.shuffle.first && @selected_recipes.length > 1%>
             <div class="recipe-tag tag-diego">👨‍🍳</div>
           <% end %>
         </div>
