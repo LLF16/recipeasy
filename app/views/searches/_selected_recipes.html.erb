@@ -19,6 +19,17 @@
     <% @selected_recipes.each do |recipe| %>
     <div class="col-xs-12 col-md-4">
       <div class="card-recipe">
+        <div class="recipe-tag-section">
+          <% if recipe == @selected_recipes.sort_by{|recipe| recipe[:time]}.first%>
+            <div class="recipe-tag tag-time">⏰</div>
+          <% end %>
+          <% if recipe == @selected_recipes.sort_by{|recipe| recipe[:calories]}.last %>
+            <div class="recipe-tag tag-calories">🍩</div>
+          <% end %>
+          <% if recipe == @selected_recipes.shuffle.first %>
+            <div class="recipe-tag tag-diego">👨‍🍳</div>
+          <% end %>
+        </div>
          <div class="selected-recipes-facts">
           <div class="content-recipes-facts">
             <p class="selected-recipe-title">Time</p>
