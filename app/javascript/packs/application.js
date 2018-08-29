@@ -1,4 +1,4 @@
-import "bootstrap";
+
 import "components/autocomplete";
 import { amamazingPopOver } from "components/popover";
 amamazingPopOver();
@@ -9,4 +9,4 @@ import { addToSl } from "components/jquery_confirmation";
 addToSl();
 import { sendEmailSL } from "components/jquery_confirmation";
 sendEmailSL();
-
+import "bootstrap";
