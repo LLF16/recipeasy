@@ -12,6 +12,8 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
     unlockedLock1.dataset.locked = 'true';
     unlockedLock1.classList.add("fa-lock");
     unlockedLock1.classList.remove("fa-lock-open");
+    document.querySelector('#hdn_test_1').value = text_field.value
+    text_field.classList.add("disabled")
     text_field.setAttribute("disabled", "true");
 
 
@@ -22,7 +24,8 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
     // let first_ingredient = document.querySelectorAll('.form-control')[0].value
     let ingredientNames = document.querySelectorAll('.slot-ingredient-name');
     let locked_ingredients = ingredients.forEach((item) => {
-      if(item.disabled) {
+      console.log(item.classList.contains("disabled"))
+      if(item.classList.contains("disabled")) {
         array.push(item.value);
       } else {
         array.push("empty");
@@ -79,6 +82,7 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
     unlockedLock1.dataset.locked = 'false';
     unlockedLock1.classList.remove("fa-lock");
     unlockedLock1.classList.add("fa-lock-open");
+    text_field.classList.remove("disabled")
     text_field.removeAttribute("disabled");
   }
 });
@@ -90,12 +94,13 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
       unlockedLock2.dataset.locked = 'true';
       unlockedLock2.classList.add("fa-lock");
       unlockedLock2.classList.remove("fa-lock-open");
-      text_field.setAttribute("disabled", "true");
+      // document.querySelector('#hdn_test_2').value = text_field.value
+      text_field.classList.add("disabled");
     } else {
       unlockedLock2.dataset.locked = 'false';
       unlockedLock2.classList.remove("fa-lock");
       unlockedLock2.classList.add("fa-lock-open");
-      text_field.removeAttribute("disabled");
+      text_field.classList.remove("disabled");
     }
   });
 
@@ -106,12 +111,13 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
       unlockedLock3.dataset.locked = 'true';
       unlockedLock3.classList.add("fa-lock");
       unlockedLock3.classList.remove("fa-lock-open");
-      text_field.setAttribute("disabled", "true");
+      // document.querySelector('#hdn_test_3').value = text_field.value
+      text_field.classList.add("disabled");
     } else {
       unlockedLock3.dataset.locked = 'false';
       unlockedLock3.classList.remove("fa-lock");
       unlockedLock3.classList.add("fa-lock-open");
-      text_field.removeAttribute("disabled");
+      text_field.classList.remove("disabled");
     }
   });
 
@@ -122,12 +128,13 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
       unlockedLock4.dataset.locked = 'true';
       unlockedLock4.classList.add("fa-lock");
       unlockedLock4.classList.remove("fa-lock-open");
-      text_field.setAttribute("disabled", "true");
+      // document.querySelector('#hdn_test_4').value = text_field.value
+      text_field.classList.add("disabled");
     } else {
       unlockedLock4.dataset.locked = 'false';
       unlockedLock4.classList.remove("fa-lock");
       unlockedLock4.classList.add("fa-lock-open");
-      text_field.removeAttribute("disabled");
+      text_field.classList.remove("disabled");
     }
   });
 
