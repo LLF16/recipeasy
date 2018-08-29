@@ -77,6 +77,8 @@ puts "Created #{User.all.length} users"
 #   'https://www.kitchenstories.com/en/recipes/insalata-caprese-with-baked-cherry-tomatoes',
 # ]
 
+puts "Creating recipes..."
+
 @recipes_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
@@ -127,16 +129,16 @@ scraped_ingredients = []
 scraped_measurements_unit = []
 scraped_measurements_value = []
 while counter < doc.search('.ingredients tr').length
-  p doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+  # p doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
   scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
-  p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
+  # p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
   scraped_measurements_unit << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
-  p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
+  # p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
   scraped_measurements_value << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
-  p counter += 1
+  # p counter += 1
 end
 
-p "End scraping ingredients and measurements and start creating data..."
+# p "End scraping ingredients and measurements and start creating data..."
 
 main_ingredients = []
 main_measurements_unit = []
@@ -257,7 +259,7 @@ end
 sleep(1)
 end
 
-p Measurement.count
+# p Measurement.count
 
 puts "Creating shopping lists..."
 ShoppingList.create!([
@@ -435,6 +437,39 @@ Ingredient.clean_ingredients.each do |ingredient|
     ingredient.save!
   elsif ingredient.name == "chicken"
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
+    ingredient.save!
+  elsif ingredient.name == "thyme"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/thyme.jpg'
+    ingredient.save!
+  elsif ingredient.name == "shallot"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/red_shallots.jpg'
+    ingredient.save!
+  elsif ingredient.name == "penne"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/penne.jpg'
+    ingredient.save!
+  elsif ingredient.name == "beef"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/meat.jpg'
+    ingredient.save!
+  elsif ingredient.name == "macaroni"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/macaroni.jpg'
+    ingredient.save!
+  elsif ingredient.name == "pancetta"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/ham.jpg'
+    ingredient.save!
+  elsif ingredient.name == "parmesan"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536404/Recipeasy/new_ingredients/parmesan.jpg'
+    ingredient.save!
+  elsif ingredient.name == "arugula"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/rocket.jpg'
+    ingredient.save!
+  elsif ingredient.name == "mascarpone"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/Mascarpone.jpg'
+    ingredient.save!
+  elsif ingredient.name == "linguine"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/Linguini.jpg'
+    ingredient.save!
+  elsif ingredient.name == "gorgonzola"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/gorgonzola.jpg'
     ingredient.save!
   else
     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
