@@ -11,7 +11,37 @@
 }
 .recipe-of-the-day img {
   height: 50px !important;
+}
 
+.navbar-food-link_1,
+.navbar-food-link_2 {
+  font-size: 16px;
+  color: #FF3A4F;
+  text-decoration: none;
+  font-weight: bold;
+  border-right: 1px solid #b9b9b9;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  &:hover {
+    text-decoration: none;
+    color: #FF3A4F;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-food-link_1,
+  .navbar-food-link_2
+   {
+    opacity: 0;
+  }
+}
+
+.navigation_left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
 }
 
 .recipe-of-the-day-small img {
@@ -45,8 +75,9 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+  color: #FF3A4F;
+  font-size: 16px;
+  font-weight: bold;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
