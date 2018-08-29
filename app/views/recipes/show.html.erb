@@ -31,15 +31,22 @@
 
           </div>
           <div class="white-box-show">
-            <p>Ingredients</p>
-              <div class="recipe-ingredients">
-                <ul class="ingredients-list">
+            <h4>Ingredients</h4>
+              <table class="recipe-ingredients">
+                <tbody class="ingredients-list">
                 <% @recipe.measurements.each do |measurement| %>
-                  <li> <%= measurement.ingredient.name %> <%= measurement.value %> <%= measurement.ingredient.unit %>
-                  </li>
+                  <tr>
+                    <td class="ingredients__col-1">
+                      <%= measurement.value %> <%= measurement.ingredient.unit %>
+                    </td>
+                    <td class= "ingredients__col-2">
+                      <%= measurement.ingredient.name %>
+                    </td>
+                  </tr>
+
                 <% end %>
-                </ul>
-              </div>
+                </tbody>
+              </table>
             </div>
         </div>
       </div>

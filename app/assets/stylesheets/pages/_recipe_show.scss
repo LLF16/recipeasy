@@ -23,6 +23,7 @@
   margin-bottom: 10px;
   margin-right: 10px;
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  opacity: 0.7;
 }
 
 .cook-now-button {
@@ -72,17 +73,26 @@
   margin-bottom: 10px;
   margin-right: 10px;
   border: none;
+  opacity: 0.7;
 }
 
+.ingredients__col-1 {
+  align: left;
+  width: 30%;
+}
+
+.ingredients__col-2 {
+  width: 70%;
+}
+
+.recipe-ingredients {
+  width: 100%;
+}
 
 .recipe-show-wrapper {
   background-color: #FFFFFF;
 }
 
-.ingredients-list {
-  display: flex;
-  flex-direction: column;
-}
 
 .recipe-show-image-box {
   position: relative;
@@ -98,9 +108,9 @@
 .white-box-show {
   border: 1px solid #cfd8dc;
   padding: 20px;
-  margin-left: 20px;
+  margin-left: 25px;
   border-radius: 5px;
-  width: 65%;
+  width: 70%;
 }
 
 .recipe-info-details {

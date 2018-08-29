@@ -172,12 +172,19 @@
   transition: all .1s ease-in-out;
   border: #FF3A4F;
   outline: none;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  overflow: hidden;
 
   &:hover {
-    color: #FF3A4F;
-    background-color: white;
+    color: white;
+    opacity: 0.8;
     border: 1px solid #FF3A4F;
-
+  }
+  &:after {
+    content: "";
+    background: #90EE90;
+    display: block;
   }
 }
 
