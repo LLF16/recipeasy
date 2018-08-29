@@ -377,8 +377,23 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 1000px) {
+  .overlay-step {
+  height: 40px;
+  width: 40px;
+    h2 {
+      font-size: 24px;
+    }
+  }
+  .overlay-explanation {
+    h3 {
+      font-size: 16px;
+    }
+  }
+}
+
 @media only screen and (max-width: 770px) {
-
-
-
+ #activate-overlay {
+  display: none;
+ }
 }
