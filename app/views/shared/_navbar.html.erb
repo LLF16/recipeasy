@@ -1,27 +1,24 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "red_logo.png", height: 50 %>
-  <% end %>
+  <div class="navigation_left">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "red_logo.png", height: 50 %>
+    <% end %>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-  <div>
-    <%= link_to recipes_path, class: "recipe-of-the-day-small" do %>
-        <%= image_tag "question_mark" %>
-      <% end %>
-    <%= link_to recipes_path, class: "recipe-of-the-day" do %>
-        <%= image_tag "question_mark" %>
-      <% end %>
-    <%= link_to recipes_path, class: "recipe-of-the-day-small" do %>
-        <%= image_tag "question_mark" %>
-      <% end %>
-  </div>
+        <div>
+      <%= link_to "Do the shuffle", ingredients_path, class: "navbar-food-link_1" %>
+    </div>
+    <div>
+      <%= link_to "Recipe of the day", recipes_path, class: "navbar-food-link_2" %>
+    </div>
     <% if user_signed_in? %>
-
+    <div>
       <!-- Links when logged in -->
       <%= link_to "Shopping list (#{current_user.shopping_list.recipes.length})", shopping_list_path(current_user.shopping_list), class: "navbar-wagon-item navbar-wagon-link", id: "shopping-list-amount", data: { amount: current_user.shopping_list.recipes.length } %>
-
+    </div>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -50,6 +47,8 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Discover", ingredients_path %></li>
+        <li><%= link_to "Surprise!", recipes_path %></li>
       </ul>
     </div>
   </div>
