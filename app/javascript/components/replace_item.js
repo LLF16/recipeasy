@@ -1,14 +1,22 @@
 // the first line is awaiting for change in the first input to enable the locking mechanism
 // so if nothing is in the field you can't lock it
 
-document.querySelectorAll('.form-control')[0].addEventListener("input", (event) => {
+
+
+// if (document.querySelector("#ingredient_1").value !== "") {
+
+
+
+
+// document.querySelectorAll('.form-control')[0].addEventListener("change", (event) => {
+  console.log("change worked")
   const unlockedLock1 = document.querySelector("#ingredients-index-1 .fas");
   unlockedLock1.addEventListener("click", (event) => {
     const text_field = document.querySelector("#ingredient_1");
+    document.querySelector('#hdn_test_1').value = text_field.value
 
 
-
-  if (unlockedLock1.dataset.locked === 'false') {
+  if ((unlockedLock1.dataset.locked === 'false') && (document.querySelector("#ingredient_1").value !== "")) {
     unlockedLock1.dataset.locked = 'true';
     unlockedLock1.classList.add("fa-lock");
     unlockedLock1.classList.remove("fa-lock-open");
@@ -90,7 +98,7 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
   const unlockedLock2 = document.querySelector("#ingredients-index-2 .fas");
   unlockedLock2.addEventListener("click", (event) => {
     const text_field = document.querySelector("#ingredient_2");
-    if (unlockedLock2.dataset.locked === 'false') {
+    if ((unlockedLock2.dataset.locked === 'false') && (document.querySelector("#ingredient_1").value !== "")) {
       unlockedLock2.dataset.locked = 'true';
       unlockedLock2.classList.add("fa-lock");
       unlockedLock2.classList.remove("fa-lock-open");
@@ -107,7 +115,7 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
   const unlockedLock3 = document.querySelector("#ingredients-index-3 .fas");
   unlockedLock3.addEventListener("click", (event) => {
     const text_field = document.querySelector("#ingredient_3");
-    if (unlockedLock3.dataset.locked === 'false') {
+    if ((unlockedLock3.dataset.locked === 'false') && (document.querySelector("#ingredient_1").value !== "")) {
       unlockedLock3.dataset.locked = 'true';
       unlockedLock3.classList.add("fa-lock");
       unlockedLock3.classList.remove("fa-lock-open");
@@ -124,7 +132,7 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
   const unlockedLock4 = document.querySelector("#ingredients-index-4 .fas");
   unlockedLock4.addEventListener("click", (event) => {
     const text_field = document.querySelector("#ingredient_4");
-    if (unlockedLock4.dataset.locked === 'false') {
+    if ((unlockedLock4.dataset.locked === 'false') && (document.querySelector("#ingredient_1").value !== "")) {
       unlockedLock4.dataset.locked = 'true';
       unlockedLock4.classList.add("fa-lock");
       unlockedLock4.classList.remove("fa-lock-open");
@@ -138,8 +146,8 @@ document.querySelectorAll('.form-control')[0].addEventListener("input", (event) 
     }
   });
 
-});
+// });
 
 
-
+// };
 

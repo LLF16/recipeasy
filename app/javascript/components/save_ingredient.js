@@ -27,8 +27,6 @@
 //   fetch("/ingredients")
 //   return array
 // };
-
-
 let shuffleButton = document.querySelector(".ingredients-shuffle-button");
 shuffleButton.addEventListener("click", (event) => {
   let array = [];
