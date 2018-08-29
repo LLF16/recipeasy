@@ -1,5 +1,5 @@
 .space {
-  height: 100px;
+  height: 70px;
 }
 
 .card-recipe {
@@ -25,6 +25,61 @@
     right:15px;
     top:15px;
 }
+
+.container-tag {
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  border: solid 1 px #484848;
+  // box-shadow: 0 4px 10px 1px;
+  margin-bottom: 20px;
+}
+
+.tag-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 36px;
+}
+
+.recipe-tag {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.box-tag {
+  display: block;
+  align-content: center;
+  align-items: center;
+  & p {
+    font-size: 16px;
+  }
+}
+
+.tag-time {
+  background-color: #F4F4F8;
+  border: solid 2px #FF3A4F;
+}
+
+.tag-calories {
+  background-color: #F4F4F8;
+  border: solid 2px #00ACA5;
+}
+
+.tag-diego {
+  background-color: #F4F4F8;
+  border: solid 2px #D4AF37;
+}
+
 
 .card-recipe > .setting >.fa:first-child{
     margin-bottom:15px;
