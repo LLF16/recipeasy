@@ -54,10 +54,9 @@
   overflow-y: hidden;
 
 }
-// .card-recipe .card-description h4,
-// .card-description h5 {
-//   margin:0; padding:0;
-// }
+.card-recipe .card-description h4 {
+  font-weight: bold;
+}
 
 .selected-recipe-title {
   margin-bottom: -10px;
