@@ -23,12 +23,56 @@
               <%= @recipe.name %></h1>
             <div class="recipe-info-details">
               <ul>
-                <li><%= @recipe.time %> ⏱️ </li>
-                <li><%= @recipe.calories %>kcal 🍔</li>
-                <li><%= @recipe.difficulty %></li>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.time %> min. </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.serves %> people </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.difficulty %></li>
+                </div>
               </ul>
             </div>
 
+            <div class="nutrition-details-show">
+              <h4>Nutrition per serving</h4>
+              <div class="all-nutrition">
+                <div class="nutrition__col-1">
+                  <span>Cal</span>
+                  <br>
+                  <span><%= @recipe.calories %> </span>
+                </div>
+                <div class="nutrition__col-2">
+                  <span>Fat</span>
+                  <br>
+                  <span><%= @recipe.fat %> </span>
+                </div>
+                <div class="nutrition__col-3">
+                  <span>Carb</span>
+                  <br>
+                  <span><%= @recipe.carb %> </span>
+                </div>
+                <div class="nutrition__col-4">
+                  <span>Protein</span>
+                  <br>
+                  <span><%= @recipe.protein %> </span>
+                </div>
+            </div>
+            </div>
+            <div class="recipe-utensils">
+              <h4>
+                Utensils
+              </h4>
+                <%= @recipe.utensils.first.capitalize %>,
+                <% @recipe.utensils.drop(1).each do |utensil| %>
+                  <% if utensil != @recipe.utensils.last %>
+                    <%=   utensil %>,
+                  <% else %>
+                    <%= utensil %>
+                  <% end %>
+                <% end %>
+            </div>
           </div>
           <div class="white-box-show">
             <h4>Ingredients</h4>
@@ -37,10 +81,14 @@
                 <% @recipe.measurements.each do |measurement| %>
                   <tr>
                     <td class="ingredients__col-1">
+                      <% if  measurement.value === 0%>
+
+                      <% else %>
                       <%= measurement.value %> <%= measurement.ingredient.unit %>
+                      <% end %>
                     </td>
                     <td class= "ingredients__col-2">
-                      <%= measurement.ingredient.name %>
+                      <%= measurement.display_name.capitalize %>
                     </td>
                   </tr>
 
