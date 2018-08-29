@@ -1,3 +1,127 @@
+.sl-title {
+  display: flex;
+  h1 {
+    margin-right: 30px;
+  }
+}
+
+.sl-recipe-summary-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.sl-recipe-summary-header {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 20px 0 20px 0;
+    box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+    padding: 20px;
+    border-radius: 15px;
+
+}
+
+.sl-recipe-details-image {
+  flex-basis: 500px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.sl-recipe-image {
+  display: block;
+    width: 320px;
+    height: 320px;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 10px;
+    animation: fade-in .4s ease both;
+}
+
+.sl-recipe-details {
+  flex-basis: 600px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.sl-primary-info-text {
+  display: flex;
+  margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 1em;
+    vertical-align: baseline;
+
+    h4 a {
+      text-decoration: none;
+      color: #6E6E6E;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #6E6E6E;
+    }
+}
+
+.sl-ingredient-tags {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 268px;
+
+
+    ul {
+      padding-left: 0;
+    }
+}
+
+
+
+.sl-ingredient-tag {
+  margin: 1em 1em 0 0;
+  text-transform: capitalize;
+  font-size: 12px;
+  transition: all .4s ease;
+  font-weight: 700;
+  border: 2px solid #39C3BC;
+  border-radius: 2em;
+  display: inline-block;
+  font-size: .75em;
+  text-transform: uppercase;
+  margin: 1em;
+  width: auto;
+  padding: 3px 5px 3px 5px;
+  color: #39C3BC;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: #39C3BC
+  }
+
+    &:nth-child(even) {
+      border: 2px solid #CCCC00;
+      color: #CCCC00;
+
+      &:hover {
+        color: white;
+        background-color: #CCCC00;
+      }
+  }
+
+
+}
+
+
 .shopping-list-recipe-card {
   display: flex;
   border: 1px solid lightgrey;
@@ -64,6 +188,8 @@
   }
 }
 
+
+
 #email-send {
   background-color: #00DEC7;
   color: white;
@@ -71,6 +197,8 @@
   border: #00DEC7;
   padding: 15px;
   outline: none;
+  margin-top: 20px;
+  max-height: 60px;
 
   &:hover {
     background-color: #00ACA5;
