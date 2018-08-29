@@ -293,6 +293,7 @@
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 999; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+    color: white;
 }
 
 #activate-overlay {
@@ -300,12 +301,12 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: solid 4px white;
+  border: solid 5px white;
   margin-bottom: 10px;
   margin-right: 10px;
   box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
   color: white;
-
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,4 +315,56 @@
   position: absolute;
   bottom: 3%;
   left: 2%;
+  &:hover {
+    background-color: white;
+    border: solid 5px #00ACA5;
+    color: #00ACA5;
+  }
+}
+
+.overlay-step {
+  background-color: #00ACA5;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: solid 5px white;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  h2 {
+    font-size: 50px;
+    margin-top: auto;
+  }
+}
+
+.overlay-explanation {
+  // width: 400px;
+}
+
+.overlay-first {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  left: 7%;
+}
+
+.overlay-lock {
+  display: flex;
+  position: absolute;
+  top: 60%;
+  left: 20%;
+}
+
+.overlay-shuffle {
+  display: flex;
+  position: absolute;
+  top: 10%;
+  right: 30%;
+}
+
+.overlay-submit {
+  display: flex;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
 }
