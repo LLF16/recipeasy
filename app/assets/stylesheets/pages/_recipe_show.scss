@@ -8,6 +8,9 @@
   position: relative;
 }
 
+.start-now {
+  box-shadow: inset 0px -10px red;
+}
 #recipeasy-slogan {
   font-size: 25px;
   opacity: 0.9;
@@ -113,7 +116,7 @@
 }
 
 .white-box-show {
-  border: 1px solid #cfd8dc;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
   padding: 20px;
   margin-left: 50px;
   border-radius: 5px;
@@ -185,9 +188,9 @@
 }
 
 #recipe-title {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 30px;
+  font-size: 45px;
+  font-weight: 800;
+  margin-bottom: 25px;
 }
 
 .nutrition__col-1 {

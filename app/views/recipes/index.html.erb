@@ -1,6 +1,5 @@
 
 <canvas height="1" id="confetti" width="1"></canvas>
-<a class="iprodev" href="http://iprodev.com" target="_blank"></a>
 <div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
     <div class="shopping-list-submit">
       <% if current_user %>
@@ -13,7 +12,8 @@
       <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
     </div>
   </div>
-</div>
+
+
 
   <div class="recipe-show-wrapper">
     <div class="container">
