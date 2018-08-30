@@ -283,3 +283,125 @@
   }
 
 }
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 999; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    color: white;
+}
+
+#activate-overlay {
+  background-color: #00ACA5;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: solid 5px white;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  z-index: 10;
+  position: absolute;
+  bottom: 3%;
+  left: 2%;
+  &:hover {
+    background-color: white;
+    border: solid 5px #00ACA5;
+    color: #00ACA5;
+  }
+}
+
+.overlay-step {
+  background-color: #00ACA5;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: solid 5px white;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 15px;
+  margin-left: 15px;
+  h2 {
+    font-size: 50px;
+    margin-top: auto;
+  }
+}
+
+.overlay-explanation {
+  width: 400px;
+  h3 {
+    font-size: 24px;
+  }
+}
+
+.overlay-first {
+  display: flex;
+  position: absolute;
+  top: 23%;
+  left: 2%;
+  align-items: center;
+}
+
+.overlay-lock {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  align-items: center;
+}
+
+.overlay-lock-icon {
+  font-size: 36px;
+}
+
+.overlay-shuffle {
+  display: flex;
+  position: absolute;
+  top: 26%;
+  right: 5%;
+  align-items: center;
+}
+
+.overlay-submit {
+  display: flex;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .overlay-step {
+  height: 40px;
+  width: 40px;
+    h2 {
+      font-size: 24px;
+    }
+  }
+  .overlay-explanation {
+    h3 {
+      font-size: 16px;
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+ #activate-overlay {
+  display: none;
+ }
+}

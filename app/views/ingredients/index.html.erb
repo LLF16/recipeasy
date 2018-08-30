@@ -1,116 +1,164 @@
 <div class="container-ingredients">
+  <!-- The overlay -->
+  <div id="overlay">
+
+    <div class="overlay-first">
+      <div class="overlay-step">
+        <h2>1</h2>
+      </div>
+      <div class="overlay-explanation">
+        <h3>Select an ingredient of your choice, or click directly on shuffle to get 4 random ingredients</h3>
+      </div>
+    </div>
+
+    <div class="overlay-lock">
+      <i class="fas fa-lock-open overlay-lock-icon"></i>
+      <div class="overlay-step">
+        <h2>2</h2>
+      </div>
+      <div class="overlay-explanation">
+        <h3>If you like an ingredient, you can lock it before shuffling for other random ingredients</h3>
+      </div>
+    </div>
+
+    <div class="overlay-shuffle">
+      <div class="overlay-step">
+        <h2>3</h2>
+      </div>
+      <div class="overlay-explanation">
+        <h3>Once you locked the ingredients you want to keep in your selection, shuffle for new randomly selected ingredients</h3>
+      </div>
+    </div>
+
+    <div class="overlay-submit">
+      <div class="overlay-step">
+        <h2>4</h2>
+      </div>
+      <div class="overlay-explanation">
+        <h3>All the ingredients displayed looking good? Press the submit button to get recipes !</h3>
+      </div>
+    </div>
+
+  </div>
+  <button id="activate-overlay" class="btn">How does it work?</button>
   <%= form_tag searches_path, method: :get, remote: true do %>
- <div class="ingredients-index-container">
-    <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= image_path "fridge.jpg" %>)" >
+  <div class="ingredients-index-container">
+    <div id="index-bar-first" class="ingredients-index-bar" style= "background-color: #FF3A4F" >
+      <!-- <p>Select a first ingredient or shuffle directly</p> -->
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <div class="styled-select slate">
             <select id="ingredient_1" name="ingredient_1" class="form-control first-text-tag style-dropdown">
               <option value="" selected disabled hidden>Select an ingredient...</option>
 
-              <% @ingredients.each do |ingredient| %>
-                <option class="dropdown-option" value="<%= ingredient.name %>"><%= ingredient.name %></option>
-              <% end %>
-            </select>
-          </div>
-          <input type="hidden" id="hdn_test_1" name="ingredient_1_locked" />
+          <select id="ingredient_1" name="ingredient_1" class="form-control first-text-tag">
+            <option value="" selected disabled hidden>Select an ingredient...</option>
 
-        <h3 class="slot-ingredient-name"></h3>
+            <% @ingredients.each do |ingredient| %>
+            <option value="<%= ingredient.name %>"><%= ingredient.name %></option>
+            <% end %>
+          </select>
+
+          <input type="hidden" id="hdn_test_1" name="ingredient_1" />
+
+          <h3 class="slot-ingredient-name"></h3>
 
         </div>
       </div>
+      <!-- <p>Lock your ingredient to keep it</p> -->
       <div id="ingredients-index-lock-1">
         <p id="ingredients-index-1">
           <i class="fas fa-lock-open" data-locked='false'></i>
         </p>
       </div>
+      <!-- <p>Press shuffle until you find all your ingredients and submit to get recipes</p> -->
     </div>
 
-    <div id="index-bar-second" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(135,48,0,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "fridge.jpg" %>)">
+    <div id="index-bar-second" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(100,100,100,0.6) 0%, rgba(50,50,50,0.6) 90%), url(<%= image_path "default_2.jpg" %>); background-size: cover;">
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
           <%= text_field_tag :ingredient_2,
-            params[:ingredient_2],
-            class: "form-control second-text-tag",
+          params[:ingredient_2],
+          class: "form-control second-text-tag",
             placeholder: "Enter an ingredient",
             value: ""
-          %>
+            %>
 
+          </div>
+          <h3 class="slot-ingredient-name"></h3>
         </div>
-      <h3 class="slot-ingredient-name"></h3>
+        <div id="ingredients-index-lock-2">
+          <p id="ingredients-index-2">
+            <i class="fas fa-lock-open" data-locked='false'></i>
+          </p>
+        </div>
       </div>
-      <div id="ingredients-index-lock-2">
-        <p id="ingredients-index-2">
-          <i class="fas fa-lock-open" data-locked='false'></i>
-        </p>
-      </div>
-    </div>
 
-    <div id="index-bar-third" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(135,48,0,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "fridge.jpg" %>)">
-      <div class="ingredients-index-bar-container">
-        <div class="ingredients-form-input">
-          <%= text_field_tag :ingredient_3,
+      <div id="index-bar-third" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(100,100,100,0.6) 0%, rgba(50,50,50,0.6) 90%), url(<%= image_path "default_3.jpg" %>); background-size: cover;">
+        <div class="ingredients-index-bar-container">
+          <div class="ingredients-form-input">
+            <%= text_field_tag :ingredient_3,
             params[:ingredient_3],
             class: "form-control third-text-tag",
-            placeholder: "Enter an ingredient",
-            value: ""
-          %>
+              placeholder: "Enter an ingredient",
+              value: ""
+              %>
 
+            </div>
+            <h3 class="slot-ingredient-name"></h3>
+          </div>
+          <div id="ingredients-index-lock-3">
+            <p id="ingredients-index-3">
+              <i class="fas fa-lock-open" data-locked='false'></i>
+            </p>
+          </div>
         </div>
-      <h3 class="slot-ingredient-name"></h3>
-      </div>
-      <div id="ingredients-index-lock-3">
-        <p id="ingredients-index-3">
-          <i class="fas fa-lock-open" data-locked='false'></i>
-        </p>
-      </div>
-    </div>
 
-    <div id="index-bar-fourth" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(135,48,0,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "fridge.jpg" %>)">
-      <div class="ingredients-index-bar-container">
-        <div class="ingredients-form-input">
-          <%= text_field_tag :ingredient_4,
-            params[:ingredient_4],
-            class: "form-control fourth-text-tag",
-            placeholder: "Enter an ingredient",
-            value: ""
-          %>
+        <div id="index-bar-fourth" class="ingredients-index-bar" style="background-image: linear-gradient(-225deg, rgba(100,100,100,0.6) 0%, rgba(50,50,50,0.6) 90%), url(<%= image_path "default_4.jpg" %>); background-size: cover;">
+          <div class="ingredients-index-bar-container">
+            <div class="ingredients-form-input">
+              <%= text_field_tag :ingredient_4,
+              params[:ingredient_4],
+              class: "form-control fourth-text-tag",
+                placeholder: "Enter an ingredient",
+                value: ""
+                %>
+              </div>
+              <h3 class="slot-ingredient-name"></h3>
+            </div>
+            <div id="ingredients-index-lock-4">
+              <p id="ingredients-index-4">
+                <i class="fas fa-lock-open" data-locked='false'></i>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="ingredients-index-white-space-submit">
+          <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
+        </div>
+        <% end %>
+        <div class="ingredients-index-white-space-shuffle hidden-xs">
+          <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
+        </div>
+        <div class="ingredients-index-white-space-shuffle-small hidden-sm hidden-md hidden-lg">
+          <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
+        </div>
       </div>
-      <h3 class="slot-ingredient-name"></h3>
-     </div>
-     <div id="ingredients-index-lock-4">
-        <p id="ingredients-index-4">
-          <i class="fas fa-lock-open" data-locked='false'></i>
-        </p>
-     </div>
-    </div>
-  </div>
-  <div class="ingredients-index-white-space-submit">
-    <%= submit_tag("Submit", :anchor => "selected-recipes", id: "get-recipes", class: "js-scroll-trigger ingredients-submit-button") %>
-  </div>
-  <% end %>
-  <div class="ingredients-index-white-space-shuffle hidden-xs">
-    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
-  </div>
-  <div class="ingredients-index-white-space-shuffle-small hidden-sm hidden-md hidden-lg">
-    <%= button_tag("Shuffle", class: "ingredients-shuffle-button ") %>
-  </div>
-</div>
 
-<div class="container-selected-recipes">
-  <div id="selected-recipes">
-  </div>
-</div>
+      <div class="container-selected-recipes">
+        <div id="selected-recipes">
+        </div>
+      </div>
 
-<!-- M: Loads Javascript that is only relevant for this page. Potential problem, if there is more html code after rendering this page in application.html.erb, it will not be rendered. -->
-<% content_for :after_js do %>
-  <%= javascript_pack_tag 'selected_pages' %>
-<% end %>
-<!-- M: This code is for jQuery autcomplete -->
+      <!-- M: Loads Javascript that is only relevant for this page. Potential problem, if there is more html code after rendering this page in application.html.erb, it will not be rendered. -->
+      <% content_for :after_js do %>
+      <%= javascript_pack_tag 'selected_pages' %>
+      <% end %>
+      <!-- M: This code is for jQuery autcomplete -->
 <!-- <script>
   (function() {
   new app.Ingredients;
   });
 </script>
- -->
+-->
 
