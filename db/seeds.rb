@@ -115,33 +115,34 @@ puts "Created #{User.all.length} users"
   scraped_measurements_unit = []
   scraped_measurements_value = []
   while counter < doc.search('.ingredients tr').length
-    p doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
+    doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
     scraped_ingredients << doc.search('.ingredients tr .ingredients__col-2')[counter].text.strip
-    p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
+    doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
     scraped_measurements_unit << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-unit')
-    p doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
+    doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
     scraped_measurements_value << doc.search('.ingredients tr .ingredients__col-1')[counter].attr('data-amount')
-    p counter += 1
+    counter += 1
   end
 
-  p scraped_measurements_value
+  scraped_ingredients_reference = scraped_ingredients
+
   # for the ingredients having no value/unit, replacing the 'nil' value scraped by a string 'none' to avoid errors in the script
   scraped_ingredients.map! {|e| e ? e : "none"}
-  scraped_measurements_unit.map! {|e| e ? e : "none"}
-  scraped_measurements_value.map! {|e| e ? e : "none"}
+  scraped_measurements_unit.map! {|e| e ? e : " "}
+  scraped_measurements_value.map! {|e| e ? e : " "}
 
-  p scraped_measurements_value
   # start to create ingredients and measurements in the db, based on the scraped arrays
   scraped_ingredients.each do |scraped_ingredient|
     scraped_ingredient.downcase!
-    index_counter =  scraped_ingredients.index(scraped_ingredient)
+    index_counter =  scraped_ingredients_reference.index(scraped_ingredient)
     # first we check if scraped ingredients are not part of the clean list
     clean_ingredients.select do |clean_name|
       if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
         # for the ingredients that are part of the clean list, check if this ingredient already exists in the db
         ingredient_found = Ingredient.where(name: clean_name).first
         if ingredient_found
-          # ingredient already exists so we only have to create a new measurements and link to the id of the existing ingredient
+          p ingredient_found.name
+          # ingredient already exists so we only have to create a new measurements and link to the id of the existing ingrediente
           measurement = Measurement.new
           measurement.ingredient_id = ingredient_found.id
           measurement.recipe_id = new_recipe.id
@@ -158,7 +159,6 @@ puts "Created #{User.all.length} users"
             measurement.value = scraped_measurements_value[index_counter].to_f
           end
           measurement.save!
-          p measurement
           # removing ingredient created from the scraped array (same for unit and value)
           # scraped_ingredients.delete_at(index_counter)
           # scraped_measurements_value.delete_at(index_counter)
@@ -171,6 +171,7 @@ puts "Created #{User.all.length} users"
             )
           ingredient.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
           ingredient.save!
+          p ingredient.name
           # create the measurement for this new ingredient
           measurement = Measurement.new
           measurement.ingredient_id = ingredient.id
@@ -188,75 +189,72 @@ puts "Created #{User.all.length} users"
             measurement.value = scraped_measurements_value[index_counter].to_f
           end
           measurement.save!
-          p measurement
           # removing ingredient created from the scraped array (same for unit and value)
           # scraped_ingredients.delete_at(index_counter)
           # scraped_measurements_value.delete_at(index_counter)
           # scraped_measurements_unit.delete_at(index_counter)
 
         end
+        scraped_ingredients.delete_at(index_counter)
+        scraped_measurements_value.delete_at(index_counter)
+        scraped_measurements_unit.delete_at(index_counter)
       end
     end
-    scraped_ingredients.delete_at(index_counter)
-    scraped_measurements_value.delete_at(index_counter)
-    scraped_measurements_unit.delete_at(index_counter)
   end
 
-
-p scraped_measurements_value
   # => At this point, the scraped_ingredients, scraped_measurements_unit and scraped_measurements_value arrays only contains information about ingredients that are not part of the clean list
 
   # create ingredients remaining in the scraped_ingredients array
   scraped_ingredients.each do |scraped_ingredient|
     scraped_ingredient.downcase!
-    ingredient = Ingredient.where(name: scraped_ingredient).first
+    ingredient_unclean = Ingredient.where(name: scraped_ingredient).first
     #if ingredient already exists
-    if ingredient.present?
+    if ingredient_unclean.present?
+      p ingredient_unclean.name
       measurement = Measurement.new
-      measurement.ingredient_id = ingredient.id
+      measurement.ingredient_id = ingredient_unclean.id
       measurement.recipe_id = new_recipe.id
       measurement.display_name = scraped_ingredient
       # normalisation of the value/unit to only keep values refered in grams or milliliters
-      if ingredient.unit == "kg"
+      if ingredient_unclean.unit == "kg"
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-        ingredient.unit = "g"
-      elsif ingredient.unit == "l"
+        ingredient_unclean.unit = "g"
+      elsif ingredient_unclean.unit == "l"
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-        ingredient.unit = "ml"
+        ingredient_unclean.unit = "ml"
       else
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
       end
       measurement.save!
-      p measurement
     #if ingredient does not exist yet
     else
-      ingredient = Ingredient.new(name: scraped_ingredient)
-      ingredient.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
-      ingredient.save!
+      ingredient_unclean_new = Ingredient.new(name: scraped_ingredient)
+      ingredient_unclean_new.unit = scraped_measurements_unit[scraped_ingredients.index(scraped_ingredient)]
+      ingredient_unclean_new.save!
+      p ingredient_unclean_new.name
       measurement = Measurement.new
-      measurement.ingredient_id = ingredient.id
+      measurement.ingredient_id = ingredient_unclean_new.id
       measurement.recipe_id = new_recipe.id
       measurement.display_name = scraped_ingredient
       # normalisation of the value/unit to only keep values refered in grams or milliliters
-      if ingredient.unit == "kg"
-        p measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-        ingredient.unit = "g"
-      elsif ingredient.unit == "l"
-        p measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-        ingredient.unit = "ml"
+      if ingredient_unclean_new.unit == "kg"
+        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+        ingredient_unclean_new.unit = "g"
+      elsif ingredient_unclean_new.unit == "l"
+        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+        ingredient_unclean_new.unit = "ml"
       else
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
       end
       measurement.save!
-      p measurement
     end
   end
   # wait for 1 second before creating following recipe
+  p Measurement.count
   sleep(1)
 end
   # END SCRAPING RECIPES, INGREDIENTS AND MEASUREMENTS-----------------------------------------------------------
 
-p Measurement.count
 
 puts "Creating shopping lists..."
 ShoppingList.create!([

@@ -14,3 +14,5 @@ startCookingMode();
 import { finishCookingMode } from "components/jquery_confirmation";
 finishCookingMode();
 import "bootstrap";
+import { addActiveClassNav } from "components/add_active_class";
+addActiveClassNav();
