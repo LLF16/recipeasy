@@ -1,4 +1,43 @@
 <div class="container-ingredients">
+
+  <!-- The overlay -->
+  <div id="overlay">
+   <div class="overlay-first">
+    <div class="overlay-step">
+      <h2>1</h2>
+    </div>
+    <div class="overlay-explanation">
+      <h3>Select an ingredient of your choice, or click directly on shuffle to get 4 random ingredients</h3>
+    </div>
+  </div>
+  <div class="overlay-lock">
+    <i class="fas fa-lock-open overlay-lock-icon"></i>
+    <div class="overlay-step">
+      <h2>2</h2>
+    </div>
+    <div class="overlay-explanation">
+      <h3>If you like an ingredient, you can lock it before shuffling for other random ingredients</h3>
+    </div>
+  </div>
+  <div class="overlay-shuffle">
+    <div class="overlay-step">
+      <h2>3</h2>
+    </div>
+    <div class="overlay-explanation">
+      <h3>Once you locked the ingredients you want to keep in your selection, shuffle for new randomly selected ingredients</h3>
+    </div>
+  </div>
+  <div class="overlay-submit">
+    <div class="overlay-step">
+      <h2>4</h2>
+    </div>
+    <div class="overlay-explanation">
+      <h3>All the ingredients displayed looking good? Press the submit button to get recipes !</h3>
+    </div>
+  </div>
+</div>
+<button id="activate-overlay" class="btn">How does it work?</button>
+
   <%= form_tag searches_path, method: :get, remote: true do %>
  <div class="ingredients-index-container">
     <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= image_path "fridge.jpg" %>)" >
