@@ -70,6 +70,7 @@ User.create!([
 puts "Created #{User.all.length} users"
 
 # SCRAPING RECIPES, INGREDIENTS AND MEASUREMENTS---------------------------------------------------------------
+@recipes_urls.uniq!
 @recipes_urls.each do |url|
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
