@@ -7,6 +7,14 @@
   }
 }
 
+.remove-recipe {
+  visibility: hidden;
+  position: absolute;
+  top: 33px;
+  right: 168px;
+}
+
+
 .sl-recipe-image-container {
    // box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
    background-color: transparent;
@@ -67,6 +75,10 @@
   border-radius: 0 10px 10px 0;
       margin-top: 1px;
     margin-bottom: 1px;
+}
+
+.sl-recipe-details:hover .remove-recipe {
+  visibility: visible;
 }
 
 .sl-primary-info-text {
