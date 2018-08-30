@@ -1,4 +1,4 @@
-<div class="container container-flex">
+<div class="container">
   <% if @shopping_list.recipes.empty? %>
     <p><%= "You have no recipes yet!" %></p>
     <div>
@@ -6,12 +6,35 @@
     </div>
   <% else %>
     <div>
-      <h2> Your shopping list </h2>
-      <%= button_tag "Send shopping list as email", id: "email-send", data: { path: send_email_shopping_list_url(@user), shopping_list: @shopping_list } %>
-      <div class="shopping-list-container">
+      <div class="sl-title">
+      <h1>Shopping List</h1>
+      <%= button_tag "Send", id: "email-send", data: { path: send_email_shopping_list_url(@user), shopping_list: @shopping_list } %>
+      </div>
+      <div>
 
           <% @shopping_list.recipes.each do |recipe| %>
-             <%= render "recipe_card", measurement: @measurement, shopping_list: @shopping_list, recipe: recipe %>
+          <div class="sl-recipe-summary-wrapper">
+            <div class="sl-recipe-summary-header">
+                <div class="sl-recipe-image"
+                  style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path recipe.photo %>');">
+                </div>
+                <div class="sl-recipe-details">
+                  <div class="sl-primary-info-text">
+                    <h4><%= link_to recipe.name, recipe_path(recipe)  %></h4>
+                  </div>
+                  <div class="sl-ingredient-tags">
+                    <ul>
+                    <% recipe.measurements.each do |measurement| %>
+                      <li class="sl-ingredient-tag">
+                      <%= measurement.display_name.capitalize %>
+                      </li>
+                    <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <% end %>
 
       </div>
