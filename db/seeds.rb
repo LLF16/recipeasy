@@ -258,215 +258,215 @@ end
 
 p Measurement.count
 
-# puts "Creating shopping lists..."
-# ShoppingList.create!([
-#   {
-#     user_id: 1,
-#     total_price: 100
-#   },
-#   {
-#     user_id: 2,
-#     total_price: 400
-#   },
-#   {
-#     user_id: 3,
-#     total_price: 150
-#   }
-# ]);
-# puts "Created #{ShoppingList.all.length} shopping lists"
+puts "Creating shopping lists..."
+ShoppingList.create!([
+  {
+    user_id: 1,
+    total_price: 100
+  },
+  {
+    user_id: 2,
+    total_price: 400
+  },
+  {
+    user_id: 3,
+    total_price: 150
+  }
+]);
+puts "Created #{ShoppingList.all.length} shopping lists"
 
 
-# puts "Creating measurement shopping lists..."
-# MeasurementShoppingList.create!([
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 1
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 2
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 3
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 4
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 5
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 40
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 42
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 41
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 25
-#   },
-#   {
-#     shopping_list_id: 1,
-#     measurement_id: 33
-#   },
-#   # this one has nil value
-#   # {
-#   #   shopping_list_id: 1,
-#   #   measurement_id: 54,
-#   #   price: 20
-#   # },
-#   {
-#     shopping_list_id: 2,
-#     measurement_id: 29
-#   },
-#   {
-#     shopping_list_id: 3,
-#     measurement_id: 25
-#   }
-# ]);
-# puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
+puts "Creating measurement shopping lists..."
+MeasurementShoppingList.create!([
+  {
+    shopping_list_id: 1,
+    measurement_id: 1
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 2
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 3
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 4
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 5
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 40
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 42
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 41
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 25
+  },
+  {
+    shopping_list_id: 1,
+    measurement_id: 33
+  },
+  # this one has nil value
+  # {
+  #   shopping_list_id: 1,
+  #   measurement_id: 54,
+  #   price: 20
+  # },
+  {
+    shopping_list_id: 2,
+    measurement_id: 29
+  },
+  {
+    shopping_list_id: 3,
+    measurement_id: 25
+  }
+]);
+puts "Created #{MeasurementShoppingList.all.length} measurements shopping lists"
 
 
-# puts "Creating ingredient pictures..."
+puts "Creating ingredient pictures..."
 
-# Ingredient.clean_ingredients.each do |ingredient|
-#   if ingredient.name == "ricotta"
-#     ingredient.remote_photo_url = "https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201319/Recipeasy/ricotta.jpg"
-#     ingredient.save!
-#   elsif ingredient.name == "tagliatelle"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201318/Recipeasy/tagliatelle.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "spaghetti"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201317/Recipeasy/spaghetti.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "hazelnuts"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/hazelnuts.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "prosciutto"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/prosciutto.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "pinenuts"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/pinenuts.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "peas"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201315/Recipeasy/peas.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "honey"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201314/Recipeasy/honey.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "carrots"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/carrots.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "fusilli"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/fusilli.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "bell pepper"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/bellpepper.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "eggplant"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/eggplant.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "broccoli"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201311/Recipeasy/broccoli.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "arugola"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/arugola.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "asparagus"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/asparagus.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "avocado"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/avocado.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "zucchini"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200978/Recipeasy/zucchini.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "spinach"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/spinach.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "tomatoes"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/tomato.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "onions"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/onion.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "mushrooms"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/mushroom.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "egg"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/eggs.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "goat cheese"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/goat_cheese.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "mozzarella"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/Mozzarella.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "garlic"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/garlic.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "leek"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/leek.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "beef"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/meat.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "potatoes"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/potato.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "pecorino"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/Pecorino.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "chili"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/chili.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "basil"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/basil.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "chicken"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "thyme"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/thyme.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "shallot"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/red_shallots.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "penne"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/penne.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "macaroni"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/macaroni.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "pancetta"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/ham.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "parmesan"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536404/Recipeasy/new_ingredients/parmesan.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "arugula"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/rocket.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "mascarpone"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/Mascarpone.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "linguine"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/Linguini.jpg'
-#     ingredient.save!
-#   elsif ingredient.name == "gorgonzola"
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/gorgonzola.jpg'
-#     ingredient.save!
-#   else
-#     ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
-#     ingredient.save!
-#   end
-# end
+Ingredient.clean_ingredients.each do |ingredient|
+  if ingredient.name == "ricotta"
+    ingredient.remote_photo_url = "https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201319/Recipeasy/ricotta.jpg"
+    ingredient.save!
+  elsif ingredient.name == "tagliatelle"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201318/Recipeasy/tagliatelle.jpg'
+    ingredient.save!
+  elsif ingredient.name == "spaghetti"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201317/Recipeasy/spaghetti.jpg'
+    ingredient.save!
+  elsif ingredient.name == "hazelnuts"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/hazelnuts.jpg'
+    ingredient.save!
+  elsif ingredient.name == "prosciutto"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/prosciutto.jpg'
+    ingredient.save!
+  elsif ingredient.name == "pinenuts"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201316/Recipeasy/pinenuts.jpg'
+    ingredient.save!
+  elsif ingredient.name == "peas"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201315/Recipeasy/peas.jpg'
+    ingredient.save!
+  elsif ingredient.name == "honey"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201314/Recipeasy/honey.jpg'
+    ingredient.save!
+  elsif ingredient.name == "carrots"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/carrots.jpg'
+    ingredient.save!
+  elsif ingredient.name == "fusilli"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/fusilli.jpg'
+    ingredient.save!
+  elsif ingredient.name == "bell pepper"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/bellpepper.jpg'
+    ingredient.save!
+  elsif ingredient.name == "eggplant"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201312/Recipeasy/eggplant.jpg'
+    ingredient.save!
+  elsif ingredient.name == "broccoli"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201311/Recipeasy/broccoli.jpg'
+    ingredient.save!
+  elsif ingredient.name == "arugola"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/arugola.jpg'
+    ingredient.save!
+  elsif ingredient.name == "asparagus"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/asparagus.jpg'
+    ingredient.save!
+  elsif ingredient.name == "avocado"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535201310/Recipeasy/avocado.jpg'
+    ingredient.save!
+  elsif ingredient.name == "zucchini"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200978/Recipeasy/zucchini.jpg'
+    ingredient.save!
+  elsif ingredient.name == "spinach"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/spinach.jpg'
+    ingredient.save!
+  elsif ingredient.name == "tomatoes"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/tomato.jpg'
+    ingredient.save!
+  elsif ingredient.name == "onions"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/onion.jpg'
+    ingredient.save!
+  elsif ingredient.name == "mushrooms"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200972/Recipeasy/mushroom.jpg'
+    ingredient.save!
+  elsif ingredient.name == "egg"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/eggs.jpg'
+    ingredient.save!
+  elsif ingredient.name == "goat cheese"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/goat_cheese.jpg'
+    ingredient.save!
+  elsif ingredient.name == "mozzarella"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200970/Recipeasy/Mozzarella.jpg'
+    ingredient.save!
+  elsif ingredient.name == "garlic"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/garlic.jpg'
+    ingredient.save!
+  elsif ingredient.name == "leek"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200969/Recipeasy/leek.jpg'
+    ingredient.save!
+  elsif ingredient.name == "beef"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/meat.jpg'
+    ingredient.save!
+  elsif ingredient.name == "potatoes"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/potato.jpg'
+    ingredient.save!
+  elsif ingredient.name == "pecorino"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/Pecorino.jpg'
+    ingredient.save!
+  elsif ingredient.name == "chili"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/chili.jpg'
+    ingredient.save!
+  elsif ingredient.name == "basil"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535200968/Recipeasy/basil.jpg'
+    ingredient.save!
+  elsif ingredient.name == "chicken"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
+    ingredient.save!
+  elsif ingredient.name == "thyme"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/thyme.jpg'
+    ingredient.save!
+  elsif ingredient.name == "shallot"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/red_shallots.jpg'
+    ingredient.save!
+  elsif ingredient.name == "penne"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/penne.jpg'
+    ingredient.save!
+  elsif ingredient.name == "macaroni"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/macaroni.jpg'
+    ingredient.save!
+  elsif ingredient.name == "pancetta"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/ham.jpg'
+    ingredient.save!
+  elsif ingredient.name == "parmesan"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536404/Recipeasy/new_ingredients/parmesan.jpg'
+    ingredient.save!
+  elsif ingredient.name == "arugula"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/rocket.jpg'
+    ingredient.save!
+  elsif ingredient.name == "mascarpone"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536403/Recipeasy/new_ingredients/Mascarpone.jpg'
+    ingredient.save!
+  elsif ingredient.name == "linguine"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/Linguini.jpg'
+    ingredient.save!
+  elsif ingredient.name == "gorgonzola"
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535536402/Recipeasy/new_ingredients/gorgonzola.jpg'
+    ingredient.save!
+  else
+    ingredient.remote_photo_url = 'https://res.cloudinary.com/decmti7fk/image/upload/c_fill,g_center,h_750,w_400/v1535373966/Recipeasy/chicken.jpg'
+    ingredient.save!
+  end
+end
