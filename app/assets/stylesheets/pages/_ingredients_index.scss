@@ -404,8 +404,13 @@
 }
 
 .recipes-display-box {
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
   padding: 20px;
   margin-bottom: 50px;
+}
+
+.box-with-icons {
+  display: flex;
+
 }
