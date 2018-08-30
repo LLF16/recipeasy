@@ -182,15 +182,20 @@
   display: flex;
   border: 1px solid lightgrey;
   border-radius: 15px;
+  position: relative;
   background: transparent;
-  margin: 7px 5px 15px 25px;
+  margin: 7px 5px 15px 0;
   padding: 20px;
   justify-content: center;
   color: white;
   align-items: center;
+  color: #484848;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
+
+
 
   a {
-    color: white;
+    color: #484848;
   }
   a:hover {
     text-decoration: none;
@@ -198,17 +203,18 @@
 }
 
 .shopping-list-recipe-card-photo {
-  height: 150px;
-  width: 150px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 10px;
+
 }
 
 .shopping-list-recipe-card-remove {
   position: absolute;
   top: 0;
+  left: 0;
   bottom: 0;
-  right: 0;
   width: 100%;
   z-index: 2;
   opacity: 0;
