@@ -1,19 +1,18 @@
 
 <canvas height="1" id="confetti" width="1"></canvas>
 <div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
-    <div class="shopping-list-submit">
+    <div class="recipe-show-banner-box">
+      <h1 id='recipe-title', data-recipe="<%= @recipe.name %>">
+      <%= @recipe.name %></h1>
+      <h2 id="recipeasy-slogan">Anyone can cook: <strong class="start-now">start now</strong></h2>
+      <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
       <% if current_user %>
-        <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+        <%= button_tag "Add to shopping list", class: "btn btn-success", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
       <% else %>
-      <%= link_to "Log in to add to shopping list", new_user_session_path, id: "log-in-required-shopping-list" %>
+        <%= link_to "Log in to add to shopping list", new_user_session_path, class: "btn btn-success", id: "log-in-required-shopping-list" %>
       <% end %>
     </div>
-    <div class="cook-now-button">
-      <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
-    </div>
   </div>
-
-
 
   <div class="recipe-show-wrapper">
     <div class="container">
@@ -21,8 +20,6 @@
         <div class="recipe-show-image-box col-xs-12 col-md-8">
 
           <div class="box-recipe-info">
-            <h1 id='recipe-title', data-recipe="<%= @recipe.name %>">
-              <%= @recipe.name %></h1>
             <div class="recipe-info-details">
               <ul>
                 <div class="recipe-show-data_prep">
@@ -66,7 +63,7 @@
               <h4>
                 Utensils
               </h4>
-                <%= @recipe.utensils.first %>,
+                <%= @recipe.utensils.first.capitalize %>,
                 <% @recipe.utensils.drop(1).each do |utensil| %>
                   <% if utensil != @recipe.utensils.last %>
                     <%=   utensil %>,
@@ -78,35 +75,44 @@
           </div>
           <div class="white-box-show">
             <h4>Ingredients</h4>
-              <%= button_tag "hello", class: "hide", id: "finished-cooking" %>
+
+
+
+
               <table class="recipe-ingredients">
                 <tbody class="ingredients-list">
-                <% @recipe.measurements.each do |measurement| %>
+                <% sorted_measurements = @recipe.measurements.sort_by { |m| -m.value } %>
+                <% sorted_measurements.each do |measurement| %>
                   <tr>
-                    <td class="ingredients__col-1">
-                      <% if  measurement.value === 0%>
-
-                      <% else %>
-                      <%= measurement.value %> <%= measurement.ingredient.unit %>
-                      <% end %>
-                    </td>
                     <td class= "ingredients__col-2">
                       <%= measurement.display_name.capitalize %>
+                    </td>
+                    <td class="ingredients__col-1">
+                      <% unless measurement.value == 0%>
+                        <%= measurement.value.round %>
+                        <%= measurement.ingredient.unit %>
+                      <% end  %>
                     </td>
                   </tr>
 
                 <% end %>
                 </tbody>
               </table>
+
+
+
+
             </div>
         </div>
       </div>
     </div>
+    <%= button_tag "hello", class: "hide", id: "finished-cooking" %>
   </div>
   <div class="recipe-row">
     <div id="cooking-steps">
     </div>
   </div>
+
 
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'surprise_recipe' %>
