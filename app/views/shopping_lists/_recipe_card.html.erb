@@ -16,7 +16,8 @@
       <ul class="shopping-list-recipe-card-ingredients">
         <% recipe.measurements.each #do |measurement| %>
 
-          <% #if @shopping_list.measurements.include?(measurement) %>
+
+          <% #if @shopping_list.measurements.#include?(measurement) %>
             <li class="shopping-list-box">
           <%= measurement.display_name.capitalize %>
             <div class="shopping-list-recipe-card-values">
@@ -30,5 +31,5 @@
           <% #end %>
         <% #end %>
       </ul>
-  </div> -->
+  </div>
 
