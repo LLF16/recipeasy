@@ -21,7 +21,6 @@
 
           <% @shopping_list.recipes.each do |recipe| %>
           <div class="sl-recipe-summary-wrapper">
-            <%= link_to "remove", shopping_list_recipe_path(@shopping_list, recipe), method: :delete %>
             <div class="sl-recipe-summary-header">
               <div class="sl-recipe-image-container">
                 <div class="sl-recipe-image"
@@ -30,6 +29,9 @@
                 </div>
               </div>
                 <div class="sl-recipe-details">
+                  <span class="remove-recipe">
+                    <%= link_to "remove", shopping_list_recipe_path(@shopping_list, recipe), method: :delete %>
+                  </span>
                   <div class="sl-primary-info-text">
                     <h4><%= link_to recipe.name, recipe_path(recipe)  %></h4>
                   </div>
