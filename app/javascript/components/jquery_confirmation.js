@@ -130,3 +130,66 @@ function sendEmailSL () {
 
 
 export { sendEmailSL };
+
+
+function startCookingMode () {
+  var btn = $("#cook-now")
+    // console.log(button.data('saved'));
+    btn.confirm({
+      // columnClass: 'col-md-4 col-md-offset-4',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      icon: 'fa fa-spinner fa-spin',
+      escapeKey: 'Ok',
+      backgroundDismiss: true,
+      title: 'Cooking Mode is launching...',
+      content: `<div style="font-size: 14px;">Press <strong style="font-size: 20px;">ESC</strong> to launch cooking mode. <br><br>Press <br> <strong style="font-size: 30px;"> -> </strong> <br>to mark cooking step as finished.</div>` ,
+      theme: 'supervan',
+      buttons: {
+          Ok: {
+              text: 'Cook Now',
+              action: function(){
+                  window.scrollTo({
+                    top: 800,
+                    behavior: "smooth"
+                  });
+              }
+          },
+        },
+      type: 'green'
+    });
+};
+
+
+export { startCookingMode };
+
+function finishCookingMode () {
+  var finished = $("#finished-cooking")
+    // console.log(button.data('saved'));
+    $("#finished-cooking").confirm({
+      // columnClass: 'col-md-4 col-md-offset-4',
+      // boxWidth: '30%',
+      useBootstrap: false,
+      // icon: 'fa fa-spinner fa-spin',
+      escapeKey: 'Ok',
+      backgroundDismiss: true,
+      title: 'Finished Cooking',
+      content: 'Enjoy your meal.',
+      theme: 'modern',
+      buttons: {
+          Ok: {
+              text: 'Enjoy!',
+              action: function(){
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+              }
+          },
+        },
+      type: 'green'
+    });
+};
+
+
+export { finishCookingMode };

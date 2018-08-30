@@ -3,6 +3,9 @@
   margin-bottom: 35px;
 }
 
+// #finished-cooking {
+//   display: none;
+// }
 .cooking-mode-header {
   display: flex;
   align-items: center;
@@ -30,6 +33,11 @@
   background: lightgray;
   color: black;
   opacity: 0.9;
+   opacity: 1.0;
+  transform: scale(1.1);
+  .cooking-step-count {
+    color: green;
+  }
 }
 .cooking-step-card.active {
   background: lightgray;
@@ -92,7 +100,6 @@
 
 #cooking-mode:hover > div:hover {
   opacity: 1.0;
-  transform: scale(1.1);
   .cooking-step-count {
     color: green;
   }

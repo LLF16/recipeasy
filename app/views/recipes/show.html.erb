@@ -1,14 +1,12 @@
 
 <div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
-    <div class="shopping-list-submit">
-      <% if current_user %>
-        <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
-      <% else %>
-      <%= link_to "Log in to add to shopping list", new_user_session_path, id: "log-in-required-shopping-list" %>
-      <% end %>
-    </div>
-    <div class="cook-now-button">
-      <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
+    <div class="recipe-show-banner-box">
+      <h1 id='recipe-title', data-recipe="<%= @recipe.name %>">
+      <%= @recipe.name %></h1>
+
+      <div class="cook-now-button">
+        <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
+      </div>
     </div>
   </div>
 </div>
@@ -19,38 +17,99 @@
         <div class="recipe-show-image-box col-xs-12 col-md-8">
 
           <div class="box-recipe-info">
-            <h1 id='recipe-title', data-recipe="<%= @recipe.name %>">
-              <%= @recipe.name %></h1>
             <div class="recipe-info-details">
               <ul>
-                <li><%= @recipe.time %> ⏱️ </li>
-                <li><%= @recipe.calories %>kcal 🍔</li>
-                <li><%= @recipe.difficulty %></li>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.time %> min. </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.serves %> people </li>
+                </div>
+                <div class="recipe-show-data_prep">
+                  <li><%= @recipe.difficulty %></li>
+                </div>
               </ul>
             </div>
 
+            <div class="nutrition-details-show">
+              <h4>Nutrition per serving</h4>
+              <div class="all-nutrition">
+                <div class="nutrition__col-1">
+                  <span>Cal</span>
+                  <br>
+                  <span><%= @recipe.calories %> </span>
+                </div>
+                <div class="nutrition__col-2">
+                  <span>Fat</span>
+                  <br>
+                  <span><%= @recipe.fat %> </span>
+                </div>
+                <div class="nutrition__col-3">
+                  <span>Carb</span>
+                  <br>
+                  <span><%= @recipe.carb %> </span>
+                </div>
+                <div class="nutrition__col-4">
+                  <span>Protein</span>
+                  <br>
+                  <span><%= @recipe.protein %> </span>
+                </div>
+            </div>
+            </div>
+            <div class="recipe-utensils">
+              <h4>
+                Utensils
+              </h4>
+                <%= @recipe.utensils.first.capitalize %>,
+                <% @recipe.utensils.drop(1).each do |utensil| %>
+                  <% if utensil != @recipe.utensils.last %>
+                    <%=   utensil %>,
+                  <% else %>
+                    <%= utensil %>
+                  <% end %>
+                <% end %>
+            </div>
           </div>
           <div class="white-box-show">
             <h4>Ingredients</h4>
+
+
+
+
               <table class="recipe-ingredients">
                 <tbody class="ingredients-list">
-                <% @recipe.measurements.each do |measurement| %>
+                <% sorted_measurements = @recipe.measurements.sort_by { |m| -m.value } %>
+                <% sorted_measurements.each do |measurement| %>
                   <tr>
-                    <td class="ingredients__col-1">
-                      <%= measurement.value %> <%= measurement.ingredient.unit %>
-                    </td>
                     <td class= "ingredients__col-2">
-                      <%= measurement.ingredient.name %>
+                      <%= measurement.display_name.capitalize %>
+                    </td>
+                    <td class="ingredients__col-1">
+                      <% unless measurement.value == 0%>
+                        <%= measurement.value.round %>
+                        <%= measurement.ingredient.unit %>
+                      <% end  %>
                     </td>
                   </tr>
 
                 <% end %>
                 </tbody>
               </table>
+
+              <div class="shopping-list-submit">
+              <% if current_user %>
+               <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+              <% else %>
+                <%= link_to "Log in to add to shopping list", new_user_session_path, id: "log-in-required-shopping-list" %>
+              <% end %>
+            </div>
+
+
             </div>
         </div>
       </div>
     </div>
+    <%= button_tag "hello", class: "hide", id: "finished-cooking" %>
   </div>
   <div class="recipe-row">
     <div id="cooking-steps">

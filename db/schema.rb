@@ -32,14 +32,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_104418) do
     t.index ["beverage_category_id"], name: "index_beverages_on_beverage_category_id"
   end
 
-  create_table "ingredient_families", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ingredients", force: :cascade do |t|
-    t.bigint "ingredient_family_id"
     t.string "name"
     t.string "photo"
     t.boolean "vegan"
@@ -51,7 +44,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_104418) do
     t.boolean "seasoning"
     t.float "price"
     t.string "unit"
-    t.index ["ingredient_family_id"], name: "index_ingredients_on_ingredient_family_id"
   end
 
   create_table "measurement_shopping_lists", force: :cascade do |t|
@@ -134,7 +126,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_104418) do
   end
 
   add_foreign_key "beverages", "beverage_categories"
-  add_foreign_key "ingredients", "ingredient_families"
   add_foreign_key "measurement_shopping_lists", "measurements"
   add_foreign_key "measurement_shopping_lists", "shopping_lists"
   add_foreign_key "measurements", "ingredients"
