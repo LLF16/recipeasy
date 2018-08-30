@@ -18,6 +18,8 @@
 
   if ((unlockedLock1.dataset.locked === 'false') && (document.querySelector("#ingredient_1").value !== "")) {
     unlockedLock1.dataset.locked = 'true';
+    document.querySelectorAll(".styled-select")[0].style.visibility = "hidden";
+
     unlockedLock1.classList.add("fa-lock");
     unlockedLock1.classList.remove("fa-lock-open");
     document.querySelector('#hdn_test_1').value = text_field.value
@@ -90,6 +92,8 @@
     unlockedLock1.dataset.locked = 'false';
     unlockedLock1.classList.remove("fa-lock");
     unlockedLock1.classList.add("fa-lock-open");
+    document.querySelectorAll(".styled-select")[0].style.visibility = "visible";
+
     text_field.classList.remove("disabled")
     text_field.removeAttribute("disabled");
   }
