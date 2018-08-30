@@ -7,9 +7,18 @@ class SearchesController < ApplicationController
       sql_query_1 = "\
       ingredients.name ILIKE :query1 \
       "
+      if params["ingredient_1"]
+        puts "i'm in the true case"
+        query1_value = params["ingredient_1"]
+      else
+        puts "i'm in the false case"
+        query1_value = params["ingredient_1_locked"]
+      end
+
+
       @recipes_1 = Recipe.joins(:ingredients).where(sql_query_1,
-        query1: params["ingredient_1"])
-      p @recipes_1.class
+        query1: "#{query1_value}")
+      p query1_value
 
       sql_query_2 = "\
       ingredients.name ILIKE :query2 \

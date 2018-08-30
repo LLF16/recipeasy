@@ -27,8 +27,6 @@
 //   fetch("/ingredients")
 //   return array
 // };
-
-
 let shuffleButton = document.querySelector(".ingredients-shuffle-button");
 shuffleButton.addEventListener("click", (event) => {
   let array = [];
@@ -79,7 +77,7 @@ shuffleButton.addEventListener("click", (event) => {
           console.log(second_counter);
           // item.style.backgroundImage = `"url('${data_array[second_counter].photo.url}')"`;
           item.style.backgroundImage = 'url(' + data_array[second_counter].photo.url + ')';
-
+          item.style.backgroundSize = 'cover';
           console.log(item.style.backgroundImage);
           second_counter ++;
         });
@@ -137,7 +135,7 @@ document.body.onkeyup = function(e){
       console.log(second_counter);
         // item.style.backgroundImage = `"url('${data_array[second_counter].photo.url}')"`;
         item.style.backgroundImage = 'url(' + data_array[second_counter].photo.url + ')';
-
+        item.style.backgroundSize = 'cover';
         console.log(item.style.backgroundImage);
         second_counter ++;
       });
