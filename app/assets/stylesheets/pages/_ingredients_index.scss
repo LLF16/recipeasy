@@ -292,7 +292,7 @@
 
 #overlay {
     position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
     top: 0;
@@ -305,6 +305,7 @@
     color: white;
 }
  #activate-overlay {
+  display: none;
   background-color: #00ACA5;
   height: 200px;
   width: 200px;
@@ -400,4 +401,11 @@
  #activate-overlay {
   display: none;
  }
+}
+
+.recipes-display-box {
+  // display: flex;
+  // justify-content: center;
+  padding: 40px;
+  margin-bottom: 50px;
 }
