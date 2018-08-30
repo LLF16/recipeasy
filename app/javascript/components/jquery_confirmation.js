@@ -49,7 +49,7 @@ function addToSl () {
       autoClose: 'Enjoy|4000',
       buttons: {
           Enjoy: {
-              text: 'Enjoy'
+              text: '<a href="https://google.com" target="_blank">Enjoy</a>'
           },
         },
       type: 'green',

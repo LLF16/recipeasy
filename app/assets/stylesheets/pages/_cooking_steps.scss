@@ -32,13 +32,24 @@
 .active {
   background: lightgray;
   color: black;
-  opacity: 0.9;
-   opacity: 1.0;
-  transform: scale(1.1);
+  opacity: 1.0;
+  transform: scale(1.4);
   .cooking-step-count {
     color: green;
   }
 }
+
+.active2 {
+  background: lightgray;
+  color: black;
+  opacity: 1.0;
+  transform: scale(1.4);
+  .cooking-step-count {
+    color: green;
+  }
+}
+
+
 .cooking-step-card.active {
   background: lightgray;
   color: black;
