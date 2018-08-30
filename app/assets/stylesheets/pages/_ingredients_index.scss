@@ -138,7 +138,7 @@
   width: 80%;
   background-color: white;
   color: #00ACA5;
-  transition: all .1s ease-in-out;
+  transition: all .4s ease;
   border: 5px solid #00ACA5;
   outline: none;
   font-weight: bold;
@@ -147,6 +147,9 @@
     color: white;
     background-color: #00ACA5;
     border: 1px solid #00ACA5;
+      transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
 
   }
 }
@@ -173,7 +176,7 @@
   width: 80%;
   background-color: #E80D4D;
   color: white;
-  transition: all .1s ease-in-out;
+  transition: all .4s ease;
   border: #E80D4D;
   outline: none;
   overflow: hidden;
@@ -183,6 +186,9 @@
     background-color: white;
     border: 5px solid #E80D4D;
     font-weight: bold;
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
   }
 }
 
