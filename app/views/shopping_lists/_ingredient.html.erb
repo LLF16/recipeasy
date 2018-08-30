@@ -1,7 +1,7 @@
 <ul>
   <% @shopping_list.ingredients.each do |ingredient| %>
     <li>
-      <h5><%= ingredient.name.capitalize %></h5>
+      <h5><strong><%= ingredient.name.capitalize %></strong></h5>
       <!-- if the ingredient has only one relative and their names are the same, then it won't display the relative's name -->
         <% unless ingredient.relatives_in_shopping_list(@shopping_list).length == 1 && ingredient.relatives_in_shopping_list(@shopping_list).first.display_name == ingredient.name %>
           <% ingredient.relatives_in_shopping_list(@shopping_list).each do |relative| %>
@@ -9,8 +9,8 @@
               <ul>
                 <li>
                   <%= relative.display_name %>
-                  <% if relative.value  %>
-                    | <%= relative.value %>
+                  <% if relative.value != 0%>
+                    | <%= relative.value.round %>
                     <%= ingredient.unit %>
                   <% end %>
                 </li>
@@ -18,7 +18,6 @@
             <% end %>
           <% end %>
           <!-- remove this when styling :) -->
-          ------------ <br>
         <% end %>
       <!-- do not display the value if it's zero (like in "flour for dusting") -->
       <% if ingredient.total_amount_in_shopping_list(@shopping_list) != 0 %>
@@ -27,5 +26,6 @@
         <%= ingredient.unit %>
       <% end %>
     </li>
+    <hr>
   <% end %>
 </ul>
