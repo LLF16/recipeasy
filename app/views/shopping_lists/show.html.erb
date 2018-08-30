@@ -25,6 +25,7 @@
               <div class="sl-recipe-image-container">
                 <div class="sl-recipe-image"
                   style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path recipe.photo %>');">
+                  <%= link_to "", recipe_path(recipe), class: "sl-recipe-show" %>
                 </div>
               </div>
                 <div class="sl-recipe-details">
@@ -40,11 +41,10 @@
                       <% unless measurement.value == 0 %>
                       <%= measurement.value %>
                       <%= measurement.ingredient.unit %>
-                      <%= link_to "", measurement_shopping_list_url(measurement.measurement_for(@shopping_list)), method: :delete, class: "sl-ingredient-remove"%>
                     <% end %>
+                     <%= link_to "", measurement_shopping_list_url(measurement.measurement_for(@shopping_list)), method: :delete, class: "sl-ingredient-remove"%>
                   </li>
                   <% end %>
-
                   <% end %>
                 </ul>
               </div>
