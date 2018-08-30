@@ -1,40 +1,41 @@
 .banner-recipe {
   color: white;
-  text-align: center;
-  height: 500px;
+  height: 450px;
   background-size: cover !important;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 0 200px;
+  position: relative;
+}
+
+.start-now {
+  box-shadow: inset 0px -10px #148F77;
+}
+#recipeasy-slogan {
+  font-size: 25px;
+  opacity: 0.9;
+  margin-bottom: 18px;
+  font-weight: lighter;
 }
 
 #cook-now {
-  height: 150px;
-  width: 150px;
-  background-color: #FF3A4F;
-  border-radius: 50%;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  opacity: 0.7;
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+  margin-right: 15px;
+  font-weight: lighter;
+  font-size: 15px;
+
+  // text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  // opacity: 0.7;
 }
 
-.cook-now-button {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
-}
+// .cook-now-button {
+//   height: 150px;
+//   width: 150px;
+//   border-radius: 50%;
+//   margin-bottom: 10px;
+//   margin-right: 10px;
+//   box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
+// }
 
 
 .shopping-list-submit {
@@ -53,17 +54,19 @@
 }
 
 #log-in-required-shopping-list {
-  height: 150px;
-  width: 150px;
-  background-color: #00ACA5;
-  border-radius: 50%;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  // height: 150px;
+  // width: 150px;
+  // background-color: #00ACA5;
+  // border-radius: 50%;
+  // text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
-  margin-bottom: 10px;
-  margin-right: 10px;
-  border: none;
-  display: flex;
-  align-items: center;
+  // margin-bottom: 10px;
+  // margin-right: 10px;
+  // border: none;
+  // display: flex;
+  // align-items: center;
+  font-weight: lighter;
+  font-size: 15px;
   text-decoration: none;
   color: white;
 }
@@ -71,15 +74,16 @@
 #add-to-shopping-list {
   // height: 60px;
   // width: 150px;
-  padding: 10px;
-  background-color: #00ACA5;
-  border-radius: 5px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  // padding: 10px;
+  // background-color: #00ACA5;
+  // border-radius: 5px;
+  // text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
-  margin-top: 10px;
+  // margin-top: 10px;
   // margin-right: 10px;
+  font-weight: lighter;
+  font-size: 15px;
   border: none;
-  opacity: 0.7;
 }
 
 .ingredients__col-1 {
@@ -103,7 +107,7 @@
 .recipe-show-image-box {
   position: relative;
   background-color: white;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   border-radius: 3px;
   display: flex;
@@ -112,7 +116,7 @@
 }
 
 .white-box-show {
-  border: 1px solid #cfd8dc;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
   padding: 20px;
   margin-left: 50px;
   border-radius: 5px;
@@ -178,15 +182,15 @@
 }
 
 .recipe-show-banner-box {
-  width: 1111px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  position: absolute;
+  bottom: 55px;
+  left: 35px;
 }
 
 #recipe-title {
-  font-size: 56px;
-  font-weight: bolder;
+  font-size: 45px;
+  font-weight: 800;
+  margin-bottom: 25px;
 }
 
 .nutrition__col-1 {

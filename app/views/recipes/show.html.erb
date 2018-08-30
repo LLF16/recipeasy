@@ -3,13 +3,16 @@
     <div class="recipe-show-banner-box">
       <h1 id='recipe-title', data-recipe="<%= @recipe.name %>">
       <%= @recipe.name %></h1>
-
-      <div class="cook-now-button">
-        <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
-      </div>
+      <h2 id="recipeasy-slogan">Anyone can cook: <strong class="start-now">start now</strong></h2>
+      <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
+      <% if current_user %>
+        <%= button_tag "Add to shopping list", class: "btn btn-success", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+      <% else %>
+        <%= link_to "Log in to add to shopping list", new_user_session_path, class: "btn btn-success", id: "log-in-required-shopping-list" %>
+      <% end %>
     </div>
   </div>
-</div>
+
 
   <div class="recipe-show-wrapper">
     <div class="container">
@@ -96,13 +99,7 @@
                 </tbody>
               </table>
 
-              <div class="shopping-list-submit">
-              <% if current_user %>
-               <%= button_tag "Add to shopping list", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
-              <% else %>
-                <%= link_to "Log in to add to shopping list", new_user_session_path, id: "log-in-required-shopping-list" %>
-              <% end %>
-            </div>
+
 
 
             </div>
