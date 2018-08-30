@@ -1,8 +1,23 @@
 .sl-title {
   display: flex;
+  justify-content: space-between;
+  width: 80%;
   h1 {
     margin-right: 30px;
   }
+}
+
+.sl-recipe-image-container {
+   // box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+   background-color: transparent;
+   border-radius: 10px 0 0 10px;
+   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+}
+
+.sl-container-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sl-recipe-summary-wrapper {
@@ -11,18 +26,18 @@
     padding: 0;
     box-sizing: border-box;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .sl-recipe-summary-header {
-    width: 85%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: left;
     margin: 20px 0 20px 0;
-    box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
-    padding: 20px;
-    border-radius: 15px;
 
+    border-radius: 15px;
 }
 
 .sl-recipe-details-image {
@@ -38,15 +53,20 @@
     height: 320px;
     background-size: cover;
     background-position: 50%;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     animation: fade-in .4s ease both;
+
 }
 
 .sl-recipe-details {
   flex-basis: 600px;
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
+  padding-left: 50px;
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+  border-radius: 0 10px 10px 0;
+      margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .sl-primary-info-text {
@@ -61,6 +81,7 @@
     h4 a {
       text-decoration: none;
       color: #6E6E6E;
+      margin-top: 0;
     }
 
     &:hover {
@@ -69,22 +90,29 @@
     }
 }
 
+.sl-ingredient-remove {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .sl-ingredient-tags {
     text-align: left;
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
+    overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
-    max-height: 268px;
+    max-height: 230px;
+    margin-left: -15px;
 
 
     ul {
       padding-left: 0;
     }
 }
-
-
 
 .sl-ingredient-tag {
   margin: 1em 1em 0 0;
@@ -99,9 +127,10 @@
   text-transform: uppercase;
   margin: 1em;
   width: auto;
-  padding: 3px 5px 3px 5px;
+  padding: 5px 15px 5px 15px;
   color: #39C3BC;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     color: white;
@@ -149,7 +178,13 @@
 }
 
 .shopping-list-recipe-card-remove {
-  font-size: 12px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  opacity: 0;
 }
 
 .shopping-list-recipe-card-details {
