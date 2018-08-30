@@ -4,15 +4,18 @@
     <div id="index-bar-first" class="ingredients-index-bar" style= "background-image: url(<%= image_path "fridge.jpg" %>)" >
       <div class="ingredients-index-bar-container">
         <div class="ingredients-form-input">
-          <div class="styled-select slate">
-            <select id="ingredient_1" name="ingredient_1" class="form-control first-text-tag style-dropdown">
-              <option value="" selected disabled hidden>Select an ingredient...</option>
 
-              <% @ingredients.each do |ingredient| %>
-                <option class="dropdown-option" value="<%= ingredient.name %>"><%= ingredient.name %></option>
+          <div class="styled-select">
+            <select id="ingredient_1" name="ingredient_1" class="form-control first-text-tag style-dropdown">
+              <option value="" selected disabled hidden>Pick an ingredient...</option>
+
+              <% ordered_ingredients = @ingredients.sort_by{|i| i.name} %>
+              <% ordered_ingredients.each do |ingredient| %>
+                <option class="dropdown-option" value="<%= ingredient.name %>"><%= ingredient.name.capitalize %></option>
               <% end %>
             </select>
           </div>
+
           <input type="hidden" id="hdn_test_1" name="ingredient_1_locked" />
 
         <h3 class="slot-ingredient-name"></h3>
