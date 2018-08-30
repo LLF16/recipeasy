@@ -78,6 +78,7 @@
           </div>
           <div class="white-box-show">
             <h4>Ingredients</h4>
+              <%= button_tag "hello", class: "hide", id: "finished-cooking" %>
               <table class="recipe-ingredients">
                 <tbody class="ingredients-list">
                 <% @recipe.measurements.each do |measurement| %>
