@@ -132,6 +132,7 @@ puts "Created #{User.all.length} users"
   # start to create ingredients and measurements in the db, based on the scraped arrays
   scraped_ingredients.each do |scraped_ingredient|
     scraped_ingredient.downcase!
+    index_counter =  scraped_ingredients.index(scraped_ingredient)
     # first we check if scraped ingredients are not part of the clean list
     clean_ingredients.select do |clean_name|
       if scraped_ingredient.include?(clean_name) || scraped_ingredient.include?(clean_name.pluralize)
@@ -143,23 +144,23 @@ puts "Created #{User.all.length} users"
           measurement.ingredient_id = ingredient_found.id
           measurement.recipe_id = new_recipe.id
           measurement.display_name = scraped_ingredient
+          # index_counter =  scraped_ingredients.index(scraped_ingredient)
           # normalisation of the value/unit to only keep values refered in grams or milliliters
           if ingredient_found.unit == "kg"
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-            ingredient.unit = "g"
+            measurement.value = scraped_measurements_value[index_counter].to_f*1000
+            ingredient_found.unit = "g"
           elsif ingredient_found.unit == "l"
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
-            ingredient.unit = "ml"
-          else
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+            measurement.value = scraped_measurements_value[index_counter].to_f*1000
+            ingredient_found.unit = "ml"
+          # else
+          #   measurement.value = scraped_measurements_value[index_counter].to_f
           end
           measurement.save!
 
           # removing ingredient created from the scraped array (same for unit and value)
-          index_counter =  scraped_ingredients.index(scraped_ingredient)
-          scraped_ingredients.delete_at(index_counter)
-          scraped_measurements_value.delete_at(index_counter)
-          scraped_measurements_unit.delete_at(index_counter)
+          # scraped_ingredients.delete_at(index_counter)
+          # scraped_measurements_value.delete_at(index_counter)
+          # scraped_measurements_unit.delete_at(index_counter)
 
         else
           # ingredient that is part of the clean list does not exist yet so we have to create it first
@@ -173,27 +174,30 @@ puts "Created #{User.all.length} users"
           measurement.ingredient_id = ingredient.id
           measurement.recipe_id = new_recipe.id
           measurement.display_name =  scraped_ingredient
+          # index_counter =  scraped_ingredients.index(scraped_ingredient)
           # normalisation of the value/unit to only keep values refered in grams or milliliters
           if ingredient.unit == "kg"
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+            measurement.value = scraped_measurements_value[index_counter].to_f*1000
             ingredient.unit = "g"
           elsif ingredient.unit == "l"
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
+            measurement.value = scraped_measurements_value[index_counter].to_f*1000
             ingredient.unit = "ml"
-          else
-            measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+          # else
+          #   measurement.value = scraped_measurements_value[index_counter].to_f
           end
           measurement.save!
 
           # removing ingredient created from the scraped array (same for unit and value)
-          index_counter =  scraped_ingredients.index(scraped_ingredient)
-          scraped_ingredients.delete_at(index_counter)
-          scraped_measurements_value.delete_at(index_counter)
-          scraped_measurements_unit.delete_at(index_counter)
+          # scraped_ingredients.delete_at(index_counter)
+          # scraped_measurements_value.delete_at(index_counter)
+          # scraped_measurements_unit.delete_at(index_counter)
 
         end
       end
     end
+    scraped_ingredients.delete_at(index_counter)
+    scraped_measurements_value.delete_at(index_counter)
+    scraped_measurements_unit.delete_at(index_counter)
   end
 
   # => At this point, the scraped_ingredients, scraped_measurements_unit and scraped_measurements_value arrays only contains information about ingredients that are not part of the clean list
@@ -215,8 +219,8 @@ puts "Created #{User.all.length} users"
       elsif ingredient.unit == "l"
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
         ingredient.unit = "ml"
-      else
-        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+      # else
+      #   measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
       end
       measurement.save!
     #if ingredient does not exist yet
@@ -235,8 +239,8 @@ puts "Created #{User.all.length} users"
       elsif ingredient.unit == "l"
         measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f*1000
         ingredient.unit = "ml"
-      else
-        measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
+      # else
+      #   measurement.value = scraped_measurements_value[scraped_ingredients.index(scraped_ingredient)].to_f
       end
       measurement.save!
     end
