@@ -12,11 +12,16 @@
   // background: #F4F4F8;
   box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
   -webkit-transition:all .4s cubic-bezier(1,.4,.4,1);
-  transition:all .4s cubic-bezier(1,.4,.4,1);
+  transition:all .1s cubic-bezier(1,.4,.4,1);
+  transition: transform .2s;
   margin: 5px 10px 10px 10px;
   border-radius: 3px;
   margin-bottom: 15px;
   height: 415px;
+
+  &:hover {
+  transform: scale(1.02);
+  }
 }
 
 .card-recipe > .setting{
