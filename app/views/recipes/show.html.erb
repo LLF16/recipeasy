@@ -9,7 +9,9 @@
       <%= @recipe.name %></h1>
       <%= link_to "Cook now!", cooking_session_path(@recipe), id: "cook-now", class: "btn btn-primary", remote: true %>
       <% if current_user %>
-        <%= button_tag "Add to shopping list", class: "btn btn-success", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+          <% unless current_user.shopping_list.recipes.include?(@recipe) %>
+          <%= button_tag "Add to shopping list", class: "btn btn-success", id: "add-to-shopping-list", data: { path: recipe_measurement_shopping_lists_path(@recipe) } %>
+          <% end %>
       <% else %>
         <%= link_to "Log in to add to shopping list", new_user_session_path, class: "btn btn-success", id: "log-in-required-shopping-list" %>
       <% end %>
