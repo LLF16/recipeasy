@@ -1,7 +1,7 @@
 <% content_for :meta_title, "#{@recipe.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @recipe.steps[1] %>
 <% content_for :meta_image, cl_image_path(@recipe.photo) %>
-<canvas height="1" id="confetti" width="1"></canvas>
+<!-- <canvas height="1" id="confetti" width="1"></canvas> -->
 <div class="banner-recipe" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= image_path @recipe.photo, class: 'recipe-image' %>');">
   <div class="recipe-show-banner-container">
     <div class="recipe-show-banner-box">
