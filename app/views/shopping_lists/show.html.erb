@@ -5,9 +5,12 @@
   <% else %>
     <div class="row">
       <div class="col-xs-12 col-md-6" id="shopping-list">
+
         <h2 class="sl-header"> Your shopping list </h2>
+
         <div class="shopping-list-cumulative">
           <ul>
+
             <% @shopping_list.ingredients.each do |ingredient| %>
               <li>
                 <h5 class="sl-ing-name"><%= ingredient.name.capitalize %></h5>
@@ -15,11 +18,11 @@
                   <% unless ingredient.relatives_in_shopping_list(@shopping_list).length == 1 && ingredient.relatives_in_shopping_list(@shopping_list).first.display_name == ingredient.name %>
                     <% ingredient.relatives_in_shopping_list(@shopping_list).each do |relative| %>
                       <% unless ["salt", "pepper"].include?(ingredient.name) %>
-                        <ul>
+                        <ul id="sl-lists">
                           <li class="sl-list">
                             <%= relative.display_name %>
                             <% if relative.value  %>
-                              | <%= relative.value %>
+                              | <%= relative.value.round %>
                               <%= ingredient.unit %>
                            <% end %>
                           </li>
@@ -27,17 +30,19 @@
                       <% end %>
                     <% end %>
                     <!-- remove this when styling :) -->
-                    <hr>
+
                   <% end %>
                 <!-- do not display the value if it's zero (like in "flour for dusting") -->
                 <% if ingredient.total_amount_in_shopping_list(@shopping_list) != 0 %>
 
-                  <span class="sl-total-am"> Total: <%= ingredient.total_amount_in_shopping_list(@shopping_list) %>
+                  <span class="sl-total-am"> Total: <%= ingredient.total_amount_in_shopping_list(@shopping_list).round %>
                   <%= ingredient.unit %> </span>
                 <% end %>
+                <hr>
               </li>
             <% end %>
           </ul>
+          <%= link_to "", send_email_shopping_list_path(@user), data: {shopping_list: @shopping_list }, class: "shopping-list-recipe-card-remove"  %>
         </div>
 
       </div>
