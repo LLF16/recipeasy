@@ -1,5 +1,5 @@
 meta_product_name: "Recipeasy"
 meta_title: "Recipeasy - open your fridge, discover recipes"
 meta_description: "The best recipes based on your available time, cuisine preferences and available ingredients"
-meta_image: "red_logo.png"                       # should exist in `app/assets/images/`
+meta_image: "new_home_picture.png"                       # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
