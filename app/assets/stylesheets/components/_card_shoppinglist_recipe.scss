@@ -106,12 +106,51 @@
     }
 }
 
+.sl-header-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.send-email-box {
+  display: flex;
+  align-items: flex-end;
+      margin-top: 10px;
+    margin-right: 10px;
+}
+
+.sl-send-email-button {
+      color: #6E6E6E;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+        cursor: pointer;
+    transition: all .4s ease;
+    box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+
+    &:hover {
+      text-decoration: none;
+      background-color: #6E6E6E;
+      color: white;
+    }
+
+
+}
+
 .sl-ingredient-remove {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.sl-del-recipe {
+  position: absolute;
+    top: 5px;
+    right: 5px;
+  visibility: hidden;
+  z-index: 5;
 }
 
 .sl-recipe-show {
@@ -187,7 +226,7 @@
   border-radius: 15px;
   position: relative;
   background: transparent;
-  margin: 7px 5px 15px 0;
+  margin: 18px 5px 15px 0;
   padding: 20px;
   justify-content: center;
   color: white;
@@ -195,6 +234,11 @@
   color: #484848;
   box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06), 0 3px 8px 1px rgba(0, 0, 0, 0.16);
 
+    &:hover {
+    .sl-del-recipe {
+      visibility: visible;
+    }
+    }
 
 
   a {
