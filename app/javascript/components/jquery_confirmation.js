@@ -92,7 +92,7 @@ function sendEmailSL () {
   var button = $("#email-send")
   var shoppingList = $('.temp_information').data('shopping_list')
   var ingredients = $('.temp_information').data('ingredients')
-  console.log(ingredients)
+  // console.log(ingredients)
     // console.log(button.data('saved'));
     button.confirm({
       columnClass: 'col-md-8 col-md-offset-2',
