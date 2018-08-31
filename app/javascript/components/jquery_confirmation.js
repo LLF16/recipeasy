@@ -43,13 +43,13 @@ function addToSl () {
       columnClass: 'col-md-4 col-md-offset-4',
       // boxWidth: '30%',
       useBootstrap: false,
-      title: 'Confirmation',
-      content: `Success. You added ${recipe} to your shopping list.` ,
+      title: '<div style="font-size:48px">🙂</div>',
+      content: `<div style="font-size:20px"> Great! You added <strong>${recipe}</strong> to your shopping list. </div>` ,
       theme: 'modern',
-      autoClose: 'Enjoy|4000',
+      autoClose: 'Enjoy|2000',
       buttons: {
           Enjoy: {
-              text: '<a href="https://google.com" target="_blank">Enjoy</a>'
+              text: 'Enjoy'
           },
         },
       type: 'green',
