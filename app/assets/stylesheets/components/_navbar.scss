@@ -75,10 +75,13 @@
 }
 
 /* Logo */
-a:hover {
-  text-decoration: none;
-}
 
+
+.navbar-wagon-brand {
+  &:hover {
+    text-decoration: none;
+  }
+}
 .navbar-wagon-brand img {
   height: 50px;
 }
