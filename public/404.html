@@ -157,6 +157,21 @@ button {
   transform: rotate(235deg);
 }
 
+
+@media only screen and (max-width: 770px) {
+.please {
+  position: absolute;
+  top: 80%;
+}
+
+#bring-me-back {
+  position: absolute;
+  right: 25%;
+  top: 54%;
+}
+
+  }
+
   </style>
 </head>
 
@@ -181,7 +196,7 @@ button {
         <p>cool zone</p>
       </div>
     </div>
-    <button id="bring-me-back">Please bring me back to the cool zone!</button>
+    <button id="bring-me-back" onclick="window.location.href='/'">Please bring me back to the cool zone!</button>
   </div>
 </body>
 </html>
