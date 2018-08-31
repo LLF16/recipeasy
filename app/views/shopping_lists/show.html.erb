@@ -8,7 +8,7 @@
         <div class="sl-header-box">
           <h2 class="sl-header"> Your shopping list </h2>
           <div class="send-email-box">
-            <%= link_to "Send Email", send_email_shopping_list_path(@user), data: {shopping_list: @shopping_list }, class: "sl-send-email-button" %>
+            <%= link_to "Send to Email", send_email_shopping_list_path(@user), data: {shopping_list: @shopping_list }, class: "sl-send-email-button" %>
           </div>
         </div>
         <div class="shopping-list-cumulative">
@@ -33,7 +33,6 @@
                         </ul>
                       <% end %>
                     <% end %>
-                    <!-- remove this when styling :) -->
 
                   <% end %>
                 <!-- do not display the value if it's zero (like in "flour for dusting") -->
@@ -56,9 +55,7 @@
           <% @shopping_list.recipes.each do |recipe| %>
             <li>
               <div class="shopping-list-recipe-card">
-                <%= link_to shopping_list_recipe_path(@shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "sl-del-recipe" do %>
-                <i class="far fa-minus-square"></i>
-                <% end %>
+                <%= link_to "remove", shopping_list_recipe_path(@shopping_list, recipe), method: :delete, data: { confirm: "Are you sure?"}, class: "sl-del-recipe" %>
                 <div class="shopping-list-recipe-card-details">
                   <%= image_tag recipe.photo, class: "shopping-list-recipe-card-photo" %>
                   <h2><%= recipe.name %></h2>
