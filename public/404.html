@@ -3,65 +3,200 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+
+.page-section {
+  background-color: white;
+  text-align: center;
+}
+
+.container {
+display: inline-block;
+}
+
+img .logo {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  height: 100px !important;
+  color: #;
+}
+
+.text {
+
+}
+
+h1 {
+  font-size: 54px;
+  margin-bottom: 0;
+  color: #FF3A4F;
+  font-family: 'Karla', sans-serif;
+
+}
+
+h4 {
+  font-size: 36px;
+  color: black;
+  font-family: 'Karla', sans-serif;
+}
+
+
+button {
+  background: light gray;
+  font-size: 32px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#square {
+  width: 300px;
+  height: 300px;
+  background: transparent;
+  border: solid 4px black;
+}
+
+#square > p {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 0;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.falling {
+  display: flex;
+  justify-content: center;
+  widht: 400px;
+  padding-right: 20px;
+}
+
+.falling-guy {
+  height: 100px;
+  color: #FF3A4F;
+}
+
+#bring-me-back {
+  position: absolute;
+  top: 60%;
+  right: 20%;
+  border-radius: 50%;
+  outline: none;
+  height: 200px;
+  width: 200px;
+  background-color: #00ACA5;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+  margin-bottom: 120px;
+  margin-top: 30px;
+  transition: all .4s ease;
+
+  &:active {
+     transform: translate(0px, 10px);
+    -webkit-transform: translate(0px, 10px);
+    box-shadow: 0px 1px 0px 0px;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 32px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
+}
+
+.please {
+  text-align: center;
+  position: absolute;
+  font-family: 'Karla', sans-serif;
+  position: absolute;
+  top: 55%;
+
+}
+
+.please > h3 {
+  font-size: 42px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.please > p {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.arrow{
+  height: 50px;
+  -webkit-transform: rotate(235deg);
+  -moz-transform: rotate(235deg);
+  -o-transform: rotate(235deg);
+  -ms-transform: rotate(235deg);
+  transform: rotate(235deg);
+}
+
+
+@media only screen and (max-width: 770px) {
+.please {
+  position: absolute;
+  top: 80%;
+}
+
+#bring-me-back {
+  position: absolute;
+  right: 25%;
+  top: 54%;
+}
+
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body class="page-section">
+
+  <div class="container">
+    <div class="intro">
+      <!-- <img src="../app/assets/images/hat_logo.png" alt="" class="logo"> -->
+      <div class="text">
+        <h1>Ooooops</h1>
+        <h4>The page you were looking for does not exist...</h4>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <div class="please">
+      <img src="../app/assets/images/arrow.png" alt="" class="arrow">
+      <h3>You</h3>
+      <p>at the moment</p>
+    </div>
+    <div class="falling">
+      <img src="../app/assets/images/falling-man-pink.png" alt="" class="falling-guy">
+      <div id="square">
+        <p>cool zone</p>
+      </div>
+    </div>
+    <button id="bring-me-back" onclick="window.location.href='/'">Please bring me back to the cool zone!</button>
   </div>
 </body>
 </html>
