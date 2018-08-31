@@ -31,7 +31,7 @@
   margin-top: 30px;
   transition: all .4s ease;
   background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
-  box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #484848;
+  box-shadow: inset 0px 1px 10px #b2f17f, 0px 6px 10px #484848;
 
   &:active {
     top: 20px;
