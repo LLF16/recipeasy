@@ -41,11 +41,33 @@
 }
 
 .navigation_left {
+  // width: 215px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 25%;
   z-index: 2;
+  h3 {
+    margin-top: 9px;
+    font-weight: bold;
+    color: #FF3A4F;
+    font-size: 36px;
+  }
+
+  h3.hover {
+    color: #FF3A4F;
+    text-decoration: none;
+  }
+}
+
+.redirect-navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 215px;
+
+  &.hover {
+   text-decoration: none;
+  }
 }
 
 .recipe-of-the-day-small img {
@@ -53,6 +75,10 @@
 }
 
 /* Logo */
+a:hover {
+  text-decoration: none;
+}
+
 .navbar-wagon-brand img {
   height: 50px;
 }
