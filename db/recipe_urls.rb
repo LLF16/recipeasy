@@ -85,7 +85,6 @@
 'https://www.kitchenstories.com/en/recipes/grilled-pizza-with-bresaola',
 'https://www.kitchenstories.com/en/recipes/classic-italian-lasagna',
 'https://www.kitchenstories.com/en/recipes/eggplant-parmesan',
-'https://www.kitchenstories.com/en/recipes/traditional-garlic-and-olive-oil-pasta',
 'https://www.kitchenstories.com/en/recipes/risotto-with-asparagus-and-chanterelles',
 'https://www.kitchenstories.com/en/recipes/light-penne-with-asparagus-and-smoked-salmon',
 'https://www.kitchenstories.com/en/recipes/creamy-pasta-with-broccoli',
