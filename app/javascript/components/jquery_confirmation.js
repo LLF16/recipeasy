@@ -164,6 +164,7 @@ function startCookingMode () {
 export { startCookingMode };
 
 function finishCookingMode () {
+  var recipe = $("#recipe-title").data('recipe');
   var finished = $("#finished-cooking")
     // console.log(button.data('saved'));
     $("#finished-cooking").confirm({
@@ -173,8 +174,8 @@ function finishCookingMode () {
       // icon: 'fa fa-spinner fa-spin',
       escapeKey: 'Ok',
       backgroundDismiss: true,
-      title: 'Finished Cooking',
-      content: 'Enjoy your meal.',
+      title: '<div style="font-size:48px">🙌🏻</div>',
+      content: `<div style="font-size:20px"> Yum! Your <strong>${recipe}</strong> looks delicious! Enjoy your meal!</div>`,
       theme: 'modern',
       buttons: {
           Ok: {
